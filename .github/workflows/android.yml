@@ -68,7 +68,33 @@ jobs:
           exit 1
 
       - name: Build with gradle
-        run: ./gradlew clean assemble
+        id: build
+        continue-on-error: true
+        run: ./gradlew clean assemble --console=plain 2>&1 | tee build.log
+
+      - name: Report build failures
+        if: steps.build.outcome == 'failure'
+        run: |
+          python3 - <<'PY'
+          import pathlib
+
+          def annotate(message):
+              message = message.replace('%', '%25').replace('\r', '').replace('\n', '%0A')
+              print(f'::error::{message}'[:4000])
+
+          log = pathlib.Path('build.log')
+          if log.exists():
+              lines = log.read_text(errors='replace').splitlines()
+              for index, line in enumerate(lines):
+                  stripped = line.strip()
+                  if (stripped.startswith('e: ') or stripped.startswith('FAILURE:')
+                          or ' error: ' in stripped or stripped.startswith("What went wrong")):
+                      annotate(stripped)
+                      for follow_up in lines[index + 1:index + 4]:
+                          if follow_up.strip():
+                              annotate(follow_up.strip())
+          PY
+          exit 1
 
       - name: Upload debug apks
         uses: actions/upload-artifact@v4.6.2
