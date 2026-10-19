@@ -29,7 +29,43 @@ jobs:
         uses: gradle/actions/setup-gradle@v4.4.1
 
       - name: Run unit tests
-        run: ./gradlew testDebugUnitTest
+        id: unit_tests
+        continue-on-error: true
+        run: ./gradlew testDebugUnitTest --console=plain 2>&1 | tee unit-tests.log
+
+      - name: Report unit test failures
+        if: steps.unit_tests.outcome == 'failure'
+        run: |
+          python3 - <<'PY'
+          import pathlib
+          import xml.etree.ElementTree as ET
+
+          def annotate(message):
+              message = message.replace('%', '%25').replace('\r', '').replace('\n', '%0A')
+              print(f'::error::{message}')
+
+          log = pathlib.Path('unit-tests.log')
+          if log.exists():
+              for line in log.read_text(errors='replace').splitlines():
+                  stripped = line.strip()
+                  if stripped.startswith('e: ') or stripped.startswith('FAILURE:') or 'FAILED' in stripped:
+                      annotate(stripped)
+
+          results = pathlib.Path('app/build/test-results/testDebugUnitTest')
+          for xml_file in results.glob('*.xml'):
+              try:
+                  root = ET.parse(xml_file).getroot()
+              except Exception:
+                  continue
+              for testcase in root.iter('testcase'):
+                  failure = testcase.find('failure')
+                  if failure is None:
+                      failure = testcase.find('error')
+                  if failure is not None:
+                      name = f"{testcase.get('classname')}.{testcase.get('name')}"
+                      annotate(f"{name}: {failure.get('message', failure.text or '')}"[:4000])
+          PY
+          exit 1
 
       - name: Build with gradle
         run: ./gradlew clean assemble
