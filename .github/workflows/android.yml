@@ -111,6 +111,21 @@ jobs:
           name: app-release
           path: app/build/outputs/apk/release/**/*.apk
 
+      - name: Diagnose gradle build
+        if: always()
+        run: |
+          if [ -f build.log ]; then
+            echo "build.log lines: $(wc -l < build.log)"
+            tail -60 build.log | while IFS= read -r line; do
+              echo "::notice::log: ${line//'%'/'%25'}"
+            done
+          else
+            echo "::notice::build.log missing"
+          fi
+          ./gradlew :app:assembleDebug --dry-run --console=plain 2>&1 | grep -E '(assemble|package|compile).*Debug' | while IFS= read -r line; do
+            echo "::notice::dryrun: ${line//'%'/'%25'}"
+          done
+
       - name: List build outputs
         if: always()
         run: |
