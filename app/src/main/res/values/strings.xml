@@ -165,6 +165,8 @@ Make sure you have Shizuku installed and enabled via ADB. Tap \'Next\' to grant 
     <string name="settings_screen_security_title">Security</string>
     <string name="settings_screen_change_pin_title">Change PIN</string>
     <string name="settings_screen_change_pin_desc">Update your current PIN</string>
+    <string name="settings_screen_auto_lock_new_apps_title">Automatically protect new apps</string>
+    <string name="settings_screen_auto_lock_new_apps_desc">Newly installed apps are added to protection automatically. Apps installed before you enable this are not affected, and manually removed protection is kept.</string>
     <string name="settings_screen_anti_uninstall_title">Anti-Uninstall Protection</string>
     <string name="settings_screen_anti_uninstall_desc">Prevent unauthorized uninstallation of App Lock</string>
     <string name="settings_screen_haptic_feedback_title">Haptic Feedback</string>

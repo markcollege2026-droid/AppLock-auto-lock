@@ -129,6 +129,71 @@ Every contribution matters.
 
 ---
 
+<br/>
+
+## Automatically Protect New Apps
+
+Settings → Security → **Automatically protect new apps** can add newly installed apps to
+the protected list automatically. The toggle is **off by default** for existing and new
+users, and it is independent from the global protection switch:
+
+- When enabled, AppLock stores a persistent baseline of the apps that are already
+  installed. Those apps are **not** enrolled retroactively.
+- Apps installed afterwards are enrolled when AppLock observes the installation or
+  recovers it during the next startup reconciliation.
+- Turning the feature off stops automatic enrollment but never removes protection that
+  was already added. Turning it on again creates a fresh baseline, so apps installed
+  while it was off are not enrolled retroactively.
+- If you manually remove protection from an automatically protected app, that choice is
+  kept for that installation across scans, restarts and ordinary updates. A genuine
+  uninstall/reinstall is treated as a new installation and evaluated again.
+- Ordinary app updates are never treated as new installations.
+
+Automatic enrollment is limited to user-installed apps that have a launcher entry. AppLock
+itself, system apps, launchers, keyboards and AppLock's existing system exclusions are
+skipped. Manual protection of any app, including system apps, is unchanged. Apps are
+added to the normal protected list and use the existing PIN/password/pattern/biometric,
+temporary-unlock and trigger-exclusion behavior.
+
+### Opting out with the manifest marker
+
+An app can opt out of **automatic** enrollment by declaring this application-level
+metadata marker:
+
+```xml
+<application ...>
+    <meta-data
+        android:name="dev.pranav.applock.AUTOLOCK_EXEMPT"
+        android:value="true" />
+</application>
+```
+
+AppLock reads the marker with `PackageManager.GET_META_DATA`. Only a boolean `true` grants
+the exemption; a missing, `false` or malformed value does not. The marker is honored
+regardless of signing certificate, package name, label or installer.
+
+> [!IMPORTANT]
+> This marker is intentionally self-declared and **not a security boundary**. There is no
+> certificate verification, secret token, custom permission or anti-spoofing check. Any
+> app can declare it and receive the exemption. It cannot remove an app from the protected
+> list: if you manually protect a marked app, it still locks normally. The marker also
+> does not create a trigger exclusion and does not suppress locks for other apps opened
+> from it.
+
+### Background limitations
+
+Installation observation uses a runtime `BroadcastReceiver` registered by the AppLock
+process. Android does not deliver runtime broadcasts while the process is dead, and a
+manifest-only `PACKAGE_ADDED` receiver is not reliable on modern Android. AppLock
+therefore reconciles installed packages when the process or locking backend starts,
+including after reboot, and has a first-launch fallback in all three backends. This
+reduces missed enrollment but does not change AppLock's existing overlay/backend timing
+limitations: it does not prevent app launches at the OS level and cannot protect anything
+while AppLock is force-stopped, its backend is disabled, or required permissions are
+missing.
+
+---
+
 ## License
 
 ```text

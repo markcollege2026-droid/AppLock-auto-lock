@@ -19,6 +19,7 @@ import dev.pranav.applock.R
 import dev.pranav.applock.core.broadcast.DeviceAdmin
 import dev.pranav.applock.core.utils.LogUtils
 import dev.pranav.applock.core.utils.appLockRepository
+import dev.pranav.applock.data.autolock.AutoLockEnrollmentManager
 import dev.pranav.applock.data.repository.AppLockRepository
 import dev.pranav.applock.data.repository.AppLockRepository.Companion.shouldStartService
 import dev.pranav.applock.data.repository.BackendImplementation
@@ -65,6 +66,9 @@ class ShizukuAppLockService : Service() {
 
         appLockRepository.setActiveBackend(BackendImplementation.SHIZUKU)
         AppLockManager.stopAllOtherServices(this, this::class.java)
+
+        // Recover installations missed while the process was not running.
+        AutoLockEnrollmentManager.scheduleReconcile()
 
         setupShizukuActivityManager()
 
@@ -193,9 +197,9 @@ class ShizukuAppLockService : Service() {
     }
 
     private fun checkAndLockApp(packageName: String, triggeringPackage: String, currentTime: Long) {
-        val lockedApps = appLockRepository.getLockedApps()
-
-        if (packageName !in lockedApps) return
+        // Checks the protected list and gives automatic enrollment one chance to
+        // protect a missed new installation before continuing the lock decision.
+        if (!appLockRepository.isProtectedOrEnrollAutomatically(packageName)) return
 
         val unlockDurationMinutes = appLockRepository.getUnlockTimeDuration()
         val unlockTimestamp = AppLockManager.appUnlockTimes[packageName] ?: 0L

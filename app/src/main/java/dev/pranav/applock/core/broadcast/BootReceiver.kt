@@ -8,6 +8,7 @@ import android.util.Log
 import androidx.core.content.ContextCompat
 import dev.pranav.applock.core.utils.LogUtils
 import dev.pranav.applock.core.utils.appLockRepository
+import dev.pranav.applock.data.autolock.AutoLockEnrollmentManager
 import dev.pranav.applock.data.repository.BackendImplementation
 import dev.pranav.applock.services.AppLockAccessibilityService
 import dev.pranav.applock.services.ShizukuAppLockService
@@ -18,7 +19,14 @@ class BootReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent) {
         val repository = context.appLockRepository()
-        
+
+        // Retry initialization on USER_UNLOCKED in case the process was started by a
+        // direct-boot broadcast before credential-encrypted preferences were available.
+        AutoLockEnrollmentManager.initialize(context, repository)
+        // A reboot starts a fresh process, but be explicit: reconcile missed
+        // installations through the existing boot/unlock/update flow.
+        AutoLockEnrollmentManager.scheduleReconcile()
+
         when (intent.action) {
             Intent.ACTION_MY_PACKAGE_REPLACED -> {
                 Log.d(TAG, "App package replaced, clearing old logs and showing donate link")

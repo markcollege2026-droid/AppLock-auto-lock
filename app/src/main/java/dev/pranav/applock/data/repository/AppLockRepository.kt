@@ -1,6 +1,7 @@
 package dev.pranav.applock.data.repository
 
 import android.content.Context
+import dev.pranav.applock.data.autolock.AutoLockEnrollmentManager
 import dev.pranav.applock.data.manager.BackendServiceManager
 import dev.pranav.applock.services.AppLockManager
 
@@ -15,16 +16,34 @@ class AppLockRepository(private val context: Context) {
     private val backendServiceManager = BackendServiceManager()
 
     fun getLockedApps(): Set<String> = lockedAppsRepository.getLockedApps()
-    fun addLockedApp(packageName: String) {
+
+    /**
+     * Adds an app to the protected list.
+     *
+     * [automatic] is used by the automatic-enrollment coordinator. Manual calls also
+     * clear any previous automatic-enrollment opt-out for the package.
+     */
+    fun addLockedApp(packageName: String, automatic: Boolean = false) {
         lockedAppsRepository.addLockedApp(packageName)
         AppLockManager.clearAppUnlockState(packageName)
+        if (!automatic) {
+            AutoLockEnrollmentManager.recordManualProtection(context, packageName)
+        }
     }
 
     fun addMultipleLockedApps(packageNames: Set<String>) {
         lockedAppsRepository.addMultipleLockedApps(packageNames)
         packageNames.forEach(AppLockManager::clearAppUnlockState)
+        packageNames.forEach { AutoLockEnrollmentManager.recordManualProtection(context, it) }
     }
-    fun removeLockedApp(packageName: String) = lockedAppsRepository.removeLockedApp(packageName)
+
+    fun removeLockedApp(packageName: String) {
+        // Record the manual choice before removing protection so a concurrent
+        // reconciliation cannot re-enroll the app immediately afterwards.
+        AutoLockEnrollmentManager.recordManualUnprotection(context, packageName)
+        lockedAppsRepository.removeLockedApp(packageName)
+    }
+
     fun isAppLocked(packageName: String): Boolean = lockedAppsRepository.isAppLocked(packageName)
 
     fun getTriggerExcludedApps(): Set<String> = lockedAppsRepository.getTriggerExcludedApps()
@@ -78,6 +97,14 @@ class AppLockRepository(private val context: Context) {
     fun isAntiUninstallEnabled(): Boolean = preferencesRepository.isAntiUninstallEnabled()
     fun setProtectEnabled(enabled: Boolean) = preferencesRepository.setProtectEnabled(enabled)
     fun isProtectEnabled(): Boolean = preferencesRepository.isProtectEnabled()
+
+    fun setAutoLockNewAppsEnabled(enabled: Boolean) {
+        preferencesRepository.setAutoLockNewAppsEnabled(enabled)
+        AutoLockEnrollmentManager.onSettingChanged()
+    }
+
+    fun isAutoLockNewAppsEnabled(): Boolean =
+        preferencesRepository.isAutoLockNewAppsEnabled()
 
     fun setUnlockTimeDuration(minutes: Int) = preferencesRepository.setUnlockTimeDuration(minutes)
     fun getUnlockTimeDuration(): Int = preferencesRepository.getUnlockTimeDuration()

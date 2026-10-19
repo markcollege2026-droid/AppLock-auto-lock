@@ -89,6 +89,9 @@ fun MainScreen(
     DisposableEffect(lifecycleOwner) {
         val observer = LifecycleEventObserver { _, event ->
             if (event == Lifecycle.Event.ON_RESUME) {
+                // Pick up installs/enrollments that happened while this screen was away.
+                mainViewModel.refresh()
+
                 val appLockRepository = context.appLockRepository()
                 val backend = appLockRepository.getBackendImplementation()
                 val isAntiUninstallEnabled = appLockRepository.isAntiUninstallEnabled()

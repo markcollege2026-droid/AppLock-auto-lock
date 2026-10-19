@@ -28,6 +28,9 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4.4.1
 
+      - name: Run unit tests
+        run: ./gradlew testDebugUnitTest
+
       - name: Build with gradle
         run: ./gradlew clean assemble
 
@@ -42,3 +45,6 @@ jobs:
         with:
           name: app-release
           path: app/build/outputs/apk/release
+
+      - name: Run lint
+        run: ./gradlew lintDebug
