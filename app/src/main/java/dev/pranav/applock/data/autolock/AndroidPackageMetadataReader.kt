@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.ApplicationInfo
 import android.content.pm.LauncherApps
+import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.os.Process
 import android.util.Log
@@ -26,21 +27,23 @@ class AndroidPackageMetadataReader(
     fun get(packageName: String): AutoLockCandidate? {
         if (packageName.isBlank()) return null
 
-        return try {
-            val info = packageManager.getApplicationInfo(
-                packageName,
-                PackageManager.GET_META_DATA
-            )
-            val app = info.toInstalledApp(
-                hasLauncherActivity = packageManager.getLaunchIntentForPackage(packageName) != null
-            )
-            val isExempt = exemptionCache.resolve(app) {
-                readExemptionMarker(info)
-            }
-            AutoLockCandidate(app, isExempt)
+        val info = try {
+            // Install timestamps live on PackageInfo, not ApplicationInfo.
+            packageManager.getPackageInfo(packageName, PackageManager.GET_META_DATA)
         } catch (_: PackageManager.NameNotFoundException) {
             // The package disappeared between the event and this lookup.
-            null
+            return null
+        } catch (e: Exception) {
+            Log.w(TAG, "Unable to read package metadata for $packageName", e)
+            return null
+        }
+
+        return try {
+            toCandidate(
+                info = info,
+                hasLauncherActivity =
+                packageManager.getLaunchIntentForPackage(packageName) != null
+            )
         } catch (e: Exception) {
             Log.w(TAG, "Unable to read package metadata for $packageName", e)
             null
@@ -48,33 +51,51 @@ class AndroidPackageMetadataReader(
     }
 
     fun getAll(): List<AutoLockCandidate> {
-        val applications = try {
-            packageManager.getInstalledApplications(PackageManager.GET_META_DATA)
+        val packages = try {
+            packageManager.getInstalledPackages(PackageManager.GET_META_DATA)
         } catch (e: Exception) {
-            Log.w(TAG, "Unable to list installed applications", e)
+            Log.w(TAG, "Unable to list installed packages", e)
             return emptyList()
         }
 
-        if (applications.isEmpty()) return emptyList()
+        if (packages.isEmpty()) return emptyList()
 
         val launcherPackages = getLauncherPackages()
-        return applications.mapNotNull { info ->
+        return packages.mapNotNull { info ->
             try {
-                val app = info.toInstalledApp(
+                toCandidate(
+                    info = info,
                     hasLauncherActivity = when {
                         launcherPackages != null -> info.packageName in launcherPackages
                         else -> packageManager.getLaunchIntentForPackage(info.packageName) != null
                     }
                 )
-                val isExempt = exemptionCache.resolve(app) {
-                    readExemptionMarker(info)
-                }
-                AutoLockCandidate(app, isExempt)
             } catch (e: Exception) {
                 Log.w(TAG, "Skipping metadata for ${info.packageName}", e)
                 null
             }
         }
+    }
+
+    private fun toCandidate(info: PackageInfo, hasLauncherActivity: Boolean): AutoLockCandidate? {
+        val appInfo = info.applicationInfo ?: return null
+        val app = InstalledApp(
+            identity = InstallIdentity(
+                packageName = info.packageName,
+                firstInstallTime = info.firstInstallTime
+            ),
+            lastUpdateTime = info.lastUpdateTime,
+            // Updated pre-installed apps still carry FLAG_SYSTEM. Auto-enrollment is
+            // intentionally limited to user-installed apps; manual protection remains
+            // unchanged for system apps.
+            isSystemApp = (appInfo.flags and ApplicationInfo.FLAG_SYSTEM) != 0,
+            isEnabled = appInfo.enabled,
+            hasLauncherActivity = hasLauncherActivity
+        )
+        val isExempt = exemptionCache.resolve(app) {
+            readExemptionMarker(appInfo)
+        }
+        return AutoLockCandidate(app, isExempt)
     }
 
     fun invalidate(packageName: String) {
@@ -84,21 +105,6 @@ class AndroidPackageMetadataReader(
     fun clearCache() {
         exemptionCache.clear()
     }
-
-    private fun ApplicationInfo.toInstalledApp(hasLauncherActivity: Boolean): InstalledApp =
-        InstalledApp(
-            identity = InstallIdentity(
-                packageName = packageName,
-                firstInstallTime = firstInstallTime
-            ),
-            lastUpdateTime = lastUpdateTime,
-            // Updated pre-installed apps still carry FLAG_SYSTEM. Auto-enrollment is
-            // intentionally limited to user-installed apps; manual protection remains
-            // unchanged for system apps.
-            isSystemApp = (flags and ApplicationInfo.FLAG_SYSTEM) != 0,
-            isEnabled = enabled,
-            hasLauncherActivity = hasLauncherActivity
-        )
 
     private fun readExemptionMarker(info: ApplicationInfo): Boolean =
         AutoLockExemptionMarker.isExempt(
