@@ -1,0 +1,405 @@
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:mergeDebugNativeDebugMetadata NO-SOURCE
+> Task :app:compileDebugAidl NO-SOURCE
+> Task :app:generateDebugResources UP-TO-DATE
+> Task :app:packageDebugResources UP-TO-DATE
+> Task :appintro:preBuild UP-TO-DATE
+> Task :appintro:preDebugBuild UP-TO-DATE
+> Task :appintro:processDebugNavigationResources UP-TO-DATE
+> Task :patternlock:preBuild UP-TO-DATE
+> Task :patternlock:preDebugBuild UP-TO-DATE
+> Task :patternlock:processDebugNavigationResources UP-TO-DATE
+> Task :app:processDebugNavigationResources UP-TO-DATE
+> Task :app:parseDebugLocalResources UP-TO-DATE
+> Task :app:generateDebugRFile UP-TO-DATE
+> Task :appintro:generateDebugResources UP-TO-DATE
+> Task :appintro:packageDebugResources UP-TO-DATE
+> Task :appintro:parseDebugLocalResources UP-TO-DATE
+> Task :appintro:generateDebugRFile UP-TO-DATE
+> Task :appintro:compileDebugKotlin UP-TO-DATE
+> Task :appintro:javaPreCompileDebug UP-TO-DATE
+> Task :appintro:compileDebugJavaWithJavac NO-SOURCE
+> Task :appintro:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :hidden-api:preBuild UP-TO-DATE
+> Task :hidden-api:preDebugBuild UP-TO-DATE
+> Task :hidden-api:generateDebugResources UP-TO-DATE
+> Task :hidden-api:packageDebugResources UP-TO-DATE
+> Task :hidden-api:processDebugNavigationResources UP-TO-DATE
+> Task :hidden-api:parseDebugLocalResources UP-TO-DATE
+> Task :hidden-api:generateDebugRFile UP-TO-DATE
+> Task :hidden-api:compileDebugKotlin UP-TO-DATE
+> Task :hidden-api:javaPreCompileDebug UP-TO-DATE
+> Task :hidden-api:compileDebugJavaWithJavac UP-TO-DATE
+> Task :hidden-api:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :patternlock:generateDebugResources UP-TO-DATE
+> Task :patternlock:packageDebugResources UP-TO-DATE
+> Task :patternlock:parseDebugLocalResources UP-TO-DATE
+> Task :patternlock:generateDebugRFile UP-TO-DATE
+> Task :patternlock:compileDebugKotlin UP-TO-DATE
+> Task :patternlock:javaPreCompileDebug UP-TO-DATE
+> Task :patternlock:compileDebugJavaWithJavac NO-SOURCE
+> Task :patternlock:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :app:compileDebugKotlin UP-TO-DATE
+> Task :app:javaPreCompileDebug UP-TO-DATE
+> Task :app:compileDebugJavaWithJavac NO-SOURCE
+> Task :app:generateDebugAssets UP-TO-DATE
+> Task :appintro:generateDebugAssets UP-TO-DATE
+> Task :appintro:mergeDebugAssets
+> Task :patternlock:generateDebugAssets UP-TO-DATE
+> Task :patternlock:mergeDebugAssets
+> Task :app:mergeDebugAssets
+> Task :app:compressDebugAssets
+> Task :app:generateDebugGlobalSynthetics
+> Task :app:processDebugJavaRes UP-TO-DATE
+> Task :appintro:processDebugJavaRes UP-TO-DATE
+> Task :patternlock:processDebugJavaRes UP-TO-DATE
+> Task :app:desugarDebugFileDependencies
+> Task :appintro:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :patternlock:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :app:checkDebugDuplicateClasses
+> Task :app:mergeDebugJavaResource
+> Task :app:mergeExtDexDebug
+> Task :appintro:writeDebugAarMetadata UP-TO-DATE
+> Task :patternlock:writeDebugAarMetadata UP-TO-DATE
+> Task :app:checkDebugAarMetadata UP-TO-DATE
+> Task :app:mapDebugSourceSetPaths UP-TO-DATE
+> Task :app:compileDebugNavigationResources UP-TO-DATE
+> Task :app:mergeDebugResources UP-TO-DATE
+> Task :app:createDebugCompatibleScreenManifests UP-TO-DATE
+> Task :app:extractDeepLinksDebug UP-TO-DATE
+> Task :appintro:extractDeepLinksDebug UP-TO-DATE
+> Task :appintro:processDebugManifest UP-TO-DATE
+> Task :patternlock:extractDeepLinksDebug UP-TO-DATE
+> Task :patternlock:processDebugManifest UP-TO-DATE
+> Task :app:processDebugMainManifest UP-TO-DATE
+> Task :app:processDebugManifest UP-TO-DATE
+> Task :app:processDebugManifestForPackage UP-TO-DATE
+> Task :app:mergeLibDexDebug
+> Task :appintro:mapDebugSourceSetPaths UP-TO-DATE
+> Task :appintro:compileDebugLibraryResources UP-TO-DATE
+> Task :patternlock:mapDebugSourceSetPaths UP-TO-DATE
+> Task :patternlock:compileDebugLibraryResources UP-TO-DATE
+> Task :app:processDebugResources UP-TO-DATE
+> Task :app:transformDebugClassesWithAsm UP-TO-DATE
+> Task :app:dexBuilderDebug
+> Task :app:mergeDebugJniLibFolders
+> Task :appintro:mergeDebugJniLibFolders
+> Task :appintro:mergeDebugNativeLibs NO-SOURCE
+> Task :patternlock:mergeDebugJniLibFolders
+> Task :patternlock:mergeDebugNativeLibs NO-SOURCE
+> Task :patternlock:copyDebugJniLibsProjectOnly
+> Task :appintro:copyDebugJniLibsProjectOnly
+> Task :app:mergeProjectDexDebug
+> Task :app:validateSigningDebug
+> Task :app:writeDebugAppMetadata
+> Task :app:mergeDebugNativeLibs
+> Task :app:writeDebugSigningConfigVersions
+
+> Task :app:stripDebugDebugSymbols
+Unable to strip the following libraries, packaging them as they are: libandroidx.graphics.path.so. Run with --info option to learn more.
+
+> Task :appintro:stripDebugDebugSymbols NO-SOURCE
+> Task :appintro:checkDebugAarMetadata
+> Task :appintro:copyDebugJniLibsProjectAndLocalJars
+> Task :appintro:extractDebugAnnotations
+> Task :appintro:extractDeepLinksForAarDebug
+> Task :appintro:mergeDebugGeneratedProguardFiles
+> Task :appintro:mergeDebugConsumerProguardFiles
+> Task :appintro:prepareDebugArtProfile
+> Task :appintro:prepareLintJarForPublish
+> Task :appintro:mergeDebugJavaResource
+> Task :hidden-api:checkDebugAarMetadata
+> Task :appintro:syncDebugLibJars
+> Task :appintro:bundleDebugAar
+> Task :appintro:assembleDebug
+> Task :hidden-api:mergeDebugJniLibFolders
+> Task :hidden-api:mergeDebugNativeLibs NO-SOURCE
+> Task :hidden-api:stripDebugDebugSymbols NO-SOURCE
+> Task :hidden-api:copyDebugJniLibsProjectAndLocalJars
+> Task :hidden-api:extractDeepLinksForAarDebug
+> Task :hidden-api:generateDebugAssets UP-TO-DATE
+> Task :hidden-api:mergeDebugAssets
+> Task :hidden-api:mergeDebugGeneratedProguardFiles
+> Task :hidden-api:mergeDebugConsumerProguardFiles
+> Task :hidden-api:prepareDebugArtProfile
+> Task :hidden-api:prepareLintJarForPublish
+> Task :hidden-api:processDebugManifest
+> Task :hidden-api:processDebugJavaRes
+> Task :hidden-api:writeDebugAarMetadata
+> Task :hidden-api:mergeDebugJavaResource
+> Task :patternlock:stripDebugDebugSymbols NO-SOURCE
+> Task :patternlock:checkDebugAarMetadata
+> Task :patternlock:copyDebugJniLibsProjectAndLocalJars
+> Task :patternlock:extractDebugAnnotations
+> Task :app:packageDebug
+> Task :app:createDebugApkListingFileRedirect
+> Task :app:assembleDebug
+> Task :patternlock:extractDeepLinksForAarDebug
+> Task :patternlock:mergeDebugGeneratedProguardFiles
+> Task :patternlock:mergeDebugConsumerProguardFiles
+> Task :patternlock:prepareDebugArtProfile
+> Task :patternlock:prepareLintJarForPublish
+> Task :app:preReleaseBuild UP-TO-DATE
+> Task :patternlock:mergeDebugJavaResource
+> Task :app:mergeReleaseJniLibFolders
+> Task :patternlock:syncDebugLibJars
+> Task :patternlock:bundleDebugAar
+> Task :patternlock:assembleDebug
+> Task :appintro:preReleaseBuild UP-TO-DATE
+> Task :appintro:mergeReleaseJniLibFolders
+> Task :appintro:mergeReleaseNativeLibs NO-SOURCE
+> Task :patternlock:preReleaseBuild UP-TO-DATE
+> Task :appintro:copyReleaseJniLibsProjectOnly
+> Task :patternlock:mergeReleaseJniLibFolders
+> Task :patternlock:mergeReleaseNativeLibs NO-SOURCE
+> Task :patternlock:copyReleaseJniLibsProjectOnly
+> Task :appintro:generateReleaseResources
+> Task :app:mergeReleaseNativeLibs
+> Task :appintro:packageReleaseResources
+> Task :appintro:processReleaseNavigationResources
+
+> Task :app:stripReleaseDebugSymbols
+Unable to strip the following libraries, packaging them as they are: libandroidx.graphics.path.so. Run with --info option to learn more.
+
+> Task :appintro:parseReleaseLocalResources
+> Task :appintro:javaPreCompileRelease
+> Task :app:extractReleaseNativeSymbolTables
+> Task :patternlock:generateReleaseResources
+> Task :appintro:generateReleaseRFile
+> Task :app:mergeReleaseNativeDebugMetadata NO-SOURCE
+> Task :patternlock:packageReleaseResources
+> Task :patternlock:processReleaseNavigationResources
+> Task :patternlock:parseReleaseLocalResources
+> Task :patternlock:javaPreCompileRelease
+> Task :patternlock:generateReleaseRFile
+> Task :app:checkReleaseDuplicateClasses
+> Task :appintro:prepareReleaseArtProfile
+> Task :patternlock:prepareReleaseArtProfile
+> Task :app:mergeReleaseArtProfile
+> Task :app:compileReleaseAidl NO-SOURCE
+> Task :app:generateReleaseResources
+> Task :app:packageReleaseResources
+> Task :app:processReleaseNavigationResources
+> Task :app:parseReleaseLocalResources
+> Task :app:generateReleaseRFile
+> Task :hidden-api:preReleaseBuild UP-TO-DATE
+> Task :hidden-api:generateReleaseResources
+> Task :hidden-api:packageReleaseResources
+> Task :hidden-api:processReleaseNavigationResources
+> Task :hidden-api:parseReleaseLocalResources
+> Task :hidden-api:generateReleaseRFile
+> Task :patternlock:compileReleaseKotlin
+> Task :patternlock:compileReleaseJavaWithJavac NO-SOURCE
+> Task :patternlock:mergeReleaseGeneratedProguardFiles
+> Task :patternlock:exportReleaseConsumerProguardFiles
+> Task :patternlock:bundleLibRuntimeToJarRelease
+
+> Task :hidden-api:extractDebugAnnotations
+Warning: android.app.WindowConfiguration.AlwaysOnTop: The typedef annotation should have @Retention(RetentionPolicy.SOURCE)
+Warning: android.app.WindowConfiguration.WindowConfig: The typedef annotation should have @Retention(RetentionPolicy.SOURCE)
+
+> Task :hidden-api:javaPreCompileRelease
+> Task :patternlock:bundleLibCompileToJarRelease
+> Task :app:javaPreCompileRelease
+> Task :appintro:writeReleaseAarMetadata
+> Task :appintro:compileReleaseKotlin
+> Task :patternlock:writeReleaseAarMetadata
+> Task :appintro:compileReleaseJavaWithJavac NO-SOURCE
+> Task :appintro:mergeReleaseGeneratedProguardFiles
+> Task :appintro:exportReleaseConsumerProguardFiles
+> Task :appintro:bundleLibRuntimeToJarRelease
+> Task :appintro:bundleLibCompileToJarRelease
+> Task :app:checkReleaseAarMetadata
+> Task :app:mapReleaseSourceSetPaths
+> Task :app:compileReleaseNavigationResources
+
+> Task :hidden-api:compileReleaseKotlin
+w: file:///home/runner/work/AppLock-auto-lock/AppLock-auto-lock/hidden-api/src/main/java/android/app/ActivityManager.kt:957:29 The corresponding parameter in the supertype 'Any' is named 'other'. This may cause problems when calling this function with named arguments.
+w: file:///home/runner/work/AppLock-auto-lock/AppLock-auto-lock/hidden-api/src/main/java/android/app/ActivityManager.kt:987:24 'constructor(): ActivityManager.TaskDescription' is deprecated.
+
+> Task :app:mergeReleaseResources
+
+> Task :hidden-api:compileReleaseJavaWithJavac
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/hidden-api/src/main/java/android/app/IActivityManager.java:111: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+    int startActivity(IApplicationThread caller, String callingPackage, Intent intent,
+        ^
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/hidden-api/src/main/java/android/app/IActivityManager.java:140: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+    int broadcastIntent(IApplicationThread caller, Intent intent,
+        ^
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/hidden-api/src/main/java/android/app/IActivityManager.java:248: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+    IIntentSender getIntentSender(int type, String packageName, IBinder token,
+                  ^
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/hidden-api/src/main/java/android/app/IActivityManager.java:390: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+    void removeContentProviderExternal(String name, IBinder token);
+         ^
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/hidden-api/src/main/java/android/app/IActivityManager.java:413: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+    int startActivityAsUser(IApplicationThread caller, String callingPackage,
+        ^
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/hidden-api/src/main/java/android/app/IActivityManager.java:582: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+    boolean unlockUser(int userid, byte[] token, byte[] secret,
+            ^
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/hidden-api/src/main/java/android/content/pm/IPackageManager.java:438: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+    String[] getSystemSharedLibraryNames();
+             ^
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/hidden-api/src/main/java/android/content/pm/IPackageManager.java:498: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+    void verifyIntentFilter(int id, int verificationCode, List<String> failedDomains);
+         ^
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/hidden-api/src/main/java/android/content/pm/IPackageManager.java:503: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+    int getIntentVerificationStatus(String packageName, int userId);
+        ^
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/hidden-api/src/main/java/android/content/pm/IPackageManager.java:508: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+    boolean updateIntentVerificationStatus(String packageName, int status, int userId);
+            ^
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/hidden-api/src/main/java/android/content/pm/IPackageManager.java:513: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+    ParceledListSlice getIntentFilterVerifications(String packageName);
+                      ^
+11 warnings
+
+> Task :app:createReleaseCompatibleScreenManifests
+> Task :hidden-api:bundleLibCompileToJarRelease
+> Task :app:extractDeepLinksRelease
+> Task :appintro:extractDeepLinksRelease
+> Task :appintro:processReleaseManifest
+> Task :patternlock:extractDeepLinksRelease
+> Task :patternlock:processReleaseManifest
+> Task :appintro:mapReleaseSourceSetPaths
+> Task :app:processReleaseMainManifest
+> Task :app:processReleaseManifest
+> Task :appintro:compileReleaseLibraryResources
+> Task :app:processReleaseManifestForPackage
+> Task :patternlock:mapReleaseSourceSetPaths
+> Task :patternlock:compileReleaseLibraryResources
+> Task :app:extractProguardFiles
+> Task :appintro:processReleaseJavaRes
+> Task :patternlock:processReleaseJavaRes
+> Task :app:mergeReleaseStartupProfile
+> Task :app:generateReleaseAssets UP-TO-DATE
+> Task :appintro:generateReleaseAssets UP-TO-DATE
+> Task :appintro:mergeReleaseAssets
+> Task :patternlock:generateReleaseAssets UP-TO-DATE
+> Task :patternlock:mergeReleaseAssets
+> Task :app:mergeReleaseAssets
+> Task :app:compressReleaseAssets
+> Task :appintro:createFullJarRelease
+> Task :appintro:extractProguardFiles
+> Task :app:processReleaseResources
+> Task :appintro:generateReleaseLintModel
+> Task :hidden-api:bundleLibRuntimeToJarRelease
+> Task :hidden-api:processReleaseJavaRes
+> Task :hidden-api:createFullJarRelease
+> Task :hidden-api:extractProguardFiles
+> Task :patternlock:createFullJarRelease
+> Task :hidden-api:processReleaseManifest
+> Task :patternlock:extractProguardFiles
+> Task :hidden-api:generateReleaseLintModel
+> Task :patternlock:generateReleaseLintModel
+> Task :appintro:stripReleaseDebugSymbols NO-SOURCE
+> Task :appintro:checkReleaseAarMetadata
+> Task :appintro:copyReleaseJniLibsProjectAndLocalJars
+> Task :appintro:extractDeepLinksForAarRelease
+> Task :appintro:extractReleaseAnnotations
+> Task :appintro:mergeReleaseConsumerProguardFiles
+> Task :appintro:mergeReleaseJavaResource
+> Task :patternlock:checkReleaseAarMetadata
+> Task :appintro:syncReleaseLibJars
+> Task :appintro:bundleReleaseLocalLintAar
+> Task :patternlock:stripReleaseDebugSymbols NO-SOURCE
+> Task :patternlock:copyReleaseJniLibsProjectAndLocalJars
+> Task :patternlock:extractDeepLinksForAarRelease
+> Task :patternlock:extractReleaseAnnotations
+> Task :patternlock:mergeReleaseConsumerProguardFiles
+> Task :patternlock:mergeReleaseJavaResource
+> Task :hidden-api:checkReleaseAarMetadata
+> Task :patternlock:syncReleaseLibJars
+> Task :patternlock:bundleReleaseLocalLintAar
+> Task :hidden-api:mergeReleaseJniLibFolders
+> Task :hidden-api:mergeReleaseNativeLibs NO-SOURCE
+> Task :hidden-api:stripReleaseDebugSymbols NO-SOURCE
+> Task :hidden-api:copyReleaseJniLibsProjectAndLocalJars
+> Task :hidden-api:extractDeepLinksForAarRelease
+> Task :hidden-api:generateReleaseAssets UP-TO-DATE
+> Task :hidden-api:mergeReleaseAssets
+> Task :hidden-api:mergeReleaseGeneratedProguardFiles
+> Task :hidden-api:mergeReleaseConsumerProguardFiles
+> Task :hidden-api:prepareReleaseArtProfile
+> Task :hidden-api:mergeReleaseJavaResource
+> Task :hidden-api:writeReleaseAarMetadata
+
+> Task :hidden-api:extractReleaseAnnotations
+Warning: android.app.WindowConfiguration.AlwaysOnTop: The typedef annotation should have @Retention(RetentionPolicy.SOURCE)
+Warning: android.app.WindowConfiguration.WindowConfig: The typedef annotation should have @Retention(RetentionPolicy.SOURCE)
+
+> Task :hidden-api:syncDebugLibJars
+> Task :hidden-api:bundleDebugAar
+> Task :hidden-api:assembleDebug
+> Task :appintro:writeReleaseLintModelMetadata
+> Task :hidden-api:syncReleaseLibJars
+> Task :hidden-api:bundleReleaseLocalLintAar
+> Task :hidden-api:writeReleaseLintModelMetadata
+> Task :patternlock:writeReleaseLintModelMetadata
+> Task :appintro:generateReleaseLintVitalModel
+> Task :hidden-api:generateReleaseLintVitalModel
+> Task :patternlock:generateReleaseLintVitalModel
+> Task :app:validateSigningRelease
+> Task :app:writeReleaseAppMetadata
+> Task :app:writeReleaseSigningConfigVersions
+> Task :appintro:bundleReleaseAar
+> Task :appintro:mergeReleaseResources
+> Task :appintro:verifyReleaseResources
+> Task :appintro:assembleRelease
+> Task :hidden-api:bundleReleaseAar
+> Task :hidden-api:mapReleaseSourceSetPaths
+> Task :hidden-api:mergeReleaseResources
+> Task :hidden-api:verifyReleaseResources
+> Task :hidden-api:assembleRelease
+> Task :patternlock:bundleReleaseAar
+> Task :patternlock:mergeReleaseResources
+> Task :patternlock:verifyReleaseResources
+> Task :patternlock:assembleRelease
+> Task :appintro:lintVitalAnalyzeRelease
+> Task :hidden-api:lintVitalAnalyzeRelease
+> Task :patternlock:lintVitalAnalyzeRelease
+
+> Task :app:compileReleaseKotlin
+w: file:///home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/data/autolock/AndroidPackageMetadataReader.kt:111:28 'fun get(p0: String!): Any?' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/features/applist/ui/MainScreen.kt:337:26 'fun rememberModalBottomSheetState(skipPartiallyExpanded: Boolean = ..., confirmValueChange: (SheetValue) -> Boolean = ...): SheetState' is deprecated. Use rememberBottomSheetState with Hidden initial value.
+w: file:///home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/features/applist/ui/MainScreen.kt:585:5 'fun ListItem(headlineContent: ComposableFunction0<Unit>, modifier: Modifier = ..., overlineContent: ComposableFunction0<Unit>? = ..., supportingContent: ComposableFunction0<Unit>? = ..., leadingContent: ComposableFunction0<Unit>? = ..., trailingContent: ComposableFunction0<Unit>? = ..., colors: ListItemColors = ..., tonalElevation: Dp = ..., shadowElevation: Dp = ...): Unit' is deprecated. Use the overload where `headlineContent` is now a trailing `content` lambda.
+w: file:///home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/features/applist/ui/MainScreen.kt:663:5 'fun ListItem(headlineContent: ComposableFunction0<Unit>, modifier: Modifier = ..., overlineContent: ComposableFunction0<Unit>? = ..., supportingContent: ComposableFunction0<Unit>? = ..., leadingContent: ComposableFunction0<Unit>? = ..., trailingContent: ComposableFunction0<Unit>? = ..., colors: ListItemColors = ..., tonalElevation: Dp = ..., shadowElevation: Dp = ...): Unit' is deprecated. Use the overload where `headlineContent` is now a trailing `content` lambda.
+w: file:///home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/features/lockscreen/ui/PasswordOverlayScreen.kt:124:48 'static field FLAG_TURN_SCREEN_ON: Int' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/features/settings/ui/SettingsScreen.kt:603:5 'fun ListItem(headlineContent: ComposableFunction0<Unit>, modifier: Modifier = ..., overlineContent: ComposableFunction0<Unit>? = ..., supportingContent: ComposableFunction0<Unit>? = ..., leadingContent: ComposableFunction0<Unit>? = ..., trailingContent: ComposableFunction0<Unit>? = ..., colors: ListItemColors = ..., tonalElevation: Dp = ..., shadowElevation: Dp = ...): Unit' is deprecated. Use the overload where `headlineContent` is now a trailing `content` lambda.
+w: file:///home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/features/settings/ui/SettingsScreen.kt:656:5 'fun ListItem(headlineContent: ComposableFunction0<Unit>, modifier: Modifier = ..., overlineContent: ComposableFunction0<Unit>? = ..., supportingContent: ComposableFunction0<Unit>? = ..., leadingContent: ComposableFunction0<Unit>? = ..., trailingContent: ComposableFunction0<Unit>? = ..., colors: ListItemColors = ..., tonalElevation: Dp = ..., shadowElevation: Dp = ...): Unit' is deprecated. Use the overload where `headlineContent` is now a trailing `content` lambda.
+w: file:///home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/features/settings/ui/SettingsScreen.kt:853:5 'fun ListItem(headlineContent: ComposableFunction0<Unit>, modifier: Modifier = ..., overlineContent: ComposableFunction0<Unit>? = ..., supportingContent: ComposableFunction0<Unit>? = ..., leadingContent: ComposableFunction0<Unit>? = ..., trailingContent: ComposableFunction0<Unit>? = ..., colors: ListItemColors = ..., tonalElevation: Dp = ..., shadowElevation: Dp = ...): Unit' is deprecated. Use the overload where `headlineContent` is now a trailing `content` lambda.
+w: file:///home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/features/settings/ui/SettingsScreen.kt:1084:5 'fun ListItem(headlineContent: ComposableFunction0<Unit>, modifier: Modifier = ..., overlineContent: ComposableFunction0<Unit>? = ..., supportingContent: ComposableFunction0<Unit>? = ..., leadingContent: ComposableFunction0<Unit>? = ..., trailingContent: ComposableFunction0<Unit>? = ..., colors: ListItemColors = ..., tonalElevation: Dp = ..., shadowElevation: Dp = ...): Unit' is deprecated. Use the overload where `headlineContent` is now a trailing `content` lambda.
+w: file:///home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/services/UsageLockService.kt:220:30 Unnecessary non-null assertion (!!) on a non-null receiver of type 'Pair<String, String>'.
+w: file:///home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/shizuku/ShizukuActivityManager.kt:54:24 'static field ACTION_CLOSE_SYSTEM_DIALOGS: String' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/shizuku/ShizukuActivityManager.kt:92:30 'static field ACTION_CLOSE_SYSTEM_DIALOGS: String' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/ui/components/DonateButton.kt:88:22 'fun rememberModalBottomSheetState(skipPartiallyExpanded: Boolean = ..., confirmValueChange: (SheetValue) -> Boolean = ...): SheetState' is deprecated. Use rememberBottomSheetState with Hidden initial value.
+
+> Task :app:compileReleaseJavaWithJavac NO-SOURCE
+> Task :app:processReleaseJavaRes
+> Task :app:generateReleaseLintVitalReportModel
+> Task :app:mergeReleaseJavaResource
+> Task :app:transformReleaseClassesWithAsm
+> Task :app:lintVitalAnalyzeRelease
+> Task :app:mergeReleaseGeneratedProguardFiles
+> Task :app:expandReleaseArtProfileWildcards
+> Task :app:lintVitalReportRelease
+> Task :app:lintVitalRelease
+> Task :app:produceReleaseComposeMapping
+> Task :app:reportReleaseComposeMappingErrors
+> Task :app:minifyReleaseWithR8
+> Task :app:mergeReleaseComposeMapping
+> Task :app:convertShrunkResourcesToBinaryRelease
+> Task :app:optimizeReleaseResources
+> Task :app:compileReleaseArtProfile
+> Task :app:packageRelease
+> Task :app:createReleaseApkListingFileRedirect
+> Task :app:assembleRelease
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/build-1792513083483.json
+
+[Incubating] Problems report is available at: file:///home/runner/work/AppLock-auto-lock/AppLock-auto-lock/build/reports/problems/problems-report.html
+
+BUILD SUCCESSFUL in 3m 3s
+279 actionable tasks: 221 executed, 58 up-to-date
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.5.1/userguide/configuration_cache_enabling.html

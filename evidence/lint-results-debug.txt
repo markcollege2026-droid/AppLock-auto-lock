@@ -1,0 +1,591 @@
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/shizuku/ShizukuActivityManager.kt:97: Warning: Field requires API level 33 (current min is 26): android.content.Context#RECEIVER_EXPORTED [InlinedApi]
+        context.registerReceiver(homeButtonReceiver, homeFilter, RECEIVER_EXPORTED)
+                                                                 ~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "InlinedApi":
+   This check scans through all the Android API field references in the
+   application and flags certain constants, such as static final integers and
+   Strings, which were introduced in later versions. These will actually be
+   copied into the class files rather than being referenced, which means that
+   the value is available even when running on older devices. In some cases
+   that's fine, and in other cases it can result in a runtime crash or
+   incorrect behavior. It depends on the context, so consider the code
+   carefully and decide whether it's safe and can be suppressed or whether the
+   code needs to be guarded.
+
+   If you really want to use this API and don't need to support older devices
+   just set the minSdkVersion in your build.gradle or AndroidManifest.xml
+   files.
+
+   If your code is deliberately accessing newer APIs, and you have ensured
+   (e.g. with conditional execution) that this code will only ever be called
+   on a supported platform, then you can annotate your class or method with
+   the @TargetApi annotation specifying the local minimum SDK to apply, such
+   as @TargetApi(11), such that this check considers 11 rather than your
+   manifest file's minimum SDK as the required API level.
+
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/shizuku/ShizukuActivityManager.kt:234: Error: Call requires API level 28 (current min is 26): invoke [NewApi]
+        return HiddenApiBypass.invoke(TaskInfo::class.java, this, "isFreeform") as Boolean
+                               ~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/shizuku/ShizukuActivityManager.kt:234: Error: Class requires API level 29 (current min is 26): android.app.TaskInfo [NewApi]
+        return HiddenApiBypass.invoke(TaskInfo::class.java, this, "isFreeform") as Boolean
+                                      ~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/shizuku/ShizukuActivityManager.kt:243: Error: Call requires API level 28 (current min is 26): getInstanceFields [NewApi]
+        return HiddenApiBypass.getInstanceFields(TaskInfo::class.java)
+                               ~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/shizuku/ShizukuActivityManager.kt:243: Error: Class requires API level 29 (current min is 26): android.app.TaskInfo [NewApi]
+        return HiddenApiBypass.getInstanceFields(TaskInfo::class.java)
+                                                 ~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/services/ShizukuAppLockService.kt:51: Error: Call requires API level 28 (current min is 26): startForegroundService [NewApi]
+        startForegroundService()
+        ~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/services/UsageLockService.kt:201: Error: Call requires API level 28 (current min is 26): android.app.usage.UsageEvents.Event#getAppStandbyBucket [NewApi]
+                "${event.eventType} ${event.className} ${event.packageName} ${event.timeStamp} ${event.configuration} ${event.appStandbyBucket}"
+                                                                                                                              ~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "NewApi":
+   This check scans through all the Android API calls in the application and
+   warns about any calls that are not available on all versions targeted by
+   this application (according to its minimum SDK attribute in the manifest).
+
+   If you really want to use this API and don't need to support older devices
+   just set the minSdkVersion in your build.gradle or AndroidManifest.xml
+   files.
+
+   If your code is deliberately accessing newer APIs, and you have ensured
+   (e.g. with conditional execution) that this code will only ever be called
+   on a supported platform, then you can annotate your class or method with
+   the @TargetApi annotation specifying the local minimum SDK to apply, such
+   as @TargetApi(11), such that this check considers 11 rather than your
+   manifest file's minimum SDK as the required API level.
+
+   If you are deliberately setting android: attributes in style definitions,
+   make sure you place this in a values-vNN folder in order to avoid running
+   into runtime conflicts on certain devices where manufacturers have added
+   custom attributes whose ids conflict with the new ones on later platforms.
+
+   Similarly, you can use tools:targetApi="11" in an XML file to indicate that
+   the element will only be inflated in an adequate context.
+
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/core/utils/AppLockUtils.kt:84: Warning: Use of REQUEST_IGNORE_BATTERY_OPTIMIZATIONS violates the Play Store Content Policy regarding acceptable use cases, as described in https://developer.android.com/training/monitoring-device-state/doze-standby.html [BatteryLife]
+    return Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS).apply {
+                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "BatteryLife":
+   This issue flags code that either
+   * negatively affects battery life, or
+   * uses APIs that have recently changed behavior to prevent background tasks
+   from consuming memory and battery excessively.
+
+   Generally, you should be using WorkManager instead.
+
+   For more details on how to update your code, please see
+   https://developer.android.com/topic/performance/background-optimization
+
+
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/gradle/wrapper/gradle-wrapper.properties:3: Warning: A newer version of Gradle than 9.5.1 is available: 9.8.2 [AndroidGradlePluginVersion]
+distributionUrl=https\://services.gradle.org/distributions/gradle-9.5.1-bin.zip
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/gradle/libs.versions.toml:2: Warning: A newer version of com.android.application than 9.2.1 is available: 9.4.1 [AndroidGradlePluginVersion]
+agp = "9.2.1"
+      ~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/gradle/libs.versions.toml:2: Warning: A newer version of com.android.library than 9.2.1 is available: 9.4.1 [AndroidGradlePluginVersion]
+agp = "9.2.1"
+      ~~~~~~~
+
+   Explanation for issues of type "AndroidGradlePluginVersion":
+   This detector looks for usage of the Android Gradle Plugin where the
+   version you are using is not the current stable release. Using older
+   versions is fine, and there are cases where you deliberately want to stick
+   with an older version. However, you may simply not be aware that a more
+   recent version is available, and that is what this lint check helps find.
+
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/gradle/libs.versions.toml:3: Warning: A newer version of androidx.annotation:annotation than 1.10.0 is available: 1.11.0 [GradleDependency]
+annotation = "1.10.0"
+             ~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/gradle/libs.versions.toml:8: Warning: A newer version of androidx.fragment:fragment-ktx than 1.8.9 is available: 1.9.1 [GradleDependency]
+fragmentKtx = "1.8.9"
+              ~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/gradle/libs.versions.toml:10: Warning: A newer version of androidx.core:core-ktx than 1.19.0 is available: 1.19.1 [GradleDependency]
+coreKtx = "1.19.0"
+          ~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/gradle/libs.versions.toml:13: Warning: A newer version of androidx.compose:compose-bom than 2026.06.01 is available: 2026.09.00 [GradleDependency]
+composeBom = "2026.06.01"
+             ~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/gradle/libs.versions.toml:14: Warning: A newer version of androidx.compose.material3:material3 than 1.5.0-alpha23 is available: 1.5.0-beta01 [GradleDependency]
+material3 = "1.5.0-alpha23"
+            ~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/gradle/libs.versions.toml:16: Warning: A newer version of androidx.navigation:navigation-compose than 2.9.8 is available: 2.10.2 [GradleDependency]
+navigationCompose = "2.9.8"
+                    ~~~~~~~
+
+   Explanation for issues of type "GradleDependency":
+   This detector looks for usages of libraries where the version you are using
+   is not the current stable release. Using older versions is fine, and there
+   are cases where you deliberately want to stick with an older version.
+   However, you may simply not be aware that a more recent version is
+   available, and that is what this lint check helps find.
+
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/gradle/libs.versions.toml:5: Warning: A newer version of org.lsposed.hiddenapibypass:hiddenapibypass than 6.1 is available: 6.2 [NewerVersionAvailable]
+hiddenapibypass = "6.1"
+                  ~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/gradle/libs.versions.toml:9: Warning: A newer version of org.jetbrains.kotlin.android than 2.4.0 is available: 2.4.21 [NewerVersionAvailable]
+kotlin = "2.4.0"
+         ~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/gradle/libs.versions.toml:9: Warning: A newer version of org.jetbrains.kotlin.plugin.compose than 2.4.0 is available: 2.4.21 [NewerVersionAvailable]
+kotlin = "2.4.0"
+         ~~~~~~~
+
+   Explanation for issues of type "NewerVersionAvailable":
+   This detector checks with a central repository to see if there are newer
+   versions available for the dependencies used by this project. This is
+   similar to the GradleDependency check, which checks for newer versions
+   available in the Android SDK tools and libraries, but this works with any
+   MavenCentral dependency, and connects to the library every time, which
+   makes it more flexible but also much slower.
+
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/features/lockscreen/ui/PasswordOverlayScreen.kt:374: Warning: Using Configuration.screenHeightDp instead of LocalWindowInfo.current.containerSize [ConfigurationScreenWidthHeight from androidx.compose.ui]
+    val screenHeightDp = configuration.screenHeightDp.dp
+                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/features/lockscreen/ui/PasswordOverlayScreen.kt:557: Warning: Using Configuration.screenWidthDp instead of LocalWindowInfo.current.containerSize [ConfigurationScreenWidthHeight from androidx.compose.ui]
+    val screenWidthDp = configuration.screenWidthDp.dp
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/features/lockscreen/ui/PasswordOverlayScreen.kt:558: Warning: Using Configuration.screenHeightDp instead of LocalWindowInfo.current.containerSize [ConfigurationScreenWidthHeight from androidx.compose.ui]
+    val screenHeightDp = configuration.screenHeightDp.dp
+                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/features/lockscreen/ui/PasswordOverlayScreen.kt:707: Warning: Using Configuration.screenWidthDp instead of LocalWindowInfo.current.containerSize [ConfigurationScreenWidthHeight from androidx.compose.ui]
+    val screenWidthDp = configuration.screenWidthDp.dp
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/features/lockscreen/ui/PasswordOverlayScreen.kt:708: Warning: Using Configuration.screenHeightDp instead of LocalWindowInfo.current.containerSize [ConfigurationScreenWidthHeight from androidx.compose.ui]
+    val screenHeightDp = configuration.screenHeightDp.dp
+                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/features/setpassword/ui/SetPasswordScreen.kt:83: Warning: Using Configuration.screenWidthDp instead of LocalWindowInfo.current.containerSize [ConfigurationScreenWidthHeight from androidx.compose.ui]
+    val screenWidthDp = configuration.screenWidthDp.dp
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/features/setpassword/ui/SetPasswordScreen.kt:84: Warning: Using Configuration.screenHeightDp instead of LocalWindowInfo.current.containerSize [ConfigurationScreenWidthHeight from androidx.compose.ui]
+    val screenHeightDp = configuration.screenHeightDp.dp
+                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "ConfigurationScreenWidthHeight":
+   Configuration.screenWidthDp and Configuration.screenHeightDp have different
+   insets behaviour depending on target SDK version, and are rounded to the
+   nearest Dp. This means that using these values in composition to size a
+   layout can result in issues, as these values do not accurately represent
+   the actual available window size. Instead it is recommended to use
+   WindowInfo.containerSize which accurately represents the window size.
+
+   Vendor: Jetpack Compose
+   Identifier: androidx.compose.ui
+   Feedback: https://issuetracker.google.com/issues/new?component=612128
+
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/ui/components/AdminPasswordVerificationDialog.kt:102: Error: Querying resource values using LocalContext.current [LocalContextGetResourceValueCall from androidx.compose.ui]
+                            error = context.getString(R.string.password_empty_error)
+                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/ui/components/AdminPasswordVerificationDialog.kt:106: Error: Querying resource values using LocalContext.current [LocalContextGetResourceValueCall from androidx.compose.ui]
+                            error = context.getString(R.string.incorrect_password_error)
+                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/features/setpassword/ui/AlphanumericSetPasswordScreen.kt:115: Error: Querying resource values using LocalContext.current [LocalContextGetResourceValueCall from androidx.compose.ui]
+            .setTitle(context.getString(R.string.authenticate_to_reset_pin_title))
+                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/features/setpassword/ui/AlphanumericSetPasswordScreen.kt:116: Error: Querying resource values using LocalContext.current [LocalContextGetResourceValueCall from androidx.compose.ui]
+            .setSubtitle(context.getString(R.string.use_device_pin_pattern_password_subtitle))
+                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/features/setpassword/ui/AlphanumericSetPasswordScreen.kt:178: Error: Querying resource values using LocalContext.current [LocalContextGetResourceValueCall from androidx.compose.ui]
+                        context.getString(R.string.password_set_successfully_toast),
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/features/appintro/ui/AppIntroScreen.kt:166: Error: Querying resource values using LocalContext.current [LocalContextGetResourceValueCall from androidx.compose.ui]
+                        context.getString(R.string.notification_permission_required_desc),
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/features/appintro/ui/AppIntroScreen.kt:178: Error: Querying resource values using LocalContext.current [LocalContextGetResourceValueCall from androidx.compose.ui]
+                    context.getString(R.string.shizuku_permission_granted),
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/features/appintro/ui/AppIntroScreen.kt:184: Error: Querying resource values using LocalContext.current [LocalContextGetResourceValueCall from androidx.compose.ui]
+                    context.getString(R.string.shizuku_permission_required_desc),
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/features/appintro/ui/AppIntroScreen.kt:237: Error: Querying resource values using LocalContext.current [LocalContextGetResourceValueCall from androidx.compose.ui]
+                        context.getString(R.string.allow_display_over_other_apps),
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/features/appintro/ui/AppIntroScreen.kt:484: Error: Querying resource values using LocalContext.current [LocalContextGetResourceValueCall from androidx.compose.ui]
+                    context.getString(R.string.all_permissions_required),
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/features/setpassword/ui/SetPasswordScreen.kt:141: Error: Querying resource values using LocalContext.current [LocalContextGetResourceValueCall from androidx.compose.ui]
+            .setTitle(context.getString(R.string.authenticate_to_reset_pin_title))
+                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/features/setpassword/ui/SetPasswordScreen.kt:142: Error: Querying resource values using LocalContext.current [LocalContextGetResourceValueCall from androidx.compose.ui]
+            .setSubtitle(context.getString(R.string.use_device_pin_pattern_password_subtitle))
+                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/features/setpassword/ui/SetPasswordScreen.kt:355: Error: Querying resource values using LocalContext.current [LocalContextGetResourceValueCall from androidx.compose.ui]
+                                                    context.getString(R.string.password_set_successfully_toast),
+                                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/features/setpassword/ui/SetPasswordScreen.kt:603: Error: Querying resource values using LocalContext.current [LocalContextGetResourceValueCall from androidx.compose.ui]
+                                                    context.getString(R.string.password_set_successfully_toast),
+                                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/features/settings/ui/SettingsScreen.kt:74: Error: Querying resource values using LocalContext.current [LocalContextGetResourceValueCall from androidx.compose.ui]
+                context.getString(R.string.settings_screen_shizuku_permission_granted),
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/features/settings/ui/SettingsScreen.kt:80: Error: Querying resource values using LocalContext.current [LocalContextGetResourceValueCall from androidx.compose.ui]
+                context.getString(R.string.settings_screen_shizuku_permission_required_desc),
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/features/settings/ui/SettingsScreen.kt:168: Error: Querying resource values using LocalContext.current [LocalContextGetResourceValueCall from androidx.compose.ui]
+                        context.getString(R.string.main_screen_device_admin_explanation)
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/features/settings/ui/SettingsScreen.kt:408: Error: Querying resource values using LocalContext.current [LocalContextGetResourceValueCall from androidx.compose.ui]
+                                        context.getString(R.string.settings_screen_export_logs_error),
+                                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/features/settings/ui/SettingsScreen.kt:432: Error: Querying resource values using LocalContext.current [LocalContextGetResourceValueCall from androidx.compose.ui]
+                                        context.getString(R.string.settings_screen_export_logs_error),
+                                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "LocalContextGetResourceValueCall":
+   Changes to the Configuration object will not cause LocalContext.current
+   reads to be invalidated, so calls to APIs such as Context.getString() will
+   not be updated when the Configuration changes, and so stale values might be
+   used. Instead, you can use Compose APIs such as stringResource,
+   colorResource, and painterResource - or LocalResources.current and query
+   properties from Resources directly. Using these APIs will invalidate
+   callers when the Configuration changes, to ensure that these calls reflect
+   the latest values.
+
+   Vendor: Jetpack Compose
+   Identifier: androidx.compose.ui
+   Feedback: https://issuetracker.google.com/issues/new?component=612128
+
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:234: Warning: Formatting %d followed by words ("minutes"): This should probably be a plural rather than a string [PluralsCandidate]
+    <string name="settings_screen_unlock_duration_summary_minutes">%1$d minutes</string>
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:250: Warning: Formatting %d followed by words ("minute"): This should probably be a plural rather than a string [PluralsCandidate]
+    <string name="settings_screen_unlock_duration_dialog_option_minute">%1$d minute</string>
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "PluralsCandidate":
+   This lint check looks for potential errors in internationalization where
+   you have translated a message which involves a quantity and it looks like
+   other parts of the string may need grammatical changes.
+
+   For example, rather than something like this:
+     <string name="try_again">Try again in %d seconds.</string>
+   you should be using a plural:
+      <plurals name="try_again">
+           <item quantity="one">Try again in %d second</item>
+           <item quantity="other">Try again in %d seconds</item>
+       </plurals>
+   This will ensure that in other languages the right set of translations are
+   provided for the different quantity classes.
+
+   (This check depends on some heuristics, so it may not accurately determine
+   whether a string really should be a quantity. You can use tools:ignore to
+   filter out false positives.
+
+   https://developer.android.com/guide/topics/resources/string-resource.html#Plurals
+
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/core/broadcast/AppLockServiceStarter.kt:48: Warning: Unnecessary; SDK_INT is always >= 26 [ObsoleteSdkInt]
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O &&
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/core/broadcast/BootReceiver.kt:89: Warning: Unnecessary; SDK_INT is always >= 26 [ObsoleteSdkInt]
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O &&
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/services/ShizukuAppLockService.kt:105: Warning: Unnecessary; SDK_INT is always >= 26 [ObsoleteSdkInt]
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/mipmap-anydpi-v26: Warning: This folder configuration (v26) is unnecessary; minSdkVersion is 26. Merge all the resources in this folder into mipmap-anydpi. [ObsoleteSdkInt]
+
+   Explanation for issues of type "ObsoleteSdkInt":
+   This check flags version checks that are not necessary, because the
+   minSdkVersion (or surrounding known API level) is already at least as high
+   as the version checked for.
+
+   Similarly, it also looks for resources in -vNN folders, such as values-v14
+   where the version qualifier is less than or equal to the minSdkVersion,
+   where the contents should be merged into the best folder.
+
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/data/autolock/AutoLockEnrollmentManager.kt:47: Warning: Do not place Android context classes in static fields (static reference to AutoLockCoordinator which has field context pointing to Context); this is a memory leak [StaticFieldLeak]
+    @Volatile
+    ^
+
+   Explanation for issues of type "StaticFieldLeak":
+   A static field will leak contexts.
+
+   Non-static inner classes have an implicit reference to their outer class.
+   If that outer class is for example a Fragment or Activity, then this
+   reference means that the long-running handler/loader/task will hold a
+   reference to the activity which prevents it from getting garbage
+   collected.
+
+   Similarly, direct field references to activities and fragments from these
+   longer running instances can cause leaks.
+
+   ViewModel classes should never point to Views or non-application Contexts.
+
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/features/lockscreen/ui/PasswordOverlayScreen.kt:616: Hint: Prefer mutableFloatStateOf instead of mutableStateOf [AutoboxingStateCreation from androidx.compose.runtime]
+                    var animationTarget by remember { mutableStateOf(0f) }
+                                                      ~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/features/lockscreen/ui/PatternLockScreen.kt:57: Hint: Prefer mutableFloatStateOf instead of mutableStateOf [AutoboxingStateCreation from androidx.compose.runtime]
+            var errorShakeOffset by remember { mutableStateOf(0f) }
+                                               ~~~~~~~~~~~~~~
+
+   Explanation for issues of type "AutoboxingStateCreation":
+   Calling mutableStateOf<T>() when T is either backed by a primitive type on
+   the JVM or is a value class results in a state implementation that requires
+   all state values to be boxed. This usually causes an additional allocation
+   for each state write, and adds some additional work to auto-unbox values
+   when reading the value of the state. Instead, prefer to use a specialized
+   primitive state implementation for Int, Long, Float, and Double when the
+   state does not need to track null values and does not override the default
+   SnapshotMutationPolicy. See mutableIntStateOf(), mutableLongStateOf(),
+   mutableFloatStateOf(), and mutableDoubleStateOf() for more information.
+
+   Vendor: Jetpack Compose
+   Identifier: androidx.compose.runtime
+   Feedback: https://issuetracker.google.com/issues/new?component=612128
+
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/drawable/ic_launcher_foreground.xml:1: Warning: The resource R.drawable.ic_launcher_foreground appears to be unused [UnusedResources]
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+^
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/drawable/ic_notification.xml:2: Warning: The resource R.drawable.ic_notification appears to be unused [UnusedResources]
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+^
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/drawable/rounded_lock_open_24.xml:1: Warning: The resource R.drawable.rounded_lock_open_24 appears to be unused [UnusedResources]
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+^
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:9: Warning: The resource R.string.incorrect_pass_try_again appears to be unused [UnusedResources]
+    <string name="incorrect_pass_try_again">Incorrect password. Please try again.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:78: Warning: The resource R.string.create_pin_explanation appears to be unused [UnusedResources]
+    <string name="create_pin_explanation">Please create a PIN to protect your locked apps. This PIN will be required whenever you try to access a locked app.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:82: Warning: The resource R.string.tooltip_enter_current_pin appears to be unused [UnusedResources]
+    <string name="tooltip_enter_current_pin">Enter your current PIN to continue</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:83: Warning: The resource R.string.tooltip_confirm_pin appears to be unused [UnusedResources]
+    <string name="tooltip_confirm_pin">Please enter the same PIN again to confirm</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:85: Warning: The resource R.string.information_cd appears to be unused [UnusedResources]
+    <string name="information_cd">Information</string>
+            ~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:109: Warning: The resource R.string.main_screen_anti_uninstall_log appears to be unused [UnusedResources]
+    <string name="main_screen_anti_uninstall_log">Anti-uninstall is enabled</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:111: Warning: The resource R.string.main_screen_overlay_permission_dialog_title appears to be unused [UnusedResources]
+    <string name="main_screen_overlay_permission_dialog_title">Overlay Permission Required</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:112: Warning: The resource R.string.main_screen_overlay_permission_dialog_text appears to be unused [UnusedResources]
+    <string name="main_screen_overlay_permission_dialog_text">Please grant the app permission to draw overlays in settings. This is required to allow app to show lock screen.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:113: Warning: The resource R.string.main_screen_overlay_permission_open_settings_button appears to be unused [UnusedResources]
+    <string name="main_screen_overlay_permission_open_settings_button">Open Settings</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:116: Warning: The resource R.string.main_screen_join_community_dialog_title appears to be unused [UnusedResources]
+    <string name="main_screen_join_community_dialog_title">Join the Community</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:117: Warning: The resource R.string.main_screen_join_community_dialog_text appears to be unused [UnusedResources]
+    <string name="main_screen_join_community_dialog_text">Join our discord community for updates and support.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:118: Warning: The resource R.string.main_screen_join_community_join_discord_button appears to be unused [UnusedResources]
+    <string name="main_screen_join_community_join_discord_button">Join Discord</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:119: Warning: The resource R.string.main_screen_join_community_dismiss_button appears to be unused [UnusedResources]
+    <string name="main_screen_join_community_dismiss_button">Dismiss</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:120: Warning: The resource R.string.main_screen_support_development_dialog_title appears to be unused [UnusedResources]
+    <string name="main_screen_support_development_dialog_title">Support Development</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:121: Warning: The resource R.string.main_screen_support_development_donate_button appears to be unused [UnusedResources]
+    <string name="main_screen_support_development_donate_button">Donate</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:127: Warning: The resource R.string.main_screen_empty_search_title appears to be unused [UnusedResources]
+    <string name="main_screen_empty_search_title">No apps found</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:128: Warning: The resource R.string.main_screen_empty_search_subtitle appears to be unused [UnusedResources]
+    <string name="main_screen_empty_search_subtitle">Try adjusting your search</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:137: Warning: The resource R.string.settings_screen_permission_required_dialog_text appears to be unused [UnusedResources]
+    <string name="settings_screen_permission_required_dialog_text">To enable Anti-Uninstall, App Lock requires two permissions: Device Administrator and Accessibility Service. These are necessary to prevent unauthorized uninstallation and ensure robust protection. Would you like to proceed with granting these permissions?</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:138: Warning: The resource R.string.settings_screen_permission_required_proceed_button appears to be unused [UnusedResources]
+    <string name="settings_screen_permission_required_proceed_button">Proceed</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:140: Warning: The resource R.string.settings_screen_device_admin_dialog_text appears to be unused [UnusedResources]
+    <string name="settings_screen_device_admin_dialog_text">App Lock needs Device Administrator permission to prevent unauthorized uninstallation. Please grant this permission in the next screen. This will not affect your device\'s normal functionality.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:141: Warning: The resource R.string.settings_screen_device_admin_grant_button appears to be unused [UnusedResources]
+    <string name="settings_screen_device_admin_grant_button">Grant Permission</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:143: Warning: The resource R.string.settings_screen_accessibility_dialog_text appears to be unused [UnusedResources]
+    <string name="settings_screen_accessibility_dialog_text">App Lock also needs Accessibility Service permission to monitor app uninstallation attempts and re-activate Device Administrator if disabled. This ensures the Anti-Uninstall feature remains effective. Please enable the Accessibility Service for App Lock in the settings.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:144: Warning: The resource R.string.settings_screen_accessibility_open_settings_button appears to be unused [UnusedResources]
+    <string name="settings_screen_accessibility_open_settings_button">Open Settings</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:149: Warning: The resource R.string.settings_screen_biometric_auth_desc appears to be unused [UnusedResources]
+    <string name="settings_screen_biometric_auth_desc">Use fingerprint or face unlock if available</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:150: Warning: The resource R.string.settings_screen_biometric_auth_unavailable appears to be unused [UnusedResources]
+    <string name="settings_screen_biometric_auth_unavailable">Biometric authentication is not available on this device.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:151: Warning: The resource R.string.settings_screen_auto_prompt_biometric_title appears to be unused [UnusedResources]
+    <string name="settings_screen_auto_prompt_biometric_title">Auto Prompt Biometric</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:152: Warning: The resource R.string.settings_screen_auto_prompt_biometric_desc appears to be unused [UnusedResources]
+    <string name="settings_screen_auto_prompt_biometric_desc">Automatically show biometric prompt on lock screen</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:153: Warning: The resource R.string.settings_screen_app_locking_behavior_title appears to be unused [UnusedResources]
+    <string name="settings_screen_app_locking_behavior_title">App Locking Behavior</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:154: Warning: The resource R.string.settings_screen_unlock_behavior_title appears to be unused [UnusedResources]
+    <string name="settings_screen_unlock_behavior_title">Unlock Behavior</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:155: Warning: The resource R.string.settings_screen_unlock_behavior_desc appears to be unused [UnusedResources]
+    <string name="settings_screen_unlock_behavior_desc">Disable this if unlocking causes app to restart</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:156: Warning: The resource R.string.settings_screen_unlock_behavior_option_close appears to be unused [UnusedResources]
+    <string name="settings_screen_unlock_behavior_option_close">Close lock screen</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:157: Warning: The resource R.string.settings_screen_unlock_behavior_option_launch appears to be unused [UnusedResources]
+    <string name="settings_screen_unlock_behavior_option_launch">Close lock screen and launch app</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:161: Warning: The resource R.string.settings_screen_unlock_duration_desc appears to be unused [UnusedResources]
+    <string name="settings_screen_unlock_duration_desc">Keep apps unlocked for a set duration after first unlock</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:163: Warning: The resource R.string.settings_screen_unlock_duration_dialog_desc appears to be unused [UnusedResources]
+    <string name="settings_screen_unlock_duration_dialog_desc">Apps will remain unlocked for this duration after the first unlock. Select 0 seconds to disable.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:164: Warning: The resource R.string.settings_screen_unlock_duration_dialog_seconds_suffix appears to be unused [UnusedResources]
+    <string name="settings_screen_unlock_duration_dialog_seconds_suffix">seconds</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:175: Warning: The resource R.string.settings_screen_backend_implementation_desc appears to be unused [UnusedResources]
+    <string name="settings_screen_backend_implementation_desc">Select the method AppLock uses to detect foreground apps</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:176: Warning: The resource R.string.settings_screen_backend_implementation_accessibility_title appears to be unused [UnusedResources]
+    <string name="settings_screen_backend_implementation_accessibility_title">Accessibility Service</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:177: Warning: The resource R.string.settings_screen_backend_implementation_accessibility_desc appears to be unused [UnusedResources]
+    <string name="settings_screen_backend_implementation_accessibility_desc">Standard method, may have slight delays on some OEMs.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:178: Warning: The resource R.string.settings_screen_backend_implementation_usage_stats_title appears to be unused [UnusedResources]
+    <string name="settings_screen_backend_implementation_usage_stats_title">Usage Stats</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:179: Warning: The resource R.string.settings_screen_backend_implementation_usage_stats_desc appears to be unused [UnusedResources]
+    <string name="settings_screen_backend_implementation_usage_stats_desc">Experimental method, works better on some devices.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:180: Warning: The resource R.string.settings_screen_backend_implementation_shizuku_title appears to be unused [UnusedResources]
+    <string name="settings_screen_backend_implementation_shizuku_title">Shizuku</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:181: Warning: The resource R.string.settings_screen_backend_implementation_shizuku_desc appears to be unused [UnusedResources]
+    <string name="settings_screen_backend_implementation_shizuku_desc">Advanced method, requires Shizuku setup via ADB.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:182: Warning: The resource R.string.settings_screen_backend_implementation_shizuku_unavailable appears to be unused [UnusedResources]
+    <string name="settings_screen_backend_implementation_shizuku_unavailable">Shizuku not available or permission denied.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:183: Warning: The resource R.string.settings_screen_backend_implementation_shizuku_experimental_title appears to be unused [UnusedResources]
+    <string name="settings_screen_backend_implementation_shizuku_experimental_title">Shizuku Experimental Features</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:184: Warning: The resource R.string.settings_screen_backend_implementation_shizuku_experimental_desc appears to be unused [UnusedResources]
+    <string name="settings_screen_backend_implementation_shizuku_experimental_desc">Enable experimental features for Shizuku backend (e.g., lock specific activities). May cause instability.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:185: Warning: The resource R.string.settings_screen_about_title appears to be unused [UnusedResources]
+    <string name="settings_screen_about_title">About</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:186: Warning: The resource R.string.settings_screen_developer_title appears to be unused [UnusedResources]
+    <string name="settings_screen_developer_title">Developer</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:187: Warning: The resource R.string.settings_screen_developer_name appears to be unused [UnusedResources]
+    <string name="settings_screen_developer_name">Pranav Purwar</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:188: Warning: The resource R.string.settings_screen_source_code_title appears to be unused [UnusedResources]
+    <string name="settings_screen_source_code_title">Source Code</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:189: Warning: The resource R.string.settings_screen_source_code_desc appears to be unused [UnusedResources]
+    <string name="settings_screen_source_code_desc">View the source code on GitHub</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:190: Warning: The resource R.string.settings_screen_support_development_title appears to be unused [UnusedResources]
+    <string name="settings_screen_support_development_title">Support Development</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:191: Warning: The resource R.string.settings_screen_support_development_desc appears to be unused [UnusedResources]
+    <string name="settings_screen_support_development_desc">Help support the development of this app</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:194: Warning: The resource R.string.utils_battery_ignore_toast appears to be unused [UnusedResources]
+    <string name="utils_battery_ignore_toast">Please allow our app to ignore battery optimizations.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:195: Warning: The resource R.string.utils_battery_specific_settings_not_found_toast appears to be unused [UnusedResources]
+    <string name="utils_battery_specific_settings_not_found_toast">Could not find specific settings. Please remove app from battery restrictions.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:196: Warning: The resource R.string.utils_battery_settings_not_found_toast appears to be unused [UnusedResources]
+    <string name="utils_battery_settings_not_found_toast">Could not open any battery settings.</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:197: Warning: The resource R.string.utils_usage_permission_error_log appears to be unused [UnusedResources]
+    <string name="utils_usage_permission_error_log">Error checking usage permission: </string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:204: Warning: The resource R.string.open_settings_button appears to be unused [UnusedResources]
+    <string name="open_settings_button">Open Settings</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:225: Warning: The resource R.string.accessibility_guide_dialog_text_2 appears to be unused [UnusedResources]
+    <string name="accessibility_guide_dialog_text_2">Please follow these steps:</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:226: Warning: The resource R.string.accessibility_guide_dialog_text_3 appears to be unused [UnusedResources]
+    <string name="accessibility_guide_dialog_text_3">
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:232: Warning: The resource R.string.settings_screen_about_and_support_title appears to be unused [UnusedResources]
+    <string name="settings_screen_about_and_support_title">About &amp; Support</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:233: Warning: The resource R.string.settings_screen_join_community_title appears to be unused [UnusedResources]
+    <string name="settings_screen_join_community_title">Join Community</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:276: Warning: The resource R.string.settings_screen_fallback_selection_dialog_title appears to be unused [UnusedResources]
+    <string name="settings_screen_fallback_selection_dialog_title">Select Fallback Method</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:277: Warning: The resource R.string.settings_screen_fallback_selection_dialog_desc appears to be unused [UnusedResources]
+    <string name="settings_screen_fallback_selection_dialog_desc">Choose a fallback method to use
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/values/strings.xml:287: Warning: The resource R.string.settings_screen_export_logs_success appears to be unused [UnusedResources]
+    <string name="settings_screen_export_logs_success">Logs exported</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "UnusedResources":
+   Unused resources make applications larger and slow down builds.
+
+
+   The unused resource check can ignore tests. If you want to include
+   resources that are only referenced from tests, consider packaging them in a
+   test source set instead.
+
+   You can include test sources in the unused resource check by setting the
+   system property lint.unused-resources.include-tests=true, and to exclude
+   them (usually for performance reasons), use
+   lint.unused-resources.exclude-tests=true.
+
+   Available options:
+
+   **skip-libraries** (default is true):
+   Whether the unused resource check should skip reporting unused resources in libraries.
+
+   Many libraries will declare resources that are part of the library surface; other modules depending on the library will also reference the resources. To avoid reporting all these resources as unused (in the context of a library), the unused resource check normally skips reporting unused resources in libraries. Instead, run the unused resource check on the consuming app module (along with `checkDependencies=true`).
+
+   However, there are cases where you want to check that all the resources declared in a library are used; in that case, you can disable the skip option.
+
+   To configure this option, use a `lint.xml` file with an <option> like this:
+
+   ```xml
+   <lint>
+       <issue id="UnusedResources">
+           <option name="skip-libraries" value="true" />
+       </issue>
+   </lint>
+   ```
+
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml:2: Warning: The application adaptive icon is missing a monochrome tag [MonochromeLauncherIcon]
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+^
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml:2: Warning: The application adaptive roundIcon is missing a monochrome tag [MonochromeLauncherIcon]
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+^
+
+   Explanation for issues of type "MonochromeLauncherIcon":
+   The system may use the coloring of the user's chosen wallpaper and theme to
+   tint app icons. Providing a <monochrome> layer (which will be used for
+   tinting) for every adaptive icon is strongly recommended, otherwise Android
+   16 QPR 2 and above will simply tint the color version of the icon, which
+   may look unusual. Devices running earlier Android versions will (with no
+   monochrome layer) show the untinted color icon for your app, which will
+   look inconsistent.
+
+25 errors, 97 warnings, 2 hints
