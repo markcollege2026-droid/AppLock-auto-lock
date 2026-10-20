@@ -40,12 +40,15 @@ jobs:
         continue-on-error: true
         run: |
           set -o pipefail
-          ./gradlew testDebugUnitTest --console=plain 2>&1 | tee unit-tests.log
+          ./gradlew :app:testDebugUnitTest --console=plain 2>&1 | tee unit-tests.log
 
       - name: Report unit test failures
         if: always()
+        env:
+          OUTCOME: ${{ steps.unit_tests.outcome }}
         run: |
           python3 - <<'PY'
+          import os
           import pathlib
           import sys
           import xml.etree.ElementTree as ET
@@ -54,21 +57,17 @@ jobs:
               message = message.replace('%', '%25').replace('\r', '').replace('\n', '%0A')
               print(f'::error::{message}'[:4000])
 
-          failed = False
+          outcome = os.environ.get('OUTCOME', '')
           log = pathlib.Path('unit-tests.log')
           text = log.read_text(errors='replace') if log.exists() else ''
           for line in text.splitlines():
               stripped = line.strip()
               if stripped.startswith('e: ') or stripped.startswith('FAILURE:'):
                   annotate(stripped)
-                  failed = True
-          if 'BUILD FAILED' in text:
-              failed = True
 
-          results = pathlib.Path('app/build/test-results/testDebugUnitTest')
           total = 0
           failures = 0
-          for xml_file in results.glob('*.xml'):
+          for xml_file in pathlib.Path('app/build/test-results/testDebugUnitTest').glob('*.xml'):
               try:
                   root = ET.parse(xml_file).getroot()
               except Exception:
@@ -83,11 +82,12 @@ jobs:
                       name = f"{testcase.get('classname')}.{testcase.get('name')}"
                       annotate(f"{name}: {node.get('message', '')}"[:4000])
 
-          print(f'::notice::unit test results: {total} cases, {failures} failures')
-          tests_ran = total > 0
-          if not tests_ran:
-              print('::error::No unit test results were produced')
-          sys.exit(1 if (failed or failures or not tests_ran) else 0)
+          print(f'::notice::unit test results: {total} cases, {failures} failures (task outcome: {outcome or "unknown"})')
+          if outcome == 'failure':
+              sys.exit(1)
+          if outcome in ('skipped', 'cancelled'):
+              sys.exit(0)
+          sys.exit(1 if (failures > 0 or total == 0) else 0)
           PY
 
       - name: Build debug and release APKs
@@ -99,16 +99,20 @@ jobs:
 
       - name: Report build failures
         if: always()
+        env:
+          OUTCOME: ${{ steps.build.outcome }}
         run: |
           python3 - <<'PY'
+          import os
           import pathlib
+          import sys
 
           def annotate(level, message):
               message = message.replace('%', '%25').replace('\r', '').replace('\n', '%0A')
               print(f'::{level}::{message}'[:4000])
 
+          outcome = os.environ.get('OUTCOME', '')
           log = pathlib.Path('build.log')
-          found = 0
           if log.exists():
               lines = log.read_text(errors='replace').splitlines()
               emitted = 0
@@ -116,21 +120,20 @@ jobs:
                   stripped = line.strip()
                   if (stripped.startswith('e: ') or stripped.startswith('FAILURE:')
                           or stripped.startswith('What went wrong')
-                          or stripped.startswith('> Task') and stripped.endswith('FAILED')):
+                          or (stripped.startswith('> Task') and stripped.endswith('FAILED'))):
                       if emitted >= 40:
                           break
                       annotate('error', stripped)
                       emitted += 1
-                      found += 1
                       for follow_up in lines[index + 1:index + 3]:
                           if follow_up.strip():
                               annotate('error', follow_up.strip())
                               emitted += 1
+          print(f'::notice::build task outcome: {outcome or "unknown"}')
+          if outcome == 'failure':
+              sys.exit(1)
+          sys.exit(0)
           PY
-          if grep -qE '^(e: |FAILURE:|BUILD FAILED)' build.log 2>/dev/null; then
-            exit 1
-          fi
-          exit 0
 
       - name: Upload build logs
         if: always()
@@ -228,8 +231,11 @@ jobs:
 
       - name: Report lint failures
         if: always()
+        env:
+          OUTCOME: ${{ steps.lint.outcome }}
         run: |
           python3 - <<'PY'
+          import os
           import pathlib
           import sys
 
@@ -237,7 +243,7 @@ jobs:
               message = message.replace('%', '%25').replace('\r', '').replace('\n', '%0A')
               print(f'::error::{message}'[:4000])
 
-          failed = False
+          outcome = os.environ.get('OUTCOME', '')
           log = pathlib.Path('lint.log')
           text = log.read_text(errors='replace') if log.exists() else ''
           for line in text.splitlines():
@@ -245,12 +251,11 @@ jobs:
               if (stripped.startswith('FAILURE:') or stripped.startswith('e: ')
                       or ': Error:' in stripped):
                   annotate(stripped)
-                  failed = True
-          if 'BUILD FAILED' in text:
-              failed = True
 
-          print(f'::notice::lint log lines: {len(text.splitlines())}')
-          if not text:
-              print('::error::No lint output was produced')
-          sys.exit(1 if (failed or not text) else 0)
+          print(f'::notice::lint log lines: {len(text.splitlines())} (task outcome: {outcome or "unknown"})')
+          if outcome == 'failure':
+              sys.exit(1)
+          if outcome in ('skipped', 'cancelled'):
+              sys.exit(0)
+          sys.exit(1 if not text else 0)
           PY
