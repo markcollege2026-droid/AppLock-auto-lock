@@ -23,6 +23,7 @@ import dev.pranav.applock.core.broadcast.DeviceAdmin
 import dev.pranav.applock.core.utils.LogUtils
 import dev.pranav.applock.core.utils.appLockRepository
 import dev.pranav.applock.core.utils.hasUsagePermission
+import dev.pranav.applock.data.autolock.AutoLockEnrollmentManager
 import dev.pranav.applock.data.repository.AppLockRepository
 import dev.pranav.applock.data.repository.AppLockRepository.Companion.shouldStartService
 import dev.pranav.applock.data.repository.BackendImplementation
@@ -77,6 +78,9 @@ class UsageLockService: Service() {
         appLockRepository.setActiveBackend(BackendImplementation.USAGE_STATS)
         AppLockManager.stopAllOtherServices(this, this::class.java)
         AppLockManager.isLockScreenShown.set(false)
+
+        // Recover installations missed while the process was not running.
+        AutoLockEnrollmentManager.scheduleReconcile()
 
         val filter = android.content.IntentFilter().apply {
             addAction(Intent.ACTION_SCREEN_OFF)
@@ -226,8 +230,9 @@ class UsageLockService: Service() {
     }
 
     private fun checkAndLockApp(packageName: String, triggeringPackage: String, currentTime: Long) {
-        val lockedApps = appLockRepository.getLockedApps()
-        if (packageName !in lockedApps) return
+        // Checks the protected list and gives automatic enrollment one chance to
+        // protect a missed new installation before continuing the lock decision.
+        if (!appLockRepository.isProtectedOrEnrollAutomatically(packageName)) return
 
         val unlockDurationMinutes = appLockRepository.getUnlockTimeDuration()
         val unlockTimestamp = AppLockManager.appUnlockTimes[packageName] ?: 0L

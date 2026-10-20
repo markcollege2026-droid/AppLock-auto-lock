@@ -114,6 +114,19 @@ class PreferencesRepository(context: Context) {
         return settingsPrefs.getBoolean(KEY_APPLOCK_ENABLED, DEFAULT_PROTECT_ENABLED)
     }
 
+    /**
+     * "Automatically protect new apps". Defaults to off for both existing and new users.
+     * This only controls automatic enrollment; [isProtectEnabled] still controls whether
+     * any lock is enforced.
+     */
+    fun setAutoLockNewAppsEnabled(enabled: Boolean) {
+        settingsPrefs.edit { putBoolean(KEY_AUTO_LOCK_NEW_APPS, enabled) }
+    }
+
+    fun isAutoLockNewAppsEnabled(): Boolean {
+        return settingsPrefs.getBoolean(KEY_AUTO_LOCK_NEW_APPS, DEFAULT_AUTO_LOCK_NEW_APPS)
+    }
+
     fun setUnlockTimeDuration(minutes: Int) {
         settingsPrefs.edit { putInt(KEY_UNLOCK_TIME_DURATION, minutes) }
     }
@@ -171,8 +184,9 @@ class PreferencesRepository(context: Context) {
     }
 
     companion object {
-        private const val PREFS_NAME_APP_LOCK = "app_lock_prefs"
-        private const val PREFS_NAME_SETTINGS = "app_lock_settings"
+        internal const val PREFS_NAME_APP_LOCK = "app_lock_prefs"
+        internal const val PREFS_NAME_SETTINGS = "app_lock_settings"
+        internal const val KEY_AUTO_LOCK_NEW_APPS = "auto_lock_new_apps_enabled"
 
         private const val KEY_PASSWORD = "password"
         private const val KEY_PATTERN = "pattern"
@@ -193,6 +207,7 @@ class PreferencesRepository(context: Context) {
 
         private const val DEFAULT_PROTECT_ENABLED = true
         private const val DEFAULT_UNLOCK_DURATION = 0
+        private const val DEFAULT_AUTO_LOCK_NEW_APPS = false
 
         const val LOCK_TYPE_PIN = "pin"
         const val LOCK_TYPE_PATTERN = "pattern"

@@ -88,6 +88,7 @@ fun SettingsScreen(
     var useBiometricAuth by remember { mutableStateOf(appLockRepository.isBiometricAuthEnabled()) }
     var unlockTimeDuration by remember { mutableIntStateOf(appLockRepository.getUnlockTimeDuration()) }
     var antiUninstallEnabled by remember { mutableStateOf(appLockRepository.isAntiUninstallEnabled()) }
+    var autoLockNewApps by remember { mutableStateOf(appLockRepository.isAutoLockNewAppsEnabled()) }
     var disableHapticFeedback by remember { mutableStateOf(appLockRepository.shouldDisableHaptics()) }
     var loggingEnabled by remember { mutableStateOf(appLockRepository.isLoggingEnabled()) }
 
@@ -327,6 +328,17 @@ fun SettingsScreen(
                                 )
                             } else stringResource(R.string.settings_screen_unlock_duration_summary_immediate),
                             onClick = { showUnlockTimeDialog = true }
+                        ),
+                        ToggleSettingItem(
+                            icon = Icons.Default.AppRegistration,
+                            title = stringResource(R.string.settings_screen_auto_lock_new_apps_title),
+                            subtitle = stringResource(R.string.settings_screen_auto_lock_new_apps_desc),
+                            checked = autoLockNewApps,
+                            enabled = true,
+                            onCheckedChange = { isChecked ->
+                                autoLockNewApps = isChecked
+                                appLockRepository.setAutoLockNewAppsEnabled(isChecked)
+                            }
                         ),
                         ToggleSettingItem(
                             icon = Icons.Default.Lock,

@@ -20,6 +20,7 @@ import dev.pranav.applock.core.broadcast.DeviceAdmin
 import dev.pranav.applock.core.utils.LogUtils
 import dev.pranav.applock.core.utils.appLockRepository
 import dev.pranav.applock.core.utils.enableAccessibilityServiceWithShizuku
+import dev.pranav.applock.data.autolock.AutoLockEnrollmentManager
 import dev.pranav.applock.data.repository.AppLockRepository
 import dev.pranav.applock.data.repository.BackendImplementation
 import dev.pranav.applock.features.lockscreen.ui.LockScreenOverlayManager
@@ -73,6 +74,9 @@ class AppLockAccessibilityService : AccessibilityService() {
             AppLockManager.currentBiometricState = BiometricState.IDLE
             AppLockManager.isLockScreenShown.set(false)
             startPrimaryBackendService()
+
+            // Recover installations missed while the process was not running.
+            AutoLockEnrollmentManager.scheduleReconcile()
 
             mainHandler = Handler(mainLooper)
 
@@ -274,8 +278,9 @@ class AppLockAccessibilityService : AccessibilityService() {
             return
         }
 
-        // Return if package is not locked
-        if (packageName !in appLockRepository.getLockedApps()) {
+        // Return if the package is not protected. The shared helper gives automatic
+        // enrollment one chance to protect a missed new installation first.
+        if (!appLockRepository.isProtectedOrEnrollAutomatically(packageName)) {
             return
         }
 

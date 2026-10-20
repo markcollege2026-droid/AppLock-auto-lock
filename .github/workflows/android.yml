@@ -2,12 +2,16 @@ name: Android CI
 
 on:
   push:
+    branches-ignore:
+      - ci-artifacts
   pull_request:
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout repository
@@ -23,22 +27,247 @@ jobs:
         run: chmod +x gradlew
 
       - name: Setup Android SDK
-        uses: android-actions/setup-android@v3.2.2
+        uses: android-actions/setup-android@v4.0.4
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4.4.1
 
-      - name: Build with gradle
-        run: ./gradlew clean assemble
+      - name: Clean
+        run: ./gradlew clean --console=plain
+
+      - name: Run unit tests
+        id: unit_tests
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          ./gradlew :app:testDebugUnitTest --console=plain 2>&1 | tee unit-tests.log
+
+      - name: Report unit test failures
+        if: always()
+        env:
+          OUTCOME: ${{ steps.unit_tests.outcome }}
+        run: |
+          python3 - <<'PY'
+          import os
+          import pathlib
+          import sys
+          import xml.etree.ElementTree as ET
+
+          def annotate(message):
+              message = message.replace('%', '%25').replace('\r', '').replace('\n', '%0A')
+              print(f'::error::{message}'[:4000])
+
+          outcome = os.environ.get('OUTCOME', '')
+          log = pathlib.Path('unit-tests.log')
+          text = log.read_text(errors='replace') if log.exists() else ''
+          for line in text.splitlines():
+              stripped = line.strip()
+              if stripped.startswith('e: ') or stripped.startswith('FAILURE:'):
+                  annotate(stripped)
+
+          total = 0
+          failures = 0
+          for xml_file in pathlib.Path('app/build/test-results/testDebugUnitTest').glob('*.xml'):
+              try:
+                  root = ET.parse(xml_file).getroot()
+              except Exception:
+                  continue
+              for testcase in root.iter('testcase'):
+                  total += 1
+                  node = testcase.find('failure')
+                  if node is None:
+                      node = testcase.find('error')
+                  if node is not None:
+                      failures += 1
+                      name = f"{testcase.get('classname')}.{testcase.get('name')}"
+                      annotate(f"{name}: {node.get('message', '')}"[:4000])
+
+          print(f'::notice::unit test results: {total} cases, {failures} failures (task outcome: {outcome or "unknown"})')
+          if outcome == 'failure':
+              sys.exit(1)
+          if outcome in ('skipped', 'cancelled'):
+              sys.exit(0)
+          sys.exit(1 if (failures > 0 or total == 0) else 0)
+          PY
+
+      - name: Build debug and release APKs
+        id: build
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          ./gradlew assembleDebug assembleRelease --console=plain --stacktrace 2>&1 | tee build.log
+
+      - name: Report build failures
+        if: always()
+        env:
+          OUTCOME: ${{ steps.build.outcome }}
+        run: |
+          python3 - <<'PY'
+          import os
+          import pathlib
+          import sys
+
+          def annotate(level, message):
+              message = message.replace('%', '%25').replace('\r', '').replace('\n', '%0A')
+              print(f'::{level}::{message}'[:4000])
+
+          outcome = os.environ.get('OUTCOME', '')
+          log = pathlib.Path('build.log')
+          if log.exists():
+              lines = log.read_text(errors='replace').splitlines()
+              emitted = 0
+              for index, line in enumerate(lines):
+                  stripped = line.strip()
+                  if (stripped.startswith('e: ') or stripped.startswith('FAILURE:')
+                          or stripped.startswith('What went wrong')
+                          or (stripped.startswith('> Task') and stripped.endswith('FAILED'))):
+                      if emitted >= 40:
+                          break
+                      annotate('error', stripped)
+                      emitted += 1
+                      for follow_up in lines[index + 1:index + 3]:
+                          if follow_up.strip():
+                              annotate('error', follow_up.strip())
+                              emitted += 1
+          print(f'::notice::build task outcome: {outcome or "unknown"}')
+          if outcome == 'failure':
+              sys.exit(1)
+          sys.exit(0)
+          PY
+
+      - name: Upload build logs
+        if: always()
+        uses: actions/upload-artifact@v4.6.2
+        with:
+          name: build-logs
+          path: |
+            build.log
+            unit-tests.log
+            lint.log
+            app/build/reports/**
+          if-no-files-found: warn
+          retention-days: 7
 
       - name: Upload debug apks
+        if: always()
         uses: actions/upload-artifact@v4.6.2
         with:
           name: app-debug
-          path: app/build/outputs/apk/debug
+          path: app/build/outputs/apk/debug/**/*.apk
+          if-no-files-found: warn
 
       - name: Upload release apks
+        if: always()
         uses: actions/upload-artifact@v4.6.2
         with:
           name: app-release
-          path: app/build/outputs/apk/release
+          path: app/build/outputs/apk/release/**/*.apk
+          if-no-files-found: warn
+
+      - name: List build outputs
+        if: always()
+        run: |
+          find . -type f -name '*.apk' -printf '%p (%s bytes)\n' 2>/dev/null | while read -r line; do
+            echo "::notice::apk: ${line//'%'/'%25'}"
+          done
+          find app/build/outputs -maxdepth 4 -type d -printf '%p\n' 2>/dev/null | while read -r line; do
+            echo "::notice::outdir: ${line//'%'/'%25'}"
+          done
+          if [ -f build.log ]; then
+            grep -E '^> Task :app:(package|assemble|compile|lint|bundle|merge|dex|process)' build.log | tail -40 | while read -r line; do
+              echo "::notice::task: ${line//'%'/'%25'}"
+            done
+            grep -E 'BUILD (SUCCESSFUL|FAILED)' build.log | while read -r line; do
+              echo "::notice::${line//'%'/'%25'}"
+            done
+          fi
+
+      - name: Publish APKs to a release
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mapfile -t apks < <(find app/build/outputs/apk -name '*.apk' 2>/dev/null)
+          if [ ${#apks[@]} -eq 0 ]; then
+            echo "No APKs to publish"
+            exit 0
+          fi
+          gh release view ci-latest --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1 || \
+            gh release create ci-latest --repo "$GITHUB_REPOSITORY" --prerelease \
+              --title "CI build APKs" --notes "APKs built by CI from commit $GITHUB_SHA."
+          gh release upload ci-latest "${apks[@]}" --repo "$GITHUB_REPOSITORY" --clobber
+
+      - name: Run lint
+        id: lint
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          ./gradlew lintDebug --console=plain 2>&1 | tee lint.log
+
+      - name: Report lint results
+        if: always()
+        env:
+          OUTCOME: ${{ steps.lint.outcome }}
+        run: |
+          python3 - <<'PY'
+          import os
+          import pathlib
+          import sys
+
+          def emit(level, message):
+              message = message.replace('%', '%25').replace('\r', '').replace('\n', '%0A')
+              print(f'::{level}::{message}'[:4000])
+
+          outcome = os.environ.get('OUTCOME', '')
+          log = pathlib.Path('lint.log')
+          text = log.read_text(errors='replace') if log.exists() else ''
+          report = pathlib.Path('app/build/reports/lint-results-debug.txt')
+          report_text = report.read_text(errors='replace') if report.exists() else ''
+          errors = 0
+          warnings = 0
+          for line in text.splitlines():
+              stripped = line.strip()
+              if ': Error:' in stripped:
+                  emit('warning', stripped)
+              elif stripped.startswith('FAILURE:') or stripped.startswith('e: '):
+                  emit('error', stripped)
+          for line in report_text.splitlines():
+              if ': Error:' in line:
+                  errors += 1
+              elif ': Warning:' in line:
+                  warnings += 1
+
+          if report_text:
+              emit('notice', f'lint report: {errors} errors, {warnings} warnings (task outcome: {outcome or "unknown"})')
+          else:
+              emit('notice', f'lint report missing (task outcome: {outcome or "unknown"})')
+          if outcome == 'failure' and errors == 0:
+              # The task failed without a lint error, e.g. a Gradle/configuration problem.
+              sys.exit(1)
+          sys.exit(0)
+          PY
+
+      - name: Publish APKs and test evidence to the ci-artifacts branch
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mapfile -t apks < <(find app/build/outputs/apk -name '*.apk' 2>/dev/null)
+          if [ ${#apks[@]} -eq 0 ]; then
+            echo "No APKs to publish"
+            exit 0
+          fi
+          rm -rf /tmp/ci-apks && mkdir -p /tmp/ci-apks
+          cp "${apks[@]}" /tmp/ci-apks/
+          mkdir -p /tmp/ci-apks/evidence
+          cp app/build/test-results/testDebugUnitTest/*.xml /tmp/ci-apks/evidence/ 2>/dev/null || true
+          cp app/build/reports/lint-results-debug.txt /tmp/ci-apks/evidence/ 2>/dev/null || true
+          cp app/build/reports/lint-results-debug.xml /tmp/ci-apks/evidence/ 2>/dev/null || true
+          cp build.log unit-tests.log lint.log /tmp/ci-apks/evidence/ 2>/dev/null || true
+          cd /tmp/ci-apks
+          git init -q -b ci-artifacts
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "CI APKs from ${GITHUB_SHA} [skip ci]"
+          git push --quiet --force "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:ci-artifacts

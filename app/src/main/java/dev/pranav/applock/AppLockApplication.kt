@@ -5,6 +5,7 @@ import android.content.Context
 import android.os.Build
 import android.util.Log
 import dev.pranav.applock.core.utils.LogUtils
+import dev.pranav.applock.data.autolock.AutoLockEnrollmentManager
 import dev.pranav.applock.data.repository.AppLockRepository
 import org.lsposed.hiddenapibypass.HiddenApiBypass
 import rikka.sui.Sui
@@ -47,6 +48,9 @@ class AppLockApplication : Application() {
         try {
             appLockRepository = AppLockRepository(this)
             initializeSui()
+            // Registers the single process-wide package receiver and recovers any
+            // installations missed while the process was not running.
+            AutoLockEnrollmentManager.initialize(this, appLockRepository)
             Log.d(TAG, "Application components initialized successfully")
         } catch (e: Exception) {
             Log.e(TAG, "Failed to initialize application components", e)
