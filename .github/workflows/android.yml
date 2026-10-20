@@ -197,31 +197,6 @@ jobs:
               --title "CI build APKs" --notes "APKs built by CI from commit $GITHUB_SHA."
           gh release upload ci-latest "${apks[@]}" --repo "$GITHUB_REPOSITORY" --clobber
 
-      - name: Publish APKs and test evidence to the ci-artifacts branch
-        if: always()
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          mapfile -t apks < <(find app/build/outputs/apk -name '*.apk' 2>/dev/null)
-          if [ ${#apks[@]} -eq 0 ]; then
-            echo "No APKs to publish"
-            exit 0
-          fi
-          rm -rf /tmp/ci-apks && mkdir -p /tmp/ci-apks
-          cp "${apks[@]}" /tmp/ci-apks/
-          mkdir -p /tmp/ci-apks/evidence
-          cp app/build/test-results/testDebugUnitTest/*.xml /tmp/ci-apks/evidence/ 2>/dev/null || true
-          cp app/build/reports/lint-results-debug.txt /tmp/ci-apks/evidence/ 2>/dev/null || true
-          cp app/build/reports/lint-results-debug.xml /tmp/ci-apks/evidence/ 2>/dev/null || true
-          cp build.log unit-tests.log lint.log /tmp/ci-apks/evidence/ 2>/dev/null || true
-          cd /tmp/ci-apks
-          git init -q -b ci-artifacts
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git commit -q -m "CI APKs from ${GITHUB_SHA} [skip ci]"
-          git push --quiet --force "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:ci-artifacts
-
       - name: Run lint
         id: lint
         continue-on-error: true
@@ -259,3 +234,28 @@ jobs:
               sys.exit(0)
           sys.exit(1 if not text else 0)
           PY
+
+      - name: Publish APKs and test evidence to the ci-artifacts branch
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mapfile -t apks < <(find app/build/outputs/apk -name '*.apk' 2>/dev/null)
+          if [ ${#apks[@]} -eq 0 ]; then
+            echo "No APKs to publish"
+            exit 0
+          fi
+          rm -rf /tmp/ci-apks && mkdir -p /tmp/ci-apks
+          cp "${apks[@]}" /tmp/ci-apks/
+          mkdir -p /tmp/ci-apks/evidence
+          cp app/build/test-results/testDebugUnitTest/*.xml /tmp/ci-apks/evidence/ 2>/dev/null || true
+          cp app/build/reports/lint-results-debug.txt /tmp/ci-apks/evidence/ 2>/dev/null || true
+          cp app/build/reports/lint-results-debug.xml /tmp/ci-apks/evidence/ 2>/dev/null || true
+          cp build.log unit-tests.log lint.log /tmp/ci-apks/evidence/ 2>/dev/null || true
+          cd /tmp/ci-apks
+          git init -q -b ci-artifacts
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "CI APKs from ${GITHUB_SHA} [skip ci]"
+          git push --quiet --force "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:ci-artifacts
