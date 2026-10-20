@@ -38,41 +38,57 @@ jobs:
       - name: Run unit tests
         id: unit_tests
         continue-on-error: true
-        run: ./gradlew testDebugUnitTest --console=plain 2>&1 | tee unit-tests.log
+        run: |
+          set -o pipefail
+          ./gradlew testDebugUnitTest --console=plain 2>&1 | tee unit-tests.log
 
       - name: Report unit test failures
-        if: steps.unit_tests.outcome == 'failure'
+        if: always()
         run: |
           python3 - <<'PY'
           import pathlib
+          import sys
           import xml.etree.ElementTree as ET
 
           def annotate(message):
               message = message.replace('%', '%25').replace('\r', '').replace('\n', '%0A')
-              print(f'::error::{message}')
+              print(f'::error::{message}'[:4000])
 
+          failed = False
           log = pathlib.Path('unit-tests.log')
-          if log.exists():
-              for line in log.read_text(errors='replace').splitlines():
-                  stripped = line.strip()
-                  if stripped.startswith('e: ') or stripped.startswith('FAILURE:') or 'FAILED' in stripped:
-                      annotate(stripped)
+          text = log.read_text(errors='replace') if log.exists() else ''
+          for line in text.splitlines():
+              stripped = line.strip()
+              if stripped.startswith('e: ') or stripped.startswith('FAILURE:'):
+                  annotate(stripped)
+                  failed = True
+          if 'BUILD FAILED' in text:
+              failed = True
 
           results = pathlib.Path('app/build/test-results/testDebugUnitTest')
+          total = 0
+          failures = 0
           for xml_file in results.glob('*.xml'):
               try:
                   root = ET.parse(xml_file).getroot()
               except Exception:
                   continue
               for testcase in root.iter('testcase'):
-                  failure = testcase.find('failure')
-                  if failure is None:
-                      failure = testcase.find('error')
-                  if failure is not None:
+                  total += 1
+                  node = testcase.find('failure')
+                  if node is None:
+                      node = testcase.find('error')
+                  if node is not None:
+                      failures += 1
                       name = f"{testcase.get('classname')}.{testcase.get('name')}"
-                      annotate(f"{name}: {failure.get('message', failure.text or '')}"[:4000])
+                      annotate(f"{name}: {node.get('message', '')}"[:4000])
+
+          print(f'::notice::unit test results: {total} cases, {failures} failures')
+          tests_ran = total > 0
+          if not tests_ran:
+              print('::error::No unit test results were produced')
+          sys.exit(1 if (failed or failures or not tests_ran) else 0)
           PY
-          exit 1
 
       - name: Build debug and release APKs
         id: build
@@ -178,7 +194,7 @@ jobs:
               --title "CI build APKs" --notes "APKs built by CI from commit $GITHUB_SHA."
           gh release upload ci-latest "${apks[@]}" --repo "$GITHUB_REPOSITORY" --clobber
 
-      - name: Publish APKs to the ci-artifacts branch
+      - name: Publish APKs and test evidence to the ci-artifacts branch
         if: always()
         env:
           GH_TOKEN: ${{ github.token }}
@@ -190,6 +206,11 @@ jobs:
           fi
           rm -rf /tmp/ci-apks && mkdir -p /tmp/ci-apks
           cp "${apks[@]}" /tmp/ci-apks/
+          mkdir -p /tmp/ci-apks/evidence
+          cp app/build/test-results/testDebugUnitTest/*.xml /tmp/ci-apks/evidence/ 2>/dev/null || true
+          cp app/build/reports/lint-results-debug.txt /tmp/ci-apks/evidence/ 2>/dev/null || true
+          cp app/build/reports/lint-results-debug.xml /tmp/ci-apks/evidence/ 2>/dev/null || true
+          cp build.log unit-tests.log lint.log /tmp/ci-apks/evidence/ 2>/dev/null || true
           cd /tmp/ci-apks
           git init -q -b ci-artifacts
           git config user.name "github-actions[bot]"
@@ -201,24 +222,35 @@ jobs:
       - name: Run lint
         id: lint
         continue-on-error: true
-        run: ./gradlew lintDebug --console=plain 2>&1 | tee lint.log
+        run: |
+          set -o pipefail
+          ./gradlew lintDebug --console=plain 2>&1 | tee lint.log
 
       - name: Report lint failures
-        if: steps.lint.outcome == 'failure'
+        if: always()
         run: |
           python3 - <<'PY'
           import pathlib
+          import sys
 
           def annotate(message):
               message = message.replace('%', '%25').replace('\r', '').replace('\n', '%0A')
               print(f'::error::{message}'[:4000])
 
+          failed = False
           log = pathlib.Path('lint.log')
-          if log.exists():
-              for line in log.read_text(errors='replace').splitlines():
-                  stripped = line.strip()
-                  if (': Error:' in stripped or stripped.startswith('FAILURE:')
-                          or stripped.startswith('e: ')):
-                      annotate(stripped)
+          text = log.read_text(errors='replace') if log.exists() else ''
+          for line in text.splitlines():
+              stripped = line.strip()
+              if (stripped.startswith('FAILURE:') or stripped.startswith('e: ')
+                      or ': Error:' in stripped):
+                  annotate(stripped)
+                  failed = True
+          if 'BUILD FAILED' in text:
+              failed = True
+
+          print(f'::notice::lint log lines: {len(text.splitlines())}')
+          if not text:
+              print('::error::No lint output was produced')
+          sys.exit(1 if (failed or not text) else 0)
           PY
-          exit 1
