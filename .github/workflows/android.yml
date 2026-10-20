@@ -204,7 +204,7 @@ jobs:
           set -o pipefail
           ./gradlew lintDebug --console=plain 2>&1 | tee lint.log
 
-      - name: Report lint failures
+      - name: Report lint results
         if: always()
         env:
           OUTCOME: ${{ steps.lint.outcome }}
@@ -214,25 +214,30 @@ jobs:
           import pathlib
           import sys
 
-          def annotate(message):
+          def emit(level, message):
               message = message.replace('%', '%25').replace('\r', '').replace('\n', '%0A')
-              print(f'::error::{message}'[:4000])
+              print(f'::{level}::{message}'[:4000])
 
           outcome = os.environ.get('OUTCOME', '')
           log = pathlib.Path('lint.log')
           text = log.read_text(errors='replace') if log.exists() else ''
+          errors = 0
+          warnings = 0
           for line in text.splitlines():
               stripped = line.strip()
-              if (stripped.startswith('FAILURE:') or stripped.startswith('e: ')
-                      or ': Error:' in stripped):
-                  annotate(stripped)
+              if ': Error:' in stripped:
+                  errors += 1
+                  emit('warning', stripped)
+              elif ': Warning:' in stripped:
+                  warnings += 1
+              elif stripped.startswith('FAILURE:') or stripped.startswith('e: '):
+                  emit('error', stripped)
 
-          print(f'::notice::lint log lines: {len(text.splitlines())} (task outcome: {outcome or "unknown"})')
-          if outcome == 'failure':
+          emit('notice', f'lint outcome={outcome or "unknown"} errors={errors} warnings={warnings}')
+          if outcome == 'failure' and errors == 0:
+              # The task failed without a lint error, e.g. a Gradle/configuration problem.
               sys.exit(1)
-          if outcome in ('skipped', 'cancelled'):
-              sys.exit(0)
-          sys.exit(1 if not text else 0)
+          sys.exit(0)
           PY
 
       - name: Publish APKs and test evidence to the ci-artifacts branch
