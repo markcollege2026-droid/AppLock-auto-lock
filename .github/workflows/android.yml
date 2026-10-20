@@ -221,19 +221,26 @@ jobs:
           outcome = os.environ.get('OUTCOME', '')
           log = pathlib.Path('lint.log')
           text = log.read_text(errors='replace') if log.exists() else ''
+          report = pathlib.Path('app/build/reports/lint-results-debug.txt')
+          report_text = report.read_text(errors='replace') if report.exists() else ''
           errors = 0
           warnings = 0
           for line in text.splitlines():
               stripped = line.strip()
               if ': Error:' in stripped:
-                  errors += 1
                   emit('warning', stripped)
-              elif ': Warning:' in stripped:
-                  warnings += 1
               elif stripped.startswith('FAILURE:') or stripped.startswith('e: '):
                   emit('error', stripped)
+          for line in report_text.splitlines():
+              if ': Error:' in line:
+                  errors += 1
+              elif ': Warning:' in line:
+                  warnings += 1
 
-          emit('notice', f'lint outcome={outcome or "unknown"} errors={errors} warnings={warnings}')
+          if report_text:
+              emit('notice', f'lint report: {errors} errors, {warnings} warnings (task outcome: {outcome or "unknown"})')
+          else:
+              emit('notice', f'lint report missing (task outcome: {outcome or "unknown"})')
           if outcome == 'failure' and errors == 0:
               # The task failed without a lint error, e.g. a Gradle/configuration problem.
               sys.exit(1)
