@@ -8,6 +8,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout repository
@@ -73,29 +75,37 @@ jobs:
       - name: Build debug and release APKs
         id: build
         continue-on-error: true
-        run: ./gradlew assembleDebug assembleRelease --console=plain --stacktrace 2>&1 | tee build.log
+        run: |
+          set -o pipefail
+          ./gradlew assembleDebug assembleRelease --console=plain --stacktrace 2>&1 | tee build.log
 
       - name: Report build failures
-        if: steps.build.outcome == 'failure'
+        if: always()
         run: |
           python3 - <<'PY'
           import pathlib
 
-          def annotate(message):
+          def annotate(level, message):
               message = message.replace('%', '%25').replace('\r', '').replace('\n', '%0A')
-              print(f'::error::{message}'[:4000])
+              print(f'::{level}::{message}'[:4000])
 
           log = pathlib.Path('build.log')
           if log.exists():
               lines = log.read_text(errors='replace').splitlines()
+              emitted = 0
               for index, line in enumerate(lines):
                   stripped = line.strip()
                   if (stripped.startswith('e: ') or stripped.startswith('FAILURE:')
-                          or ' error: ' in stripped or stripped.startswith("What went wrong")):
-                      annotate(stripped)
-                      for follow_up in lines[index + 1:index + 4]:
+                          or stripped.startswith('What went wrong')
+                          or stripped.startswith('> Task') and stripped.endswith('FAILED')):
+                      if emitted >= 40:
+                          break
+                      annotate('error', stripped)
+                      emitted += 1
+                      for follow_up in lines[index + 1:index + 3]:
                           if follow_up.strip():
-                              annotate(follow_up.strip())
+                              annotate('error', follow_up.strip())
+                              emitted += 1
           PY
           exit 1
 
@@ -145,6 +155,21 @@ jobs:
               echo "::notice::${line//'%'/'%25'}"
             done
           fi
+
+      - name: Publish APKs to a release
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mapfile -t apks < <(find app/build/outputs/apk -name '*.apk' 2>/dev/null)
+          if [ ${#apks[@]} -eq 0 ]; then
+            echo "No APKs to publish"
+            exit 0
+          fi
+          gh release view ci-latest --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1 || \
+            gh release create ci-latest --repo "$GITHUB_REPOSITORY" --prerelease \
+              --title "CI build APKs" --notes "APKs built by CI from commit $GITHUB_SHA."
+          gh release upload ci-latest "${apks[@]}" --repo "$GITHUB_REPOSITORY" --clobber
 
       - name: Run lint
         id: lint
