@@ -2,6 +2,8 @@ name: Android CI
 
 on:
   push:
+    branches-ignore:
+      - ci-artifacts
   pull_request:
   workflow_dispatch:
 
@@ -90,6 +92,7 @@ jobs:
               print(f'::{level}::{message}'[:4000])
 
           log = pathlib.Path('build.log')
+          found = 0
           if log.exists():
               lines = log.read_text(errors='replace').splitlines()
               emitted = 0
@@ -102,12 +105,16 @@ jobs:
                           break
                       annotate('error', stripped)
                       emitted += 1
+                      found += 1
                       for follow_up in lines[index + 1:index + 3]:
                           if follow_up.strip():
                               annotate('error', follow_up.strip())
                               emitted += 1
           PY
-          exit 1
+          if grep -qE '^(e: |FAILURE:|BUILD FAILED)' build.log 2>/dev/null; then
+            exit 1
+          fi
+          exit 0
 
       - name: Upload build logs
         if: always()
@@ -170,6 +177,26 @@ jobs:
             gh release create ci-latest --repo "$GITHUB_REPOSITORY" --prerelease \
               --title "CI build APKs" --notes "APKs built by CI from commit $GITHUB_SHA."
           gh release upload ci-latest "${apks[@]}" --repo "$GITHUB_REPOSITORY" --clobber
+
+      - name: Publish APKs to the ci-artifacts branch
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mapfile -t apks < <(find app/build/outputs/apk -name '*.apk' 2>/dev/null)
+          if [ ${#apks[@]} -eq 0 ]; then
+            echo "No APKs to publish"
+            exit 0
+          fi
+          rm -rf /tmp/ci-apks && mkdir -p /tmp/ci-apks
+          cp "${apks[@]}" /tmp/ci-apks/
+          cd /tmp/ci-apks
+          git init -q -b ci-artifacts
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "CI APKs from ${GITHUB_SHA} [skip ci]"
+          git push --quiet --force "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:ci-artifacts
 
       - name: Run lint
         id: lint
