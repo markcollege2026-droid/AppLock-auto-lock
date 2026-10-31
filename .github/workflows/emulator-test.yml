@@ -104,11 +104,10 @@ jobs:
         run: |
           rm -rf /tmp/ev && mkdir -p /tmp/ev
           cp emulator-artifacts/*.txt /tmp/ev/ 2>/dev/null || true
-          for f in emulator-artifacts/logcat-*.txt; do
-            [ -f "$f" ] && tail -3000 "$f" > "/tmp/ev/$(basename "$f")" || true
+          for f in emulator-artifacts/*.log; do
+            [ -f "$f" ] && tail -c 300000 "$f" > "/tmp/ev/$(basename "$f")" || true
           done
-          tail -500 emulator-artifacts/emulator-checks.log > /tmp/ev/emulator-checks.log 2>/dev/null || true
-          tail -200 /tmp/emulator.log > /tmp/ev/emulator.log 2>/dev/null || true
+          tail -200 /tmp/emulator.log > /tmp/ev/emulator-tail.log 2>/dev/null || true
           {
             echo "run: ${GITHUB_RUN_ID}"
             echo "sha: ${GITHUB_SHA}"

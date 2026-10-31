@@ -7,6 +7,11 @@ AVD_NAME=${AVD_NAME:-ci34}
 EMULATOR="${ANDROID_HOME}/emulator/emulator"
 LOG=${EMULATOR_LOG:-/tmp/emulator.log}
 
+echo "HOME=$HOME"
+env | grep -i '^ANDROID' || true
+ls -la "$HOME/.android/avd" || true
+find / -maxdepth 6 -name "${AVD_NAME}.ini" 2>/dev/null | head -5 || true
+
 "$EMULATOR" -avd "$AVD_NAME" \
   -no-window -no-audio -no-boot-anim -no-snapshot \
   -gpu swiftshader_indirect -camera-back none -camera-front none \
