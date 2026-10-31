@@ -66,27 +66,12 @@ jobs:
 
       - name: Install emulator and system image
         run: |
-          set -x
-          SDKMANAGER=$(command -v sdkmanager || echo "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager")
-          "$SDKMANAGER" --version
-          yes | "$SDKMANAGER" --licenses > /dev/null 2>&1 || true
-          "$SDKMANAGER" --install "platform-tools" "emulator" "$SYSTEM_IMAGE"
-          echo no | "$ANDROID_HOME/cmdline-tools/latest/bin/avdmanager" create avd \
-            -n "$AVD_NAME" -k "$SYSTEM_IMAGE" -d pixel_6 --force
-          ls -la "$HOME/.android/avd" || true
+          mkdir -p emulator-artifacts
+          bash .github/scripts/setup-avd.sh 2>&1 | tee emulator-artifacts/avd-setup.log
 
       - name: Boot emulator
         run: |
-          set -x
-          "$ANDROID_HOME/emulator/emulator" -avd "$AVD_NAME" \
-            -no-window -no-audio -no-boot-anim -no-snapshot -gpu swiftshader_indirect \
-            -camera-back none -camera-front none > /tmp/emulator.log 2>&1 &
-          adb start-server
-          timeout 480 bash -c 'until adb shell getprop sys.boot_completed 2>/dev/null | tr -d "\r" | grep -q 1; do sleep 5; done'
-          adb wait-for-device
-          adb shell input keyevent 82 || true
-          adb devices -l
-          tail -20 /tmp/emulator.log || true
+          bash .github/scripts/boot-avd.sh 2>&1 | tee emulator-artifacts/boot.log
 
       - name: Run anti-uninstall checks
         run: |
