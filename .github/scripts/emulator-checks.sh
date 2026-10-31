@@ -95,6 +95,33 @@ else
   fail "could not write the anti-uninstall pref"
 fi
 
+# ---------- 2b. diagnostics: what do the Settings screens look like on this build? ----------
+# Captured before the accessibility service is enabled so nothing can close them.
+dump_screen() {
+  name=$1
+  adb shell uiautomator dump "/sdcard/ui-$name.xml" > /dev/null 2>&1
+  adb pull "/sdcard/ui-$name.xml" "$OUT/ui-$name.xml" > /dev/null 2>&1
+  adb shell dumpsys window > "$OUT/window-$name.txt" 2>&1
+  adb shell dumpsys activity activities > "$OUT/activities-$name-raw.txt" 2>&1
+  adb exec-out screencap -p > "$OUT/00-$name.png"
+}
+
+adb shell input keyevent KEYCODE_HOME || true
+sleep 2
+adb shell am start -a android.settings.APPLICATION_DETAILS_SETTINGS -d package:$PKG
+sleep 5
+dump_screen appinfo
+adb shell am force-stop com.android.settings
+adb shell input keyevent KEYCODE_HOME || true
+sleep 2
+
+adb shell am start -a android.settings.DEVICE_ADMIN_SETTINGS
+sleep 5
+dump_screen adminlist
+adb shell am force-stop com.android.settings
+adb shell input keyevent KEYCODE_HOME || true
+sleep 2
+
 # ---------- 3. accessibility service ----------
 adb shell appops set "$PKG" ACCESS_RESTRICTED_SETTINGS allow || true
 adb shell settings put secure enabled_accessibility_services "$A11Y"
@@ -125,7 +152,10 @@ if grep -q "Closed the app-info screen while anti-uninstall" "$OUT/logcat-appinf
 else
   fail "app-info screen was not closed (no service log line)"
 fi
-if grep -m1 "topResumedActivity" "$OUT/activities-appinfo.txt" | grep -q "InstalledAppDetails"; then
+adb shell uiautomator dump "/sdcard/ui-appinfo-after.xml" > /dev/null 2>&1
+adb pull "/sdcard/ui-appinfo-after.xml" "$OUT/ui-appinfo-after.xml" > /dev/null 2>&1
+adb shell dumpsys window > "$OUT/window-appinfo-after.txt" 2>&1
+if grep -m1 "topResumedActivity" "$OUT/activities-appinfo.txt" | grep -qE "InstalledAppDetails|SpaActivity|AppInfo"; then
   fail "app-info screen is still the resumed activity"
 else
   pass "app-info screen is no longer foreground"
@@ -138,6 +168,8 @@ sleep 5
 adb logcat -d > "$OUT/logcat-adminlist.txt" 2>&1
 adb shell dumpsys device_policy > "$OUT/device_policy-after.txt" 2>&1
 adb exec-out screencap -p > "$OUT/03-adminlist.png"
+adb shell uiautomator dump "/sdcard/ui-adminlist-after.xml" > /dev/null 2>&1
+adb pull "/sdcard/ui-adminlist-after.xml" "$OUT/ui-adminlist-after.xml" > /dev/null 2>&1
 if grep -q "Blocked device admin deactivation" "$OUT/logcat-adminlist.txt"; then
   pass "device-admin list screen blocked"
 else
