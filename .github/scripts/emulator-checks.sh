@@ -202,7 +202,59 @@ else
   fail "device admin was removed during the test"
 fi
 
-# ---------- 6. full evidence ----------
+# ---------- 6. bypass probes (informational) ----------
+# a) adb shell dpm remove-active-admin: works only for test-only admins
+adb shell dpm remove-active-admin "$ADMIN" > "$OUT/probe-dpm-remove-admin.txt" 2>&1
+adb shell dumpsys device_policy > "$OUT/probe-device_policy-after-dpm.txt" 2>&1
+if grep -qi "dev.pranav.applock" "$OUT/probe-device_policy-after-dpm.txt"; then
+  echo "INFO  dpm remove-active-admin refused (non-test admin): $(tail -2 "$OUT/probe-dpm-remove-admin.txt" | tr '\n' ' ')" | tee -a "$RESULTS"
+else
+  echo "WARN  dpm remove-active-admin succeeded - admin removed from adb" | tee -a "$RESULTS"
+fi
+
+# b) force-stop the app: what Developer options > Running services > Force stop does
+adb shell am force-stop "$PKG"
+adb shell am force-stop com.android.settings
+sleep 12
+adb shell pidof "$PKG" > "$OUT/probe-pidof-after-forcestop.txt" 2>&1
+adb logcat -c || true
+adb shell am start -a android.settings.APPLICATION_DETAILS_SETTINGS -d package:$PKG > /dev/null 2>&1
+sleep 8
+adb logcat -d > "$OUT/probe-logcat-after-forcestop.txt" 2>&1
+adb shell dumpsys activity activities > "$OUT/probe-activities-after-forcestop.txt" 2>&1
+adb shell dumpsys accessibility > "$OUT/probe-accessibility-after-forcestop.txt" 2>&1
+adb exec-out screencap -p > "$OUT/04-after-forcestop.png"
+adb shell am force-stop com.android.settings
+if grep -q "Closed the app-info screen" "$OUT/probe-logcat-after-forcestop.txt"; then
+  echo "INFO  protection survives am force-stop (system rebound the accessibility service)" | tee -a "$RESULTS"
+else
+  echo "INFO  protection is INACTIVE after am force-stop until the app is opened or accessibility is re-enabled" | tee -a "$RESULTS"
+fi
+
+# c) turn the accessibility service off from the shell (WRITE_SECURE_SETTINGS)
+adb shell settings put secure enabled_accessibility_services ""
+adb shell settings put secure accessibility_enabled 0
+sleep 5
+adb shell dumpsys accessibility > "$OUT/probe-accessibility-disabled.txt" 2>&1
+echo "INFO  'settings put secure enabled_accessibility_services \"\"' switches the reactive layer off (adb only)" | tee -a "$RESULTS"
+
+# d) recovery: re-enable and confirm the block works again
+adb shell appops set "$PKG" ACCESS_RESTRICTED_SETTINGS allow || true
+adb shell settings put secure enabled_accessibility_services "$A11Y"
+adb shell settings put secure accessibility_enabled 1
+sleep 12
+adb logcat -c || true
+adb shell am start -a android.settings.APPLICATION_DETAILS_SETTINGS -d package:$PKG > /dev/null 2>&1
+sleep 8
+adb logcat -d > "$OUT/probe-logcat-after-restore.txt" 2>&1
+adb shell am force-stop com.android.settings
+if grep -q "Closed the app-info screen" "$OUT/probe-logcat-after-restore.txt"; then
+  pass "protection works again once the accessibility service is enabled"
+else
+  echo "WARN  protection did not come back after re-enabling accessibility" | tee -a "$RESULTS"
+fi
+
+# ---------- 7. full evidence ----------
 adb shell input keyevent KEYCODE_WAKEUP || true
 adb shell wm dismiss-keyguard || true
 adb logcat -d > "$OUT/logcat-full.txt" 2>&1
