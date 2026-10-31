@@ -41,12 +41,9 @@ class AppLockAccessibilityService : AccessibilityService() {
     private val settingsAppInfoLabel: String? by lazy { resolveSettingsString("application_info_label") }
     private val settingsForceStopLabel: String? by lazy { resolveSettingsString("force_stop") }
 
-    /**
-     * The screen that hosts the Uninstall button can take a moment to render its title, so after
-     * an app-info-like window shows up the following events are re-checked for this long.
-     */
+    /** Throttles the window inspection that runs while Settings is in the foreground. */
     @Volatile
-    private var appInfoCandidateAt = 0L
+    private var lastAppInfoProbeAt = 0L
     private val keyboardPackages: List<String> by lazy { getKeyboardPackageNames() }
 
     private var lastForegroundPackage = ""
@@ -64,8 +61,14 @@ class AppLockAccessibilityService : AccessibilityService() {
         private const val DEVICE_ADMIN_SETTINGS_PACKAGE = "com.android.settings"
         private const val SETTINGS_SPA_ACTIVITY = "SpaActivity"
 
-        /** How long a rendering app-info screen is re-checked after it is first noticed. */
-        private const val APP_INFO_RECHECK_MS = 5_000L
+        /**
+         * Settings does not always deliver a window-state event carrying the activity class (the
+         * Android 14 app-info screen is a Compose window whose events report android.view.View),
+         * so the window is also inspected directly while Settings is in the foreground.
+         * At most one inspection per interval - cheap, and it also catches a page that is still
+         * rendering when it opens.
+         */
+        private const val APP_INFO_PROBE_INTERVAL_MS = 300L
         private const val APP_PACKAGE_PREFIX = "dev.pranav.applock"
 
         /**
@@ -491,26 +494,19 @@ class AppLockAccessibilityService : AccessibilityService() {
      */
     private fun isOurAppInfoPage(event: AccessibilityEvent): Boolean {
         val className = event.className?.toString().orEmpty()
-        val isAppInfoClass = APP_INFO_CLASS_MARKERS.any { className.contains(it) }
-        if (isAppInfoClass) {
-            appInfoCandidateAt = SystemClock.elapsedRealtime()
-        } else if (SystemClock.elapsedRealtime() - appInfoCandidateAt > APP_INFO_RECHECK_MS) {
-            return false
+        val isClassicAppInfoClass = APP_INFO_CLASS_MARKERS.any {
+            className.contains(it) && !className.contains(SETTINGS_SPA_ACTIVITY)
         }
-
-        if (!windowShowsOurApp(event)) {
-            return false
-        }
-
-        // InstalledAppDetails and friends are used for the app-info screen only; the SPA host is
-        // shared with other screens, so it needs the content check below.
-        if (isAppInfoClass && !className.contains(SETTINGS_SPA_ACTIVITY)) {
+        if (isClassicAppInfoClass && windowShowsOurApp(event)) {
             return true
         }
 
-        // Android 14+ renders app info inside a generic SPA host, so identify the screen by what
-        // it shows: the "App info" title or a "Force stop" button, in the device language.
-        return windowLooksLikeAppInfo()
+        val now = SystemClock.elapsedRealtime()
+        if (now - lastAppInfoProbeAt < APP_INFO_PROBE_INTERVAL_MS) {
+            return false
+        }
+        lastAppInfoProbeAt = now
+        return windowLooksLikeOurAppInfo()
     }
 
     private fun windowShowsOurApp(event: AccessibilityEvent): Boolean {
@@ -525,7 +521,19 @@ class AppLockAccessibilityService : AccessibilityService() {
                 findNodeWithTextContaining(root, packageName) != null
     }
 
-    private fun windowLooksLikeAppInfo(): Boolean {
+    /**
+     * True when the active Settings window shows this app *and* is an app-detail screen.
+     * The "App info" title and the "Force stop" button are read from the installed Settings
+     * package in the device language, so this does not rely on class names or on English text.
+     */
+    private fun windowLooksLikeOurAppInfo(): Boolean {
+        val root = rootInActiveWindow ?: return false
+        if (findNodeWithTextContaining(root, ourAppLabel) == null &&
+            findNodeWithTextContaining(root, packageName) == null
+        ) {
+            return false
+        }
+
         val title = runCatching { windows.firstOrNull { it.isActive }?.title?.toString() }.getOrNull()
         val appInfoLabel = settingsAppInfoLabel
         if (title != null && appInfoLabel != null && title.contains(appInfoLabel, ignoreCase = true)) {
@@ -533,7 +541,6 @@ class AppLockAccessibilityService : AccessibilityService() {
         }
 
         val forceStopLabel = settingsForceStopLabel ?: return false
-        val root = rootInActiveWindow ?: return false
         return findNodeWithTextContaining(root, forceStopLabel) != null
     }
 

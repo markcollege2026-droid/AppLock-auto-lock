@@ -182,6 +182,24 @@ else
   pass "app-info screen is no longer foreground"
 fi
 
+# ---------- 4b. same check again, from a cold Settings (determinism) ----------
+adb shell am force-stop com.android.settings
+adb shell input keyevent KEYCODE_HOME || true
+sleep 2
+adb logcat -c || true
+adb shell am start -a android.settings.APPLICATION_DETAILS_SETTINGS -d package:$PKG > /dev/null 2>&1
+sleep 8
+adb logcat -d > "$OUT/logcat-appinfo2.txt" 2>&1
+adb shell dumpsys activity activities > "$OUT/activities-appinfo2.txt" 2>&1
+if grep -q "Closed the app-info screen while anti-uninstall" "$OUT/logcat-appinfo2.txt"; then
+  pass "app-info screen closed again on a second attempt"
+else
+  fail "app-info screen not closed on a second attempt"
+fi
+adb shell am force-stop com.android.settings
+adb shell input keyevent KEYCODE_HOME || true
+sleep 2
+
 # ---------- 5. CHECK: device-admin list is still blocked ----------
 adb logcat -c || true
 adb shell am start -a android.settings.DEVICE_ADMIN_SETTINGS
@@ -248,9 +266,9 @@ adb shell am force-stop com.android.settings
 adb shell input keyevent KEYCODE_HOME || true
 sleep 3
 adb logcat -c || true
-adb shell am start -W -a android.settings.APPLICATION_DETAILS_SETTINGS -d package:$PKG \
+adb shell am start -a android.settings.APPLICATION_DETAILS_SETTINGS -d package:$PKG \
   > "$OUT/probe-start-restore.txt" 2>&1
-sleep 12
+sleep 10
 adb logcat -d > "$OUT/probe-logcat-after-restore.txt" 2>&1
 adb shell dumpsys activity activities > "$OUT/probe-activities-after-restore.txt" 2>&1
 adb exec-out screencap -p > "$OUT/05-after-restore.png"
