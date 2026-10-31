@@ -7,9 +7,13 @@ AVD_NAME=${AVD_NAME:-ci34}
 EMULATOR="${ANDROID_HOME}/emulator/emulator"
 LOG=${EMULATOR_LOG:-/tmp/emulator.log}
 
+export ANDROID_USER_HOME="${HOME}/.android"
+export ANDROID_AVD_HOME="${HOME}/.android/avd"
+
 echo "HOME=$HOME"
 env | grep -i '^ANDROID' || true
-ls -la "$HOME/.android/avd" || true
+ls -la "$ANDROID_AVD_HOME" || true
+"$EMULATOR" -list-avds || true
 find / -maxdepth 6 -name "${AVD_NAME}.ini" 2>/dev/null | head -5 || true
 
 "$EMULATOR" -avd "$AVD_NAME" \

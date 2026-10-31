@@ -66,6 +66,7 @@ jobs:
 
       - name: Install emulator and system image
         run: |
+          set -o pipefail
           mkdir -p emulator-artifacts
           bash .github/scripts/setup-avd.sh 2>&1 | tee emulator-artifacts/avd-setup.log
 
