@@ -197,6 +197,46 @@ jobs:
               --title "CI build APKs" --notes "APKs built by CI from commit $GITHUB_SHA."
           gh release upload ci-latest "${apks[@]}" --repo "$GITHUB_REPOSITORY" --clobber
 
+      - name: Publish the versioned release
+        if: always() && github.event_name == 'push' && github.ref == 'refs/heads/master'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -o pipefail
+          version=$(grep -m1 'versionName' app/build.gradle.kts | sed -E 's/.*"([^"]+)".*/\1/')
+          if [ -z "$version" ]; then
+            echo "No versionName found, skipping the versioned release"
+            exit 0
+          fi
+          mapfile -t apks < <(find app/build/outputs/apk -name '*.apk' 2>/dev/null)
+          if [ ${#apks[@]} -eq 0 ]; then
+            echo "No APKs to publish"
+            exit 0
+          fi
+
+          tag="v$version"
+          sha256sum "${apks[@]}" | sed 's#  .*/#  #' > /tmp/sums.txt
+          {
+            cat .github/release-notes.md
+            echo
+            echo "### Checksums"
+            echo '```'
+            cat /tmp/sums.txt
+            echo '```'
+            echo
+            echo "Built from commit $GITHUB_SHA."
+          } > /tmp/notes.md
+
+          if gh release view "$tag" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "Release $tag already exists, refreshing its assets"
+          else
+            gh release create "$tag" --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" \
+              --title "App Lock $version" --notes-file /tmp/notes.md
+          fi
+          gh release upload "$tag" "${apks[@]}" --repo "$GITHUB_REPOSITORY" --clobber
+          gh release edit "$tag" --repo "$GITHUB_REPOSITORY" --notes-file /tmp/notes.md
+          gh release view "$tag" --repo "$GITHUB_REPOSITORY" --json url --jq .url
+
       - name: Run lint
         id: lint
         continue-on-error: true
