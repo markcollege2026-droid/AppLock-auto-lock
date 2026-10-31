@@ -1,0 +1,19 @@
+
+Exception occurred while executing 'remove-active-admin':
+java.lang.SecurityException: Attempt to remove non-test admin ComponentInfo{dev.pranav.applock/dev.pranav.applock.core.broadcast.DeviceAdmin} 0
+	at com.android.server.devicepolicy.DevicePolicyManagerService.lambda$forceRemoveActiveAdmin$12(DevicePolicyManagerService.java:4037)
+	at com.android.server.devicepolicy.DevicePolicyManagerService.$r8$lambda$cFxfkN8--j9hwbtI_Iutdy6FzII(DevicePolicyManagerService.java:0)
+	at com.android.server.devicepolicy.DevicePolicyManagerService$$ExternalSyntheticLambda142.runOrThrow(R8$$SyntheticClass:0)
+	at android.os.Binder.withCleanCallingIdentity(Binder.java:436)
+	at com.android.server.devicepolicy.DevicePolicyManagerService$Injector.binderWithCleanCallingIdentity(DevicePolicyManagerService.java:1847)
+	at com.android.server.devicepolicy.DevicePolicyManagerService.forceRemoveActiveAdmin(DevicePolicyManagerService.java:4033)
+	at com.android.server.devicepolicy.DevicePolicyManagerServiceShellCommand.runRemoveActiveAdmin(DevicePolicyManagerServiceShellCommand.java:278)
+	at com.android.server.devicepolicy.DevicePolicyManagerServiceShellCommand.onCommand(DevicePolicyManagerServiceShellCommand.java:91)
+	at com.android.modules.utils.BasicShellCommandHandler.exec(BasicShellCommandHandler.java:97)
+	at android.os.ShellCommand.exec(ShellCommand.java:38)
+	at com.android.server.devicepolicy.DevicePolicyManagerService.onShellCommand(DevicePolicyManagerService.java:11418)
+	at android.os.Binder.shellCommand(Binder.java:1068)
+	at android.os.Binder.onTransact(Binder.java:888)
+	at android.app.admin.IDevicePolicyManager$Stub.onTransact(IDevicePolicyManager.java:6326)
+	at android.os.Binder.execTransactInternal(Binder.java:1344)
+	at android.os.Binder.execTransact(Binder.java:1275)

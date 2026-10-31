@@ -1,0 +1,3 @@
+Starting: Intent { act=android.settings.DEVICE_ADMIN_SETTINGS }
+Error: Activity not started, unable to resolve Intent { act=android.settings.DEVICE_ADMIN_SETTINGS flg=0x10000000 }
+Starting: Intent { cmp=com.android.settings/.Settings }

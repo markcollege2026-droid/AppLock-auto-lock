@@ -1,0 +1,15 @@
+PASS  debug APK installed
+PASS  app launches and is the resumed activity
+PASS  device admin active
+PASS  package install refuses uninstall while the admin is active
+PASS  anti-uninstall pref written
+PASS  accessibility service connected
+PASS  app-info screen closed by the accessibility service
+PASS  app-info screen is no longer foreground
+PASS  app-info screen closed again on a second attempt
+SKIP  device-admin list block not observed (android.settings.DEVICE_ADMIN_SETTINGS may not be resolvable on this build)
+PASS  device admin still active after the attempts
+INFO  dpm remove-active-admin refused (non-test admin): 	at android.os.Binder.execTransactInternal(Binder.java:1344) 	at android.os.Binder.execTransact(Binder.java:1275) 
+INFO  protection is INACTIVE after am force-stop until the app is opened or accessibility is re-enabled
+INFO  'settings put secure enabled_accessibility_services ""' switches the reactive layer off (adb only)
+PASS  protection works again once the accessibility service is enabled

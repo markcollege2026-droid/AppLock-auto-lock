@@ -1,0 +1,848 @@
+--------- beginning of system
+10-31 21:38:08.858   522  2368 W ActivityTaskManager: callingPackage for (uid=2000, pid=6518) has no WPC
+10-31 21:38:08.859   522  2368 D CompatibilityChangeReporter: Compat change id reported: 265464455; UID 1000; state: DISABLED
+10-31 21:38:08.859   522  2368 D CompatibilityChangeReporter: Compat change id reported: 265452344; UID 1000; state: DISABLED
+10-31 21:38:08.859   522  2368 D CompatibilityChangeReporter: Compat change id reported: 266124927; UID 1000; state: DISABLED
+10-31 21:38:08.859   522  2368 D CompatibilityChangeReporter: Compat change id reported: 265451093; UID 1000; state: DISABLED
+10-31 21:38:08.859   522  2368 D CompatibilityChangeReporter: Compat change id reported: 265456536; UID 1000; state: DISABLED
+10-31 21:38:08.859   522  2368 D CompatibilityChangeReporter: Compat change id reported: 255940284; UID 1000; state: DISABLED
+10-31 21:38:08.859   522  2368 D CompatibilityChangeReporter: Compat change id reported: 236283604; UID 1000; state: DISABLED
+10-31 21:38:08.859   522  2368 D CompatibilityChangeReporter: Compat change id reported: 263959004; UID 1000; state: DISABLED
+10-31 21:38:08.859   522  2368 D CompatibilityChangeReporter: Compat change id reported: 264304459; UID 1000; state: DISABLED
+10-31 21:38:08.859   522  2368 D CompatibilityChangeReporter: Compat change id reported: 264301586; UID 1000; state: DISABLED
+10-31 21:38:08.859   522  2368 D CompatibilityChangeReporter: Compat change id reported: 254631730; UID 1000; state: DISABLED
+10-31 21:38:08.859   522  2368 D CompatibilityChangeReporter: Compat change id reported: 273509367; UID 1000; state: DISABLED
+10-31 21:38:08.859   522  2368 D CompatibilityChangeReporter: Compat change id reported: 263259275; UID 1000; state: DISABLED
+10-31 21:38:08.859   522  2368 D CompatibilityChangeReporter: Compat change id reported: 174042980; UID 1000; state: DISABLED
+10-31 21:38:08.859   522  2368 D CompatibilityChangeReporter: Compat change id reported: 174042936; UID 1000; state: DISABLED
+10-31 21:38:08.859   522  2368 D CompatibilityChangeReporter: Compat change id reported: 181136395; UID 1000; state: DISABLED
+10-31 21:38:08.859   522  2368 D CompatibilityChangeReporter: Compat change id reported: 194480991; UID 1000; state: ENABLED
+10-31 21:38:08.863   522  2368 D CompatibilityChangeReporter: Compat change id reported: 197654537; UID 1000; state: ENABLED
+10-31 21:38:08.863   522  2368 V SplashScreenExceptionList: SplashScreen checking exception for package com.android.settings (target sdk:34) -> false
+10-31 21:38:08.863   522  2368 D CompatibilityChangeReporter: Compat change id reported: 205907456; UID 1000; state: ENABLED
+10-31 21:38:08.865   822   855 V WindowManagerShell: Transition requested: android.os.BinderProxy@5ee1547 TransitionRequestInfo { type = OPEN, triggerTask = TaskInfo{userId=0 taskId=13 displayId=0 isRunning=true baseIntent=Intent { act=android.settings.APPLICATION_DETAILS_SETTINGS dat=package: flg=0x10000000 cmp=com.android.settings/.applications.InstalledAppDetails } baseActivity=ComponentInfo{com.android.settings/com.android.settings.applications.InstalledAppDetailsTop} topActivity=ComponentInfo{com.android.settings/com.android.settings.applications.InstalledAppDetailsTop} origActivity=ComponentInfo{com.android.settings/com.android.settings.applications.InstalledAppDetails} realActivity=ComponentInfo{com.android.settings/com.android.settings.applications.InstalledAppDetailsTop} numActivities=1 lastActiveTime=121987 supportsMultiWindow=true resizeMode=1 isResizeable=true minWidth=-1 minHeight=-1 defaultMinSize=220 token=WCT{android.window.IWindowContainerToken$Stub$Proxy@cc4e174} topActivityType=1 pictureInPictureParams=null shouldDockBigOverlays=false launchIntoPipHostTaskId=-1 lastParentTaskIdBeforePip=-1 displayCutoutSafeInsets=Rect(0, 128 - 0, 0) topActivityInfo=ActivityInfo{3d869d com.android.settings.applications.InstalledAppDetails} launchCookies=[] positionInParent=Point(0, 0) parentTaskId=-1 isFocused=false isVisible=false isVisibleRequested=false isSleeping=false topActivityInSizeCompat=false topActivityEligibleForLetterboxEducation= false topActivityLetterboxed= false isFromDoubleTap= false topActivityLetterboxVerticalPosition= -1 topActivityLetterboxHorizontalPosition= -1 topActivityLetterboxWidth=-1 topActivityLetterboxHeight=-1 locusId=null displayAreaFeatureId=1 cameraCompatControlState=hidden}, remoteTransition = null, displayChange = null }
+10-31 21:38:08.866   522  2368 I ActivityTaskManager: START u0 {act=android.settings.APPLICATION_DETAILS_SETTINGS dat=package: flg=0x10000000 cmp=com.android.settings/.applications.InstalledAppDetails} with LAUNCH_MULTIPLE from uid 2000 (BAL_ALLOW_PERMISSION) result code=0
+--------- beginning of main
+10-31 21:38:08.877   822   868 D SplashScreenView: Build android.window.SplashScreenView{c08a0e0 V.E...... ......ID 0,0-0,0}
+10-31 21:38:08.877   822   868 D SplashScreenView: Icon: view: android.widget.ImageView{df0ef99 V.ED..... ......I. 0,0-0,0 #10204f0 android:id/splashscreen_icon_view} drawable: com.android.wm.shell.startingsurface.SplashscreenIconDrawableFactory$ImmobileIconDrawable@1ecd25e size: 420
+10-31 21:38:08.877   822   868 D SplashScreenView: Branding: view: android.view.View{ca2663f G.ED..... ......I. 0,0-0,0 #10204ef android:id/splashscreen_branding_view} drawable: null size w: 0 h: 0
+10-31 21:38:08.885   340   340 D Zygote  : Forked child process 6522
+10-31 21:38:08.888   402   402 I BpBinder: onLastStrongRef automatically unlinking death recipients: 
+10-31 21:38:08.891   522   550 I ActivityManager: Start proc 6522:com.android.settings/1000 for next-top-activity {com.android.settings/com.android.settings.applications.InstalledAppDetails}
+10-31 21:38:08.896   522  2368 D CompatibilityChangeReporter: Compat change id reported: 168419799; UID 1000; state: DISABLED
+10-31 21:38:08.896   522  2368 D CompatibilityChangeReporter: Compat change id reported: 273564678; UID 1000; state: DISABLED
+10-31 21:38:08.915  6522  6522 I ndroid.settings: Using CollectorTypeCC GC.
+10-31 21:38:08.916  6522  6522 W ndroid.settings: Unexpected CPU variant for x86: x86_64.
+10-31 21:38:08.916  6522  6522 W ndroid.settings: Known variants: atom, sandybridge, silvermont, goldmont, goldmont-plus, tremont, kabylake, default
+10-31 21:38:08.918  6522  6522 E ndroid.settings: Not starting debugger since process cannot load the jdwp agent.
+10-31 21:38:08.943  1074  1967 D EGL_emulation: app_time_stats: avg=6796.93ms min=6796.93ms max=6796.93ms count=1
+10-31 21:38:09.016  1683  1683 I GsaVoiceInteractionSrv: Handling ACTION_STOP_HOTWORD
+10-31 21:38:09.016  1683  2074 E HwDetectorWithState: a: 3
+10-31 21:38:09.040   822   855 V WindowManagerShell: onTransitionReady android.os.BinderProxy@5ee1547: {id=26 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[{WCT{android.window.IWindowContainerToken$Stub$Proxy@532510d} m=OPEN f=NONE leash=Surface(name=Task=13)/@0x50acf36 sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) d=0},{WCT{android.window.IWindowContainerToken$Stub$Proxy@82ca8c2} m=TO_BACK f=SHOW_WALLPAPER leash=Surface(name=Task=1)/@0xa80de37 sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) d=0}]}
+10-31 21:38:09.040   822   855 V WindowManagerShell: Playing animation for (#26)android.os.BinderProxy@5ee1547@0
+10-31 21:38:09.040   822   855 V WindowManagerShell:  try handler com.android.wm.shell.transition.DefaultMixedHandler@ceafd38
+10-31 21:38:09.040   822   855 V WindowManagerShell:  try handler com.android.wm.shell.keyguard.KeyguardTransitionHandler@a851111
+10-31 21:38:09.041   822   855 V WindowManagerShell:  try handler com.android.wm.shell.activityembedding.ActivityEmbeddingController@a01a276
+10-31 21:38:09.041   822   855 V WindowManagerShell:  try handler com.android.wm.shell.recents.RecentsTransitionHandler@f765077
+10-31 21:38:09.041   822   855 V ShellRecents: RecentsTransitionHandler.startAnimation: no controller found
+10-31 21:38:09.041   822   855 V WindowManagerShell:  try handler com.android.wm.shell.pip.PipTransition@4eeb4e4
+10-31 21:38:09.041   822   855 V WindowManagerShell:  try handler com.android.wm.shell.splitscreen.StageCoordinator@118ad4d
+10-31 21:38:09.041   822   855 V WindowManagerShell:  try handler com.android.wm.shell.transition.RemoteTransitionHandler@2dd7002
+10-31 21:38:09.041   822   855 V WindowManagerShell: Transition doesn't have explicit remote, search filters for match for {id=26 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[{WCT{android.window.IWindowContainerToken$Stub$Proxy@532510d} m=OPEN f=NONE leash=Surface(name=Task=13)/@0x50acf36 sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) d=0},{WCT{android.window.IWindowContainerToken$Stub$Proxy@82ca8c2} m=TO_BACK f=SHOW_WALLPAPER leash=Surface(name=Task=1)/@0xa80de37 sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) d=0}]}
+10-31 21:38:09.041   822   855 V WindowManagerShell:  Checking filter Pair{{types=[] flags=0x0] notFlags=0x0 checks=[{atype=dream independent=true modes=[OPEN,TO_FRONT] flags=NONE mustBeTask=false order=ANY topActivity=null},{atype=home independent=true modes=[CLOSE,TO_BACK] flags=NONE mustBeTask=false order=ANY topActivity=null}]} RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@f6b815c, appThread = android.app.IApplicationThread$Stub$Proxy@b584c65, debugName = LauncherToDream }}
+10-31 21:38:09.041   822   855 V WindowManagerShell:  Checking filter Pair{{types=[] flags=0x0] notFlags=0x100 checks=[{atype=home independent=true modes=[OPEN,TO_FRONT] flags=NONE mustBeTask=false order=TOP topActivity=ComponentInfo{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity}},{atype=standard independent=true modes=[CLOSE,TO_BACK] flags=NONE mustBeTask=false order=ANY topActivity=null}]} RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@6fd7d3a, appThread = android.app.IApplicationThread$Stub$Proxy@af22deb, debugName = QuickstepLaunchHome }}
+10-31 21:38:09.041   822   855 V WindowManagerShell:  Delegate animation for #26 to null
+10-31 21:38:09.041   822   855 V WindowManagerShell:  try handler com.android.wm.shell.transition.DefaultTransitionHandler@3f57d13
+10-31 21:38:09.041   822   855 V WindowManagerShell: start default transition animation, info = {id=26 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[{WCT{android.window.IWindowContainerToken$Stub$Proxy@532510d} m=OPEN f=NONE leash=Surface(name=Task=13)/@0x50acf36 sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) d=0},{WCT{android.window.IWindowContainerToken$Stub$Proxy@82ca8c2} m=TO_BACK f=SHOW_WALLPAPER leash=Surface(name=Task=1)/@0xa80de37 sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) d=0}]}
+10-31 21:38:09.042   822   855 V WindowManagerShell: loadAnimation: anim=android.view.animation.AnimationSet@a760210 animAttr=0x13 type=OPEN isEntrance=false
+10-31 21:38:09.042   822   855 V WindowManagerShell: loadAnimation: anim=android.view.animation.AnimationSet@fa12f3c animAttr=0x12 type=OPEN isEntrance=true
+10-31 21:38:09.043   822   855 V WindowManagerShell:  animated by com.android.wm.shell.transition.DefaultTransitionHandler@3f57d13
+10-31 21:38:09.043   522   539 V WindowManager: Sent Transition #26 createdAt=10-31 21:38:08.860 via request=TransitionRequestInfo { type = OPEN, triggerTask = TaskInfo{userId=0 taskId=13 displayId=0 isRunning=true baseIntent=Intent { act=android.settings.APPLICATION_DETAILS_SETTINGS dat=package: flg=0x10000000 cmp=com.android.settings/.applications.InstalledAppDetails } baseActivity=ComponentInfo{com.android.settings/com.android.settings.applications.InstalledAppDetailsTop} topActivity=ComponentInfo{com.android.settings/com.android.settings.applications.InstalledAppDetailsTop} origActivity=ComponentInfo{com.android.settings/com.android.settings.applications.InstalledAppDetails} realActivity=ComponentInfo{com.android.settings/com.android.settings.applications.InstalledAppDetailsTop} numActivities=1 lastActiveTime=121987 supportsMultiWindow=true resizeMode=1 isResizeable=true minWidth=-1 minHeight=-1 defaultMinSize=220 token=WCT{RemoteToken{6b2bd6e Task{fc23c3b #13 type=standard A=1000:com.android.settings}}} topActivityType=1 pictureInPictureParams=null shouldDockBigOverlays=false launchIntoPipHostTaskId=-1 lastParentTaskIdBeforePip=-1 displayCutoutSafeInsets=Rect(0, 128 - 0, 0) topActivityInfo=ActivityInfo{e65c0f com.android.settings.applications.InstalledAppDetails} launchCookies=[] positionInParent=Point(0, 0) parentTaskId=-1 isFocused=false isVisible=false isVisibleRequested=false isSleeping=false topActivityInSizeCompat=false topActivityEligibleForLetterboxEducation= false topActivityLetterboxed= false isFromDoubleTap= false topActivityLetterboxVerticalPosition= -1 topActivityLetterboxHorizontalPosition= -1 topActivityLetterboxWidth=-1 topActivityLetterboxHeight=-1 locusId=null displayAreaFeatureId=1 cameraCompatControlState=hidden}, remoteTransition = null, displayChange = null }
+10-31 21:38:09.043   522   539 V WindowManager:     startWCT=WindowContainerTransaction { changes = {} hops = [] errorCallbackToken=null taskFragmentOrganizer=null }
+10-31 21:38:09.043   522   539 V WindowManager:     info={id=26 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[{WCT{RemoteToken{6b2bd6e Task{fc23c3b #13 type=standard A=1000:com.android.settings}}} m=OPEN f=NONE leash=Surface(name=Task=13)/@0x45d3170 sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) d=0},{WCT{RemoteToken{ebd524e Task{76f7bf5 #1 type=home}}} m=TO_BACK f=SHOW_WALLPAPER leash=Surface(name=Task=1)/@0xff05fd4 sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) d=0}]}
+10-31 21:38:09.099   822   861 W Looper  : Slow delivery took 45ms wmshell.anim h=android.view.Choreographer$FrameHandler c=android.view.Choreographer$FrameDisplayEventReceiver@3d629d4 m=0
+10-31 21:38:09.100   822   855 V WindowManagerShell: Transition animation finished (aborted=false), notifying core (#26)android.os.BinderProxy@5ee1547@0
+10-31 21:38:09.100   522   539 V WindowManager: Finish Transition #26: created at 10-31 21:38:08.860 collect-started=0.017ms request-sent=4.611ms started=8.477ms ready=176.514ms sent=177.677ms finished=240.471ms
+10-31 21:38:09.101   822   855 V WindowManagerShell: Track 0 became idle
+10-31 21:38:09.101   822   855 V WindowManagerShell: All active transition animations finished
+10-31 21:38:09.102   822   888 D EGL_emulation: app_time_stats: avg=9071.88ms min=9071.88ms max=9071.88ms count=1
+10-31 21:38:09.129  6522  6522 D CompatibilityChangeReporter: Compat change id reported: 171979766; UID 1000; state: ENABLED
+10-31 21:38:09.129  6522  6522 D CompatibilityChangeReporter: Compat change id reported: 242716250; UID 1000; state: ENABLED
+10-31 21:38:09.167  6522  6522 D CompatibilityChangeReporter: Compat change id reported: 3400644; UID 1000; state: ENABLED
+10-31 21:38:09.170  6522  6522 D nativeloader: Configuring clns-shared-6 for other apk /system/framework/org.apache.http.legacy.jar. target_sdk_version=34, uses_libraries=ALL, library_path=/system_ext/priv-app/SettingsGoogle/lib/x86_64:/system_ext/priv-app/SettingsGoogle/SettingsGoogle.apk!/lib/x86_64:/system/lib64:/system_ext/lib64, permitted_path=/data:/mnt/expand:/data/user_de/0/com.android.settings:/system_ext/priv-app/SettingsGoogle:/system/lib64:/system_ext/lib64
+10-31 21:38:09.171  6522  6522 D ApplicationLoaders: Returning zygote-cached class loader: /system_ext/framework/androidx.window.extensions.jar
+10-31 21:38:09.171  6522  6522 D ApplicationLoaders: Returning zygote-cached class loader: /system_ext/framework/androidx.window.sidecar.jar
+10-31 21:38:09.219  6522  6522 D nativeloader: Configuring clns-shared-7 for other apk /system_ext/priv-app/SettingsGoogle/SettingsGoogle.apk. target_sdk_version=34, uses_libraries=, library_path=/system_ext/priv-app/SettingsGoogle/lib/x86_64:/system_ext/priv-app/SettingsGoogle/SettingsGoogle.apk!/lib/x86_64:/system/lib64:/system_ext/lib64, permitted_path=/data:/mnt/expand:/data/user_de/0/com.android.settings:/system_ext/priv-app/SettingsGoogle:/system/lib64:/system_ext/lib64
+10-31 21:38:09.229  6522  6522 V GraphicsEnvironment: Currently set values for:
+10-31 21:38:09.230  6522  6522 V GraphicsEnvironment:   angle_gl_driver_selection_pkgs=[]
+10-31 21:38:09.230  6522  6522 V GraphicsEnvironment:   angle_gl_driver_selection_values=[]
+10-31 21:38:09.230  6522  6522 V GraphicsEnvironment: ANGLE GameManagerService for com.android.settings: false
+10-31 21:38:09.230  6522  6522 V GraphicsEnvironment: com.android.settings is not listed in per-application setting
+10-31 21:38:09.230  6522  6522 V GraphicsEnvironment: Neither updatable production driver nor prerelease driver is supported.
+10-31 21:38:09.231  6522  6522 V BatteryUsageContentProvider: initialize provider
+10-31 21:38:09.235  6522  6522 D SpaSearchProvider: onCreate
+10-31 21:38:09.235  6522  6522 D CompatibilityChangeReporter: Compat change id reported: 183155436; UID 1000; state: ENABLED
+10-31 21:38:09.236  6522  6522 D BatteryStateDatabase: initialize battery states database
+10-31 21:38:09.236  6522  6522 W BatteryUsageContentProvider: create content provider from null
+10-31 21:38:09.237  6522  6522 D SettingsSliceProvider: init
+10-31 21:38:09.237  6522  6522 D SettingsSliceProvider: onCreateSliceProvider
+10-31 21:38:09.246   822   888 D EGL_emulation: app_time_stats: avg=26919.44ms min=26919.44ms max=26919.44ms count=1
+10-31 21:38:09.248  6522  6522 D SpaEnvironment: reset
+10-31 21:38:09.251  6522  6522 D ActivityEmbeddingUtils: isEmbeddingActivityEnabled = true
+10-31 21:38:09.265   522  1926 I ActivityManager: Flag disabled. Ignoring finishAttachApplication from uid: 1000. pid: 6522
+10-31 21:38:09.278  6522  6541 D libEGL  : loaded /vendor/lib64/egl/libEGL_emulation.so
+10-31 21:38:09.281  6522  6541 D libEGL  : loaded /vendor/lib64/egl/libGLESv1_CM_emulation.so
+10-31 21:38:09.282  6522  6541 D libEGL  : loaded /vendor/lib64/egl/libGLESv2_emulation.so
+10-31 21:38:09.285  6522  6522 D ActivityEmbeddingUtils: isEmbeddingActivityEnabled = true
+10-31 21:38:09.289   522  1926 I ActivityTaskManager: START u0 {act=android.settings.SETTINGS_EMBED_DEEP_LINK_ACTIVITY flg=0x2000000 pkg=com.android.settings cmp=com.android.settings/.homepage.DeepLinkHomepageActivity (has extras)} with LAUNCH_SINGLE_TASK from uid 1000 (BAL_ALLOW_ALLOWLISTED_UID) result code=0
+10-31 21:38:09.290   822   855 V WindowManagerShell: Transition requested: android.os.BinderProxy@c04c672 TransitionRequestInfo { type = OPEN, triggerTask = TaskInfo{userId=0 taskId=13 displayId=0 isRunning=true baseIntent=Intent { act=android.settings.APPLICATION_DETAILS_SETTINGS dat=package: flg=0x10000000 cmp=com.android.settings/.applications.InstalledAppDetails } baseActivity=ComponentInfo{com.android.settings/com.android.settings.applications.InstalledAppDetailsTop} topActivity=ComponentInfo{com.android.settings/com.android.settings.homepage.DeepLinkHomepageActivity} origActivity=ComponentInfo{com.android.settings/com.android.settings.applications.InstalledAppDetails} realActivity=ComponentInfo{com.android.settings/com.android.settings.applications.InstalledAppDetailsTop} numActivities=2 lastActiveTime=122411 supportsMultiWindow=true resizeMode=1 isResizeable=true minWidth=-1 minHeight=-1 defaultMinSize=220 token=WCT{android.window.IWindowContainerToken$Stub$Proxy@ab6ac3} topActivityType=1 pictureInPictureParams=null shouldDockBigOverlays=false launchIntoPipHostTaskId=-1 lastParentTaskIdBeforePip=-1 displayCutoutSafeInsets=Rect(0, 128 - 0, 0) topActivityInfo=ActivityInfo{9560f40 com.android.settings.homepage.DeepLinkHomepageActivity} launchCookies=[] positionInParent=Point(0, 0) parentTaskId=-1 isFocused=true isVisible=true isVisibleRequested=true isSleeping=false topActivityInSizeCompat=false topActivityEligibleForLetterboxEducation= false topActivityLetterboxed= false isFromDoubleTap= false topActivityLetterboxVerticalPosition= -1 topActivityLetterboxHorizontalPosition= -1 topActivityLetterboxWidth=-1 topActivityLetterboxHeight=-1 locusId=null displayAreaFeatureId=1 cameraCompatControlState=hidden}, remoteTransition = null, displayChange = null }
+10-31 21:38:09.303  6522  6522 D ActivityEmbeddingUtils: isEmbeddingActivityEnabled = true
+10-31 21:38:09.304   402   402 I BpBinder: onLastStrongRef automatically unlinking death recipients: 
+10-31 21:38:09.327  6522  6522 D CompatibilityChangeReporter: Compat change id reported: 171228096; UID 1000; state: ENABLED
+10-31 21:38:09.329   522   539 V WindowManager: Sent Transition #27 createdAt=10-31 21:38:09.287 via request=TransitionRequestInfo { type = OPEN, triggerTask = TaskInfo{userId=0 taskId=13 displayId=0 isRunning=true baseIntent=Intent { act=android.settings.APPLICATION_DETAILS_SETTINGS dat=package: flg=0x10000000 cmp=com.android.settings/.applications.InstalledAppDetails } baseActivity=ComponentInfo{com.android.settings/com.android.settings.applications.InstalledAppDetailsTop} topActivity=ComponentInfo{com.android.settings/com.android.settings.homepage.DeepLinkHomepageActivity} origActivity=ComponentInfo{com.android.settings/com.android.settings.applications.InstalledAppDetails} realActivity=ComponentInfo{com.android.settings/com.android.settings.applications.InstalledAppDetailsTop} numActivities=2 lastActiveTime=122411 supportsMultiWindow=true resizeMode=1 isResizeable=true minWidth=-1 minHeight=-1 defaultMinSize=220 token=WCT{RemoteToken{6b2bd6e Task{fc23c3b #13 type=standard A=1000:com.android.settings}}} topActivityType=1 pictureInPictureParams=null shouldDockBigOverlays=false launchIntoPipHostTaskId=-1 lastParentTaskIdBeforePip=-1 displayCutoutSafeInsets=Rect(0, 128 - 0, 0) topActivityInfo=ActivityInfo{adad964 com.android.settings.homepage.DeepLinkHomepageActivity} launchCookies=[] positionInParent=Point(0, 0) parentTaskId=-1 isFocused=true isVisible=true isVisibleRequested=true isSleeping=false topActivityInSizeCompat=false topActivityEligibleForLetterboxEducation= false topActivityLetterboxed= false isFromDoubleTap= false topActivityLetterboxVerticalPosition= -1 topActivityLetterboxHorizontalPosition= -1 topActivityLetterboxWidth=-1 topActivityLetterboxHeight=-1 locusId=null displayAreaFeatureId=1 cameraCompatControlState=hidden}, remoteTransition = null, displayChange = null }
+10-31 21:38:09.329   522   539 V WindowManager:     startWCT=WindowContainerTransaction { changes = {} hops = [] errorCallbackToken=null taskFragmentOrganizer=null }
+10-31 21:38:09.329   522   539 V WindowManager:     info={id=27 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[{null m=OPEN f=STARTING_WINDOW_TRANSFER|FILLS_TASK|IS_BEHIND_STARTING_WINDOW leash=Surface(name=ActivityRecord{5b3bccc u0 com.android.settings/.homepage.DeepLinkHomepageActivity)/@0x66b12f6 sb=Rect(0, 0 - 0, 0) eb=Rect(0, 0 - 1080, 2400) d=-1->0 r=-1->0:-1},{null m=CLOSE f=FILLS_TASK|IS_BEHIND_STARTING_WINDOW leash=Surface(name=ActivityRecord{20692ca u0 com.android.settings/.applications.InstalledAppDetails)/@0x6e3f391 sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) d=0}]}
+10-31 21:38:09.330   822   855 V WindowManagerShell: onTransitionReady android.os.BinderProxy@c04c672: {id=27 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[{null m=OPEN f=STARTING_WINDOW_TRANSFER|FILLS_TASK|IS_BEHIND_STARTING_WINDOW leash=Surface(name=ActivityRecord{5b3bccc u0 com.android.settings/.homepage.DeepLinkHomepageActivity)/@0x22cdf6c sb=Rect(0, 0 - 0, 0) eb=Rect(0, 0 - 1080, 2400) d=-1->0 r=-1->0:-1},{null m=CLOSE f=FILLS_TASK|IS_BEHIND_STARTING_WINDOW leash=Surface(name=ActivityRecord{20692ca u0 com.android.settings/.applications.InstalledAppDetails)/@0x2b63935 sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) d=0}]}
+10-31 21:38:09.330   822   855 V WindowManagerShell: Non-visible anim so abort: (#27)android.os.BinderProxy@c04c672@0
+10-31 21:38:09.330  6522  6522 D CompatibilityChangeReporter: Compat change id reported: 210923482; UID 1000; state: ENABLED
+10-31 21:38:09.332   822   855 V WindowManagerShell: Transition animation finished (aborted=true), notifying core (#27)android.os.BinderProxy@c04c672@0
+10-31 21:38:09.332  6522  6522 W ResourcesCompat: Failed to inflate ColorStateList, leaving it to the framework
+10-31 21:38:09.332  6522  6522 W ResourcesCompat: java.lang.UnsupportedOperationException: Failed to resolve attribute at index 0: TypedValue{t=0x2/d=0x7f05011f a=-1}, theme={InheritanceMap=[id=0x7f140406com.android.settings:style/Theme.Settings.Home, id=0x7f140408com.android.settings:style/Theme.Settings.HomeBase, id=0x7f140409com.android.settings:style/Theme.Settings.NoActionBar, id=0x7f140404com.android.settings:style/Theme.Settings, id=0x7f14040acom.android.settings:style/Theme.SettingsBase, id=0x7f14040bcom.android.settings:style/Theme.SettingsBase_v31, id=0x1030223android:style/Theme.DeviceDefault.Settings, id=0x103012bandroid:style/Theme.DeviceDefault.Light, id=0x1030237android:style/Theme.Material.Light, id=0x103000candroid:style/Theme.Light, id=0x1030005android:style/Theme], Themes=[com.android.settings:style/Theme.Settings.Home, forced, android:style/Theme.DeviceDefault.Light.DarkActionBar, forced]}
+10-31 21:38:09.332  6522  6522 W ResourcesCompat: 	at android.content.res.TypedArray.getColor(TypedArray.java:529)
+10-31 21:38:09.332  6522  6522 W ResourcesCompat: 	at androidx.core.content.res.ColorStateListInflaterCompat.inflate(ColorStateListInflaterCompat.java:159)
+10-31 21:38:09.332  6522  6522 W ResourcesCompat: 	at androidx.core.content.res.ColorStateListInflaterCompat.createFromXmlInner(ColorStateListInflaterCompat.java:124)
+10-31 21:38:09.332  6522  6522 W ResourcesCompat: 	at androidx.core.content.res.ColorStateListInflaterCompat.createFromXml(ColorStateListInflaterCompat.java:103)
+10-31 21:38:09.332  6522  6522 W ResourcesCompat: 	at androidx.core.content.res.ResourcesCompat.inflateColorStateList(ResourcesCompat.java:262)
+10-31 21:38:09.332  6522  6522 W ResourcesCompat: 	at androidx.core.content.res.ResourcesCompat.getColorStateList(ResourcesCompat.java:236)
+10-31 21:38:09.332  6522  6522 W ResourcesCompat: 	at androidx.core.content.ContextCompat.getColorStateList(ContextCompat.java:557)
+10-31 21:38:09.332  6522  6522 W ResourcesCompat: 	at androidx.appcompat.content.res.AppCompatResources.getColorStateList(AppCompatResources.java:48)
+10-31 21:38:09.332  6522  6522 W ResourcesCompat: 	at com.google.android.material.resources.MaterialResources.getColorStateList(MaterialResources.java:65)
+10-31 21:38:09.332  6522  6522 W ResourcesCompat: 	at com.google.android.material.card.MaterialCardViewHelper.loadFromAttributes(MaterialCardViewHelper.java:178)
+10-31 21:38:09.332  6522  6522 W ResourcesCompat: 	at com.google.android.material.card.MaterialCardView.<init>(MaterialCardView.java:183)
+10-31 21:38:09.332  6522  6522 W ResourcesCompat: 	at com.google.android.material.card.MaterialCardView.<init>(MaterialCardView.java:160)
+10-31 21:38:09.332  6522  6522 W ResourcesCompat: 	at java.lang.reflect.Constructor.newInstance0(Native Method)
+10-31 21:38:09.332  6522  6522 W ResourcesCompat: 	at java.lang.reflect.Constructor.newInstance(Constructor.java:343)
+10-31 21:38:09.332  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.createView(LayoutInflater.java:866)
+10-31 21:38:09.332  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:1018)
+10-31 21:38:09.332  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:973)
+10-31 21:38:09.332  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.rInflate(LayoutInflater.java:1135)
+10-31 21:38:09.332  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.rInflateChildren(LayoutInflater.java:1096)
+10-31 21:38:09.332  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.parseInclude(LayoutInflater.java:1275)
+10-31 21:38:09.332  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.rInflate(LayoutInflater.java:1131)
+10-31 21:38:09.332  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.rInflateChildren(LayoutInflater.java:1096)
+10-31 21:38:09.332  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.parseInclude(LayoutInflater.java:1275)
+10-31 21:38:09.332  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.rInflate(LayoutInflater.java:1131)
+10-31 21:38:09.332  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.rInflateChildren(LayoutInflater.java:1096)
+10-31 21:38:09.332  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.rInflate(LayoutInflater.java:1138)
+10-31 21:38:09.332  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.rInflateChildren(LayoutInflater.java:1096)
+10-31 21:38:09.332  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.rInflate(LayoutInflater.java:1138)
+10-31 21:38:09.332  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.rInflateChildren(LayoutInflater.java:1096)
+10-31 21:38:09.332  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.inflate(LayoutInflater.java:694)
+10-31 21:38:09.332  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.inflate(LayoutInflater.java:538)
+10-31 21:38:09.332  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.inflate(LayoutInflater.java:485)
+10-31 21:38:09.332  6522  6522 W ResourcesCompat: 	at com.android.internal.policy.PhoneWindow.setContentView(PhoneWindow.java:475)
+10-31 21:38:09.332  6522  6522 W ResourcesCompat: 	at android.app.Activity.setContentView(Activity.java:3679)
+10-31 21:38:09.332  6522  6522 W ResourcesCompat: 	at androidx.activity.ComponentActivity.setContentView(ComponentActivity.java:464)
+10-31 21:38:09.332  6522  6522 W ResourcesCompat: 	at com.android.settings.homepage.SettingsHomepageActivity.onCreate(SettingsHomepageActivity.java:199)
+10-31 21:38:09.332  6522  6522 W ResourcesCompat: 	at android.app.Activity.performCreate(Activity.java:8595)
+10-31 21:38:09.332  6522  6522 W ResourcesCompat: 	at android.app.Activity.performCreate(Activity.java:8573)
+10-31 21:38:09.332  6522  6522 W ResourcesCompat: 	at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1456)
+10-31 21:38:09.332  6522  6522 W ResourcesCompat: 	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:3764)
+10-31 21:38:09.332  6522  6522 W ResourcesCompat: 	at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:3922)
+10-31 21:38:09.332  6522  6522 W ResourcesCompat: 	at android.app.servertransaction.LaunchActivityItem.execute(LaunchActivityItem.java:103)
+10-31 21:38:09.332  6522  6522 W ResourcesCompat: 	at android.app.servertransaction.TransactionExecutor.executeCallbacks(TransactionExecutor.java:139)
+10-31 21:38:09.332  6522  6522 W ResourcesCompat: 	at android.app.servertransaction.TransactionExecutor.execute(TransactionExecutor.java:96)
+10-31 21:38:09.332  6522  6522 W ResourcesCompat: 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2443)
+10-31 21:38:09.332  6522  6522 W ResourcesCompat: 	at android.os.Handler.dispatchMessage(Handler.java:106)
+10-31 21:38:09.332  6522  6522 W ResourcesCompat: 	at android.os.Looper.loopOnce(Looper.java:205)
+10-31 21:38:09.332  6522  6522 W ResourcesCompat: 	at android.os.Looper.loop(Looper.java:294)
+10-31 21:38:09.332  6522  6522 W ResourcesCompat: 	at android.app.ActivityThread.main(ActivityThread.java:8177)
+10-31 21:38:09.332  6522  6522 W ResourcesCompat: 	at java.lang.reflect.Method.invoke(Native Method)
+10-31 21:38:09.332  6522  6522 W ResourcesCompat: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:552)
+10-31 21:38:09.332  6522  6522 W ResourcesCompat: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:971)
+10-31 21:38:09.333  6522  6522 W ResourcesCompat: Failed to inflate ColorStateList, leaving it to the framework
+10-31 21:38:09.333  6522  6522 W ResourcesCompat: java.lang.UnsupportedOperationException: Failed to resolve attribute at index 0: TypedValue{t=0x2/d=0x7f05011f a=-1}, theme={InheritanceMap=[id=0x7f140406com.android.settings:style/Theme.Settings.Home, id=0x7f140408com.android.settings:style/Theme.Settings.HomeBase, id=0x7f140409com.android.settings:style/Theme.Settings.NoActionBar, id=0x7f140404com.android.settings:style/Theme.Settings, id=0x7f14040acom.android.settings:style/Theme.SettingsBase, id=0x7f14040bcom.android.settings:style/Theme.SettingsBase_v31, id=0x1030223android:style/Theme.DeviceDefault.Settings, id=0x103012bandroid:style/Theme.DeviceDefault.Light, id=0x1030237android:style/Theme.Material.Light, id=0x103000candroid:style/Theme.Light, id=0x1030005android:style/Theme], Themes=[com.android.settings:style/Theme.Settings.Home, forced, android:style/Theme.DeviceDefault.Light.DarkActionBar, forced]}
+10-31 21:38:09.333  6522  6522 W ResourcesCompat: 	at android.content.res.TypedArray.getColor(TypedArray.java:529)
+10-31 21:38:09.333  6522  6522 W ResourcesCompat: 	at androidx.core.content.res.ColorStateListInflaterCompat.inflate(ColorStateListInflaterCompat.java:159)
+10-31 21:38:09.333  6522  6522 W ResourcesCompat: 	at androidx.core.content.res.ColorStateListInflaterCompat.createFromXmlInner(ColorStateListInflaterCompat.java:124)
+10-31 21:38:09.333  6522  6522 W ResourcesCompat: 	at androidx.core.content.res.ColorStateListInflaterCompat.createFromXml(ColorStateListInflaterCompat.java:103)
+10-31 21:38:09.333  6522  6522 W ResourcesCompat: 	at androidx.core.content.res.ResourcesCompat.inflateColorStateList(ResourcesCompat.java:262)
+10-31 21:38:09.333  6522  6522 W ResourcesCompat: 	at androidx.core.content.res.ResourcesCompat.getColorStateList(ResourcesCompat.java:236)
+10-31 21:38:09.333  6522  6522 W ResourcesCompat: 	at androidx.core.content.ContextCompat.getColorStateList(ContextCompat.java:557)
+10-31 21:38:09.333  6522  6522 W ResourcesCompat: 	at androidx.appcompat.content.res.AppCompatResources.getColorStateList(AppCompatResources.java:48)
+10-31 21:38:09.333  6522  6522 W ResourcesCompat: 	at com.google.android.material.resources.MaterialResources.getColorStateList(MaterialResources.java:65)
+10-31 21:38:09.333  6522  6522 W ResourcesCompat: 	at com.google.android.material.card.MaterialCardViewHelper.loadFromAttributes(MaterialCardViewHelper.java:187)
+10-31 21:38:09.333  6522  6522 W ResourcesCompat: 	at com.google.android.material.card.MaterialCardView.<init>(MaterialCardView.java:183)
+10-31 21:38:09.333  6522  6522 W ResourcesCompat: 	at com.google.android.material.card.MaterialCardView.<init>(MaterialCardView.java:160)
+10-31 21:38:09.333  6522  6522 W ResourcesCompat: 	at java.lang.reflect.Constructor.newInstance0(Native Method)
+10-31 21:38:09.333  6522  6522 W ResourcesCompat: 	at java.lang.reflect.Constructor.newInstance(Constructor.java:343)
+10-31 21:38:09.333  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.createView(LayoutInflater.java:866)
+10-31 21:38:09.333  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:1018)
+10-31 21:38:09.333  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:973)
+10-31 21:38:09.333  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.rInflate(LayoutInflater.java:1135)
+10-31 21:38:09.333  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.rInflateChildren(LayoutInflater.java:1096)
+10-31 21:38:09.333  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.parseInclude(LayoutInflater.java:1275)
+10-31 21:38:09.333  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.rInflate(LayoutInflater.java:1131)
+10-31 21:38:09.333  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.rInflateChildren(LayoutInflater.java:1096)
+10-31 21:38:09.333  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.parseInclude(LayoutInflater.java:1275)
+10-31 21:38:09.333  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.rInflate(LayoutInflater.java:1131)
+10-31 21:38:09.333  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.rInflateChildren(LayoutInflater.java:1096)
+10-31 21:38:09.333  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.rInflate(LayoutInflater.java:1138)
+10-31 21:38:09.333  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.rInflateChildren(LayoutInflater.java:1096)
+10-31 21:38:09.333  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.rInflate(LayoutInflater.java:1138)
+10-31 21:38:09.333  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.rInflateChildren(LayoutInflater.java:1096)
+10-31 21:38:09.333  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.inflate(LayoutInflater.java:694)
+10-31 21:38:09.333  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.inflate(LayoutInflater.java:538)
+10-31 21:38:09.333  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.inflate(LayoutInflater.java:485)
+10-31 21:38:09.333  6522  6522 W ResourcesCompat: 	at com.android.internal.policy.PhoneWindow.setContentView(PhoneWindow.java:475)
+10-31 21:38:09.333  6522  6522 W ResourcesCompat: 	at android.app.Activity.setContentView(Activity.java:3679)
+10-31 21:38:09.333  6522  6522 W ResourcesCompat: 	at androidx.activity.ComponentActivity.setContentView(ComponentActivity.java:464)
+10-31 21:38:09.333  6522  6522 W ResourcesCompat: 	at com.android.settings.homepage.SettingsHomepageActivity.onCreate(SettingsHomepageActivity.java:199)
+10-31 21:38:09.333  6522  6522 W ResourcesCompat: 	at android.app.Activity.performCreate(Activity.java:8595)
+10-31 21:38:09.333  6522  6522 W ResourcesCompat: 	at android.app.Activity.performCreate(Activity.java:8573)
+10-31 21:38:09.333  6522  6522 W ResourcesCompat: 	at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1456)
+10-31 21:38:09.333  6522  6522 W ResourcesCompat: 	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:3764)
+10-31 21:38:09.333  6522  6522 W ResourcesCompat: 	at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:3922)
+10-31 21:38:09.333  6522  6522 W ResourcesCompat: 	at android.app.servertransaction.LaunchActivityItem.execute(LaunchActivityItem.java:103)
+10-31 21:38:09.333  6522  6522 W ResourcesCompat: 	at android.app.servertransaction.TransactionExecutor.executeCallbacks(TransactionExecutor.java:139)
+10-31 21:38:09.333  6522  6522 W ResourcesCompat: 	at android.app.servertransaction.TransactionExecutor.execute(TransactionExecutor.java:96)
+10-31 21:38:09.333  6522  6522 W ResourcesCompat: 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2443)
+10-31 21:38:09.333  6522  6522 W ResourcesCompat: 	at android.os.Handler.dispatchMessage(Handler.java:106)
+10-31 21:38:09.333  6522  6522 W ResourcesCompat: 	at android.os.Looper.loopOnce(Looper.java:205)
+10-31 21:38:09.333  6522  6522 W ResourcesCompat: 	at android.os.Looper.loop(Looper.java:294)
+10-31 21:38:09.333  6522  6522 W ResourcesCompat: 	at android.app.ActivityThread.main(ActivityThread.java:8177)
+10-31 21:38:09.333  6522  6522 W ResourcesCompat: 	at java.lang.reflect.Method.invoke(Native Method)
+10-31 21:38:09.333  6522  6522 W ResourcesCompat: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:552)
+10-31 21:38:09.333  6522  6522 W ResourcesCompat: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:971)
+10-31 21:38:09.334  6522  6522 W ResourcesCompat: Failed to inflate ColorStateList, leaving it to the framework
+10-31 21:38:09.334  6522  6522 W ResourcesCompat: java.lang.UnsupportedOperationException: Failed to resolve attribute at index 0: TypedValue{t=0x2/d=0x7f05011f a=-1}, theme={InheritanceMap=[id=0x7f140406com.android.settings:style/Theme.Settings.Home, id=0x7f140408com.android.settings:style/Theme.Settings.HomeBase, id=0x7f140409com.android.settings:style/Theme.Settings.NoActionBar, id=0x7f140404com.android.settings:style/Theme.Settings, id=0x7f14040acom.android.settings:style/Theme.SettingsBase, id=0x7f14040bcom.android.settings:style/Theme.SettingsBase_v31, id=0x1030223android:style/Theme.DeviceDefault.Settings, id=0x103012bandroid:style/Theme.DeviceDefault.Light, id=0x1030237android:style/Theme.Material.Light, id=0x103000candroid:style/Theme.Light, id=0x1030005android:style/Theme], Themes=[com.android.settings:style/Theme.Settings.Home, forced, android:style/Theme.DeviceDefault.Light.DarkActionBar, forced]}
+10-31 21:38:09.334  6522  6522 W ResourcesCompat: 	at android.content.res.TypedArray.getColor(TypedArray.java:529)
+10-31 21:38:09.334  6522  6522 W ResourcesCompat: 	at androidx.core.content.res.ColorStateListInflaterCompat.inflate(ColorStateListInflaterCompat.java:159)
+10-31 21:38:09.334  6522  6522 W ResourcesCompat: 	at androidx.core.content.res.ColorStateListInflaterCompat.createFromXmlInner(ColorStateListInflaterCompat.java:124)
+10-31 21:38:09.334  6522  6522 W ResourcesCompat: 	at androidx.core.content.res.ColorStateListInflaterCompat.createFromXml(ColorStateListInflaterCompat.java:103)
+10-31 21:38:09.334  6522  6522 W ResourcesCompat: 	at androidx.core.content.res.ResourcesCompat.inflateColorStateList(ResourcesCompat.java:262)
+10-31 21:38:09.334  6522  6522 W ResourcesCompat: 	at androidx.core.content.res.ResourcesCompat.getColorStateList(ResourcesCompat.java:236)
+10-31 21:38:09.334  6522  6522 W ResourcesCompat: 	at androidx.core.content.ContextCompat.getColorStateList(ContextCompat.java:557)
+10-31 21:38:09.334  6522  6522 W ResourcesCompat: 	at androidx.appcompat.content.res.AppCompatResources.getColorStateList(AppCompatResources.java:48)
+10-31 21:38:09.334  6522  6522 W ResourcesCompat: 	at com.google.android.material.resources.MaterialResources.getColorStateList(MaterialResources.java:65)
+10-31 21:38:09.334  6522  6522 W ResourcesCompat: 	at com.google.android.material.card.MaterialCardViewHelper.loadFromAttributes(MaterialCardViewHelper.java:178)
+10-31 21:38:09.334  6522  6522 W ResourcesCompat: 	at com.google.android.material.card.MaterialCardView.<init>(MaterialCardView.java:183)
+10-31 21:38:09.334  6522  6522 W ResourcesCompat: 	at com.google.android.material.card.MaterialCardView.<init>(MaterialCardView.java:160)
+10-31 21:38:09.334  6522  6522 W ResourcesCompat: 	at java.lang.reflect.Constructor.newInstance0(Native Method)
+10-31 21:38:09.334  6522  6522 W ResourcesCompat: 	at java.lang.reflect.Constructor.newInstance(Constructor.java:343)
+10-31 21:38:09.334  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.createView(LayoutInflater.java:866)
+10-31 21:38:09.334  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:1018)
+10-31 21:38:09.334  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.parseInclude(LayoutInflater.java:1245)
+10-31 21:38:09.334  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.rInflate(LayoutInflater.java:1131)
+10-31 21:38:09.334  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.rInflateChildren(LayoutInflater.java:1096)
+10-31 21:38:09.334  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.parseInclude(LayoutInflater.java:1275)
+10-31 21:38:09.334  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.rInflate(LayoutInflater.java:1131)
+10-31 21:38:09.334  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.rInflateChildren(LayoutInflater.java:1096)
+10-31 21:38:09.334  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.rInflate(LayoutInflater.java:1138)
+10-31 21:38:09.334  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.rInflateChildren(LayoutInflater.java:1096)
+10-31 21:38:09.334  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.rInflate(LayoutInflater.java:1138)
+10-31 21:38:09.334  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.rInflateChildren(LayoutInflater.java:1096)
+10-31 21:38:09.334  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.inflate(LayoutInflater.java:694)
+10-31 21:38:09.334  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.inflate(LayoutInflater.java:538)
+10-31 21:38:09.334  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.inflate(LayoutInflater.java:485)
+10-31 21:38:09.334  6522  6522 W ResourcesCompat: 	at com.android.internal.policy.PhoneWindow.setContentView(PhoneWindow.java:475)
+10-31 21:38:09.334  6522  6522 W ResourcesCompat: 	at android.app.Activity.setContentView(Activity.java:3679)
+10-31 21:38:09.334  6522  6522 W ResourcesCompat: 	at androidx.activity.ComponentActivity.setContentView(ComponentActivity.java:464)
+10-31 21:38:09.334  6522  6522 W ResourcesCompat: 	at com.android.settings.homepage.SettingsHomepageActivity.onCreate(SettingsHomepageActivity.java:199)
+10-31 21:38:09.334  6522  6522 W ResourcesCompat: 	at android.app.Activity.performCreate(Activity.java:8595)
+10-31 21:38:09.334  6522  6522 W ResourcesCompat: 	at android.app.Activity.performCreate(Activity.java:8573)
+10-31 21:38:09.334  6522  6522 W ResourcesCompat: 	at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1456)
+10-31 21:38:09.334  6522  6522 W ResourcesCompat: 	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:3764)
+10-31 21:38:09.334  6522  6522 W ResourcesCompat: 	at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:3922)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at android.app.servertransaction.LaunchActivityItem.execute(LaunchActivityItem.java:103)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at android.app.servertransaction.TransactionExecutor.executeCallbacks(TransactionExecutor.java:139)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at android.app.servertransaction.TransactionExecutor.execute(TransactionExecutor.java:96)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2443)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at android.os.Handler.dispatchMessage(Handler.java:106)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at android.os.Looper.loopOnce(Looper.java:205)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at android.os.Looper.loop(Looper.java:294)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at android.app.ActivityThread.main(ActivityThread.java:8177)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at java.lang.reflect.Method.invoke(Native Method)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:552)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:971)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: Failed to inflate ColorStateList, leaving it to the framework
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: java.lang.UnsupportedOperationException: Failed to resolve attribute at index 0: TypedValue{t=0x2/d=0x7f05011f a=-1}, theme={InheritanceMap=[id=0x7f140406com.android.settings:style/Theme.Settings.Home, id=0x7f140408com.android.settings:style/Theme.Settings.HomeBase, id=0x7f140409com.android.settings:style/Theme.Settings.NoActionBar, id=0x7f140404com.android.settings:style/Theme.Settings, id=0x7f14040acom.android.settings:style/Theme.SettingsBase, id=0x7f14040bcom.android.settings:style/Theme.SettingsBase_v31, id=0x1030223android:style/Theme.DeviceDefault.Settings, id=0x103012bandroid:style/Theme.DeviceDefault.Light, id=0x1030237android:style/Theme.Material.Light, id=0x103000candroid:style/Theme.Light, id=0x1030005android:style/Theme], Themes=[com.android.settings:style/Theme.Settings.Home, forced, android:style/Theme.DeviceDefault.Light.DarkActionBar, forced]}
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at android.content.res.TypedArray.getColor(TypedArray.java:529)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at androidx.core.content.res.ColorStateListInflaterCompat.inflate(ColorStateListInflaterCompat.java:159)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at androidx.core.content.res.ColorStateListInflaterCompat.createFromXmlInner(ColorStateListInflaterCompat.java:124)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at androidx.core.content.res.ColorStateListInflaterCompat.createFromXml(ColorStateListInflaterCompat.java:103)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at androidx.core.content.res.ResourcesCompat.inflateColorStateList(ResourcesCompat.java:262)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at androidx.core.content.res.ResourcesCompat.getColorStateList(ResourcesCompat.java:236)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at androidx.core.content.ContextCompat.getColorStateList(ContextCompat.java:557)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at androidx.appcompat.content.res.AppCompatResources.getColorStateList(AppCompatResources.java:48)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at com.google.android.material.resources.MaterialResources.getColorStateList(MaterialResources.java:65)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at com.google.android.material.card.MaterialCardViewHelper.loadFromAttributes(MaterialCardViewHelper.java:187)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at com.google.android.material.card.MaterialCardView.<init>(MaterialCardView.java:183)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at com.google.android.material.card.MaterialCardView.<init>(MaterialCardView.java:160)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at java.lang.reflect.Constructor.newInstance0(Native Method)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at java.lang.reflect.Constructor.newInstance(Constructor.java:343)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.createView(LayoutInflater.java:866)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:1018)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.parseInclude(LayoutInflater.java:1245)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.rInflate(LayoutInflater.java:1131)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.rInflateChildren(LayoutInflater.java:1096)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.parseInclude(LayoutInflater.java:1275)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.rInflate(LayoutInflater.java:1131)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.rInflateChildren(LayoutInflater.java:1096)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.rInflate(LayoutInflater.java:1138)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.rInflateChildren(LayoutInflater.java:1096)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.rInflate(LayoutInflater.java:1138)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.rInflateChildren(LayoutInflater.java:1096)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.inflate(LayoutInflater.java:694)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.inflate(LayoutInflater.java:538)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.inflate(LayoutInflater.java:485)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at com.android.internal.policy.PhoneWindow.setContentView(PhoneWindow.java:475)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at android.app.Activity.setContentView(Activity.java:3679)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at androidx.activity.ComponentActivity.setContentView(ComponentActivity.java:464)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at com.android.settings.homepage.SettingsHomepageActivity.onCreate(SettingsHomepageActivity.java:199)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at android.app.Activity.performCreate(Activity.java:8595)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at android.app.Activity.performCreate(Activity.java:8573)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1456)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:3764)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:3922)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at android.app.servertransaction.LaunchActivityItem.execute(LaunchActivityItem.java:103)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at android.app.servertransaction.TransactionExecutor.executeCallbacks(TransactionExecutor.java:139)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at android.app.servertransaction.TransactionExecutor.execute(TransactionExecutor.java:96)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2443)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at android.os.Handler.dispatchMessage(Handler.java:106)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at android.os.Looper.loopOnce(Looper.java:205)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at android.os.Looper.loop(Looper.java:294)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at android.app.ActivityThread.main(ActivityThread.java:8177)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at java.lang.reflect.Method.invoke(Native Method)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:552)
+10-31 21:38:09.335  6522  6522 W ResourcesCompat: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:971)
+10-31 21:38:09.335   522   539 V WindowManager: Finish Transition #27: created at 10-31 21:38:09.287 collect-started=0.018ms request-sent=1.541ms started=3.322ms ready=12.11ms sent=40.932ms finished=47.375ms
+10-31 21:38:09.335  6522  6522 D ActivityEmbeddingUtils: isEmbeddingActivityEnabled = true
+10-31 21:38:09.336   822   855 V WindowManagerShell: Track 0 became idle
+10-31 21:38:09.336   822   855 V WindowManagerShell: All active transition animations finished
+10-31 21:38:09.339  6522  6522 D ActivityEmbeddingUtils: isEmbeddingActivityEnabled = true
+10-31 21:38:09.339  6522  6522 D ActivityEmbeddingUtils: isEmbeddingActivityEnabled = true
+10-31 21:38:09.339  6522  6522 D ActivityEmbeddingUtils: isEmbeddingActivityEnabled = true
+10-31 21:38:09.342  6522  6522 D ActivityEmbeddingUtils: isEmbeddingActivityEnabled = true
+10-31 21:38:09.342  6522  6522 D ActivityEmbeddingUtils: isEmbeddingActivityEnabled = true
+10-31 21:38:09.342  6522  6522 D ActivityEmbeddingUtils: isEmbeddingActivityEnabled = true
+10-31 21:38:09.343  6522  6522 D ActivityEmbeddingUtils: isEmbeddingActivityEnabled = true
+10-31 21:38:09.343  6522  6522 D ActivityEmbeddingUtils: isEmbeddingActivityEnabled = true
+10-31 21:38:09.343  6522  6522 D ActivityEmbeddingUtils: isEmbeddingActivityEnabled = true
+10-31 21:38:09.343  6522  6522 D ActivityEmbeddingUtils: isEmbeddingActivityEnabled = true
+10-31 21:38:09.350  6522  6522 D ActivityEmbeddingUtils: isEmbeddingActivityEnabled = true
+10-31 21:38:09.350  6522  6522 D ActivityEmbeddingUtils: isEmbeddingActivityEnabled = true
+10-31 21:38:09.355   522  1926 W ActivityTaskManager: setResumedActivity on non-leaf task fragment Task{fc23c3b #13 type=standard A=1000:com.android.settings}
+10-31 21:38:09.358   822   855 V WindowManagerShell: Transition requested: android.os.BinderProxy@c8d6f3b TransitionRequestInfo { type = OPEN, triggerTask = null, remoteTransition = null, displayChange = null }
+10-31 21:38:09.373   522  1926 I ActivityTaskManager: START u0 {act=android.settings.APPLICATION_DETAILS_SETTINGS dat=package: flg=0x2000000 cmp=com.android.settings/.applications.InstalledAppDetails (has extras)} with LAUNCH_MULTIPLE from uid 1000 (BAL_ALLOW_ALLOWLISTED_UID) result code=0
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: Failed to inflate ColorStateList, leaving it to the framework
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: java.lang.UnsupportedOperationException: Failed to resolve attribute at index 0: TypedValue{t=0x2/d=0x7f05011f a=-1}, theme={InheritanceMap=[id=0x7f140406com.android.settings:style/Theme.Settings.Home, id=0x7f140408com.android.settings:style/Theme.Settings.HomeBase, id=0x7f140409com.android.settings:style/Theme.Settings.NoActionBar, id=0x7f140404com.android.settings:style/Theme.Settings, id=0x7f14040acom.android.settings:style/Theme.SettingsBase, id=0x7f14040bcom.android.settings:style/Theme.SettingsBase_v31, id=0x1030223android:style/Theme.DeviceDefault.Settings, id=0x103012bandroid:style/Theme.DeviceDefault.Light, id=0x1030237android:style/Theme.Material.Light, id=0x103000candroid:style/Theme.Light, id=0x1030005android:style/Theme], Themes=[com.android.settings:style/Theme.Settings.Home, forced, android:style/Theme.DeviceDefault.Light.DarkActionBar, forced]}
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at android.content.res.TypedArray.getColor(TypedArray.java:529)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at androidx.core.content.res.ColorStateListInflaterCompat.inflate(ColorStateListInflaterCompat.java:159)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at androidx.core.content.res.ColorStateListInflaterCompat.createFromXmlInner(ColorStateListInflaterCompat.java:124)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at androidx.core.content.res.ColorStateListInflaterCompat.createFromXml(ColorStateListInflaterCompat.java:103)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at androidx.core.content.res.ResourcesCompat.inflateColorStateList(ResourcesCompat.java:262)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at androidx.core.content.res.ResourcesCompat.getColorStateList(ResourcesCompat.java:236)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at androidx.core.content.ContextCompat.getColorStateList(ContextCompat.java:557)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at androidx.appcompat.content.res.AppCompatResources.getColorStateList(AppCompatResources.java:48)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at com.google.android.material.resources.MaterialResources.getColorStateList(MaterialResources.java:65)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at com.google.android.material.card.MaterialCardViewHelper.loadFromAttributes(MaterialCardViewHelper.java:178)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at com.google.android.material.card.MaterialCardView.<init>(MaterialCardView.java:183)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at com.google.android.material.card.MaterialCardView.<init>(MaterialCardView.java:160)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at java.lang.reflect.Constructor.newInstance0(Native Method)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at java.lang.reflect.Constructor.newInstance(Constructor.java:343)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.createView(LayoutInflater.java:866)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:1018)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:973)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.inflate(LayoutInflater.java:667)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.inflate(LayoutInflater.java:538)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at com.google.android.settings.dashboard.suggestions.ContextualSuggestionFragment.onCreateView(ContextualSuggestionFragment.java:75)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at androidx.fragment.app.Fragment.performCreateView(Fragment.java:3104)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at androidx.fragment.app.FragmentStateManager.createView(FragmentStateManager.java:557)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at androidx.fragment.app.FragmentStateManager.moveToExpectedState(FragmentStateManager.java:272)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at androidx.fragment.app.FragmentManager.executeOpsTogether(FragmentManager.java:1938)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at androidx.fragment.app.FragmentManager.removeRedundantOperationsAndExecute(FragmentManager.java:1835)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at androidx.fragment.app.FragmentManager.execPendingActions(FragmentManager.java:1778)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at androidx.fragment.app.FragmentManager.dispatchStateChange(FragmentManager.java:3037)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at androidx.fragment.app.FragmentManager.dispatchActivityCreated(FragmentManager.java:2947)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at androidx.fragment.app.FragmentController.dispatchActivityCreated(FragmentController.java:263)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at androidx.fragment.app.FragmentActivity.onStart(FragmentActivity.java:350)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at com.android.settings.homepage.SettingsHomepageActivity.onStart(SettingsHomepageActivity.java:261)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at android.app.Instrumentation.callActivityOnStart(Instrumentation.java:1582)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at android.app.Activity.performStart(Activity.java:8628)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at android.app.ActivityThread.handleStartActivity(ActivityThread.java:3807)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at android.app.servertransaction.TransactionExecutor.performLifecycleSequence(TransactionExecutor.java:225)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at android.app.servertransaction.TransactionExecutor.cycleToPath(TransactionExecutor.java:205)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at android.app.servertransaction.TransactionExecutor.executeLifecycleState(TransactionExecutor.java:177)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at android.app.servertransaction.TransactionExecutor.execute(TransactionExecutor.java:98)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2443)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at android.os.Handler.dispatchMessage(Handler.java:106)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at android.os.Looper.loopOnce(Looper.java:205)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at android.os.Looper.loop(Looper.java:294)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at android.app.ActivityThread.main(ActivityThread.java:8177)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at java.lang.reflect.Method.invoke(Native Method)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:552)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:971)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: Failed to inflate ColorStateList, leaving it to the framework
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: java.lang.UnsupportedOperationException: Failed to resolve attribute at index 0: TypedValue{t=0x2/d=0x7f05011f a=-1}, theme={InheritanceMap=[id=0x7f140406com.android.settings:style/Theme.Settings.Home, id=0x7f140408com.android.settings:style/Theme.Settings.HomeBase, id=0x7f140409com.android.settings:style/Theme.Settings.NoActionBar, id=0x7f140404com.android.settings:style/Theme.Settings, id=0x7f14040acom.android.settings:style/Theme.SettingsBase, id=0x7f14040bcom.android.settings:style/Theme.SettingsBase_v31, id=0x1030223android:style/Theme.DeviceDefault.Settings, id=0x103012bandroid:style/Theme.DeviceDefault.Light, id=0x1030237android:style/Theme.Material.Light, id=0x103000candroid:style/Theme.Light, id=0x1030005android:style/Theme], Themes=[com.android.settings:style/Theme.Settings.Home, forced, android:style/Theme.DeviceDefault.Light.DarkActionBar, forced]}
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at android.content.res.TypedArray.getColor(TypedArray.java:529)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at androidx.core.content.res.ColorStateListInflaterCompat.inflate(ColorStateListInflaterCompat.java:159)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at androidx.core.content.res.ColorStateListInflaterCompat.createFromXmlInner(ColorStateListInflaterCompat.java:124)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at androidx.core.content.res.ColorStateListInflaterCompat.createFromXml(ColorStateListInflaterCompat.java:103)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at androidx.core.content.res.ResourcesCompat.inflateColorStateList(ResourcesCompat.java:262)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at androidx.core.content.res.ResourcesCompat.getColorStateList(ResourcesCompat.java:236)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at androidx.core.content.ContextCompat.getColorStateList(ContextCompat.java:557)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at androidx.appcompat.content.res.AppCompatResources.getColorStateList(AppCompatResources.java:48)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at com.google.android.material.resources.MaterialResources.getColorStateList(MaterialResources.java:65)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at com.google.android.material.card.MaterialCardViewHelper.loadFromAttributes(MaterialCardViewHelper.java:187)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at com.google.android.material.card.MaterialCardView.<init>(MaterialCardView.java:183)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at com.google.android.material.card.MaterialCardView.<init>(MaterialCardView.java:160)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at java.lang.reflect.Constructor.newInstance0(Native Method)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at java.lang.reflect.Constructor.newInstance(Constructor.java:343)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.createView(LayoutInflater.java:866)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:1018)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:973)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.inflate(LayoutInflater.java:667)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.inflate(LayoutInflater.java:538)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at com.google.android.settings.dashboard.suggestions.ContextualSuggestionFragment.onCreateView(ContextualSuggestionFragment.java:75)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at androidx.fragment.app.Fragment.performCreateView(Fragment.java:3104)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at androidx.fragment.app.FragmentStateManager.createView(FragmentStateManager.java:557)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at androidx.fragment.app.FragmentStateManager.moveToExpectedState(FragmentStateManager.java:272)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at androidx.fragment.app.FragmentManager.executeOpsTogether(FragmentManager.java:1938)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at androidx.fragment.app.FragmentManager.removeRedundantOperationsAndExecute(FragmentManager.java:1835)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at androidx.fragment.app.FragmentManager.execPendingActions(FragmentManager.java:1778)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at androidx.fragment.app.FragmentManager.dispatchStateChange(FragmentManager.java:3037)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at androidx.fragment.app.FragmentManager.dispatchActivityCreated(FragmentManager.java:2947)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at androidx.fragment.app.FragmentController.dispatchActivityCreated(FragmentController.java:263)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at androidx.fragment.app.FragmentActivity.onStart(FragmentActivity.java:350)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at com.android.settings.homepage.SettingsHomepageActivity.onStart(SettingsHomepageActivity.java:261)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at android.app.Instrumentation.callActivityOnStart(Instrumentation.java:1582)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at android.app.Activity.performStart(Activity.java:8628)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at android.app.ActivityThread.handleStartActivity(ActivityThread.java:3807)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at android.app.servertransaction.TransactionExecutor.performLifecycleSequence(TransactionExecutor.java:225)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at android.app.servertransaction.TransactionExecutor.cycleToPath(TransactionExecutor.java:205)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at android.app.servertransaction.TransactionExecutor.executeLifecycleState(TransactionExecutor.java:177)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at android.app.servertransaction.TransactionExecutor.execute(TransactionExecutor.java:98)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2443)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at android.os.Handler.dispatchMessage(Handler.java:106)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at android.os.Looper.loopOnce(Looper.java:205)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at android.os.Looper.loop(Looper.java:294)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at android.app.ActivityThread.main(ActivityThread.java:8177)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at java.lang.reflect.Method.invoke(Native Method)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:552)
+10-31 21:38:09.379  6522  6522 W ResourcesCompat: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:971)
+10-31 21:38:09.387   402   402 I BpBinder: onLastStrongRef automatically unlinking death recipients: 
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: Failed to inflate ColorStateList, leaving it to the framework
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: java.lang.UnsupportedOperationException: Failed to resolve attribute at index 0: TypedValue{t=0x2/d=0x7f05011f a=-1}, theme={InheritanceMap=[id=0x7f140406com.android.settings:style/Theme.Settings.Home, id=0x7f140408com.android.settings:style/Theme.Settings.HomeBase, id=0x7f140409com.android.settings:style/Theme.Settings.NoActionBar, id=0x7f140404com.android.settings:style/Theme.Settings, id=0x7f14040acom.android.settings:style/Theme.SettingsBase, id=0x7f14040bcom.android.settings:style/Theme.SettingsBase_v31, id=0x1030223android:style/Theme.DeviceDefault.Settings, id=0x103012bandroid:style/Theme.DeviceDefault.Light, id=0x1030237android:style/Theme.Material.Light, id=0x103000candroid:style/Theme.Light, id=0x1030005android:style/Theme], Themes=[com.android.settings:style/Theme.Settings.Home, forced, android:style/Theme.DeviceDefault.Light.DarkActionBar, forced]}
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at android.content.res.TypedArray.getColor(TypedArray.java:529)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at androidx.core.content.res.ColorStateListInflaterCompat.inflate(ColorStateListInflaterCompat.java:159)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at androidx.core.content.res.ColorStateListInflaterCompat.createFromXmlInner(ColorStateListInflaterCompat.java:124)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at androidx.core.content.res.ColorStateListInflaterCompat.createFromXml(ColorStateListInflaterCompat.java:103)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at androidx.core.content.res.ResourcesCompat.inflateColorStateList(ResourcesCompat.java:262)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at androidx.core.content.res.ResourcesCompat.getColorStateList(ResourcesCompat.java:236)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at androidx.core.content.ContextCompat.getColorStateList(ContextCompat.java:557)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at androidx.appcompat.content.res.AppCompatResources.getColorStateList(AppCompatResources.java:48)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at com.google.android.material.resources.MaterialResources.getColorStateList(MaterialResources.java:65)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at com.google.android.material.card.MaterialCardViewHelper.loadFromAttributes(MaterialCardViewHelper.java:178)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at com.google.android.material.card.MaterialCardView.<init>(MaterialCardView.java:183)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at com.google.android.material.card.MaterialCardView.<init>(MaterialCardView.java:160)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at java.lang.reflect.Constructor.newInstance0(Native Method)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at java.lang.reflect.Constructor.newInstance(Constructor.java:343)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.createView(LayoutInflater.java:866)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:1018)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:973)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.inflate(LayoutInflater.java:667)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.inflate(LayoutInflater.java:538)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at com.google.android.settings.dashboard.suggestions.ContextualSuggestionFragment.onCreateView(ContextualSuggestionFragment.java:75)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at androidx.fragment.app.Fragment.performCreateView(Fragment.java:3104)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at androidx.fragment.app.FragmentStateManager.createView(FragmentStateManager.java:557)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at androidx.fragment.app.FragmentStateManager.moveToExpectedState(FragmentStateManager.java:272)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at androidx.fragment.app.FragmentManager.executeOpsTogether(FragmentManager.java:1938)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at androidx.fragment.app.FragmentManager.removeRedundantOperationsAndExecute(FragmentManager.java:1835)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at androidx.fragment.app.FragmentManager.execPendingActions(FragmentManager.java:1778)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at androidx.fragment.app.FragmentManager.dispatchStateChange(FragmentManager.java:3037)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at androidx.fragment.app.FragmentManager.dispatchActivityCreated(FragmentManager.java:2947)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at androidx.fragment.app.FragmentController.dispatchActivityCreated(FragmentController.java:263)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at androidx.fragment.app.FragmentActivity.onStart(FragmentActivity.java:350)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at com.android.settings.homepage.SettingsHomepageActivity.onStart(SettingsHomepageActivity.java:261)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at android.app.Instrumentation.callActivityOnStart(Instrumentation.java:1582)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at android.app.Activity.performStart(Activity.java:8628)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at android.app.ActivityThread.handleStartActivity(ActivityThread.java:3807)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at android.app.servertransaction.TransactionExecutor.performLifecycleSequence(TransactionExecutor.java:225)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at android.app.servertransaction.TransactionExecutor.cycleToPath(TransactionExecutor.java:205)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at android.app.servertransaction.TransactionExecutor.executeLifecycleState(TransactionExecutor.java:177)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at android.app.servertransaction.TransactionExecutor.execute(TransactionExecutor.java:98)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2443)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at android.os.Handler.dispatchMessage(Handler.java:106)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at android.os.Looper.loopOnce(Looper.java:205)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at android.os.Looper.loop(Looper.java:294)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at android.app.ActivityThread.main(ActivityThread.java:8177)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at java.lang.reflect.Method.invoke(Native Method)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:552)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:971)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: Failed to inflate ColorStateList, leaving it to the framework
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: java.lang.UnsupportedOperationException: Failed to resolve attribute at index 0: TypedValue{t=0x2/d=0x7f05011f a=-1}, theme={InheritanceMap=[id=0x7f140406com.android.settings:style/Theme.Settings.Home, id=0x7f140408com.android.settings:style/Theme.Settings.HomeBase, id=0x7f140409com.android.settings:style/Theme.Settings.NoActionBar, id=0x7f140404com.android.settings:style/Theme.Settings, id=0x7f14040acom.android.settings:style/Theme.SettingsBase, id=0x7f14040bcom.android.settings:style/Theme.SettingsBase_v31, id=0x1030223android:style/Theme.DeviceDefault.Settings, id=0x103012bandroid:style/Theme.DeviceDefault.Light, id=0x1030237android:style/Theme.Material.Light, id=0x103000candroid:style/Theme.Light, id=0x1030005android:style/Theme], Themes=[com.android.settings:style/Theme.Settings.Home, forced, android:style/Theme.DeviceDefault.Light.DarkActionBar, forced]}
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at android.content.res.TypedArray.getColor(TypedArray.java:529)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at androidx.core.content.res.ColorStateListInflaterCompat.inflate(ColorStateListInflaterCompat.java:159)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at androidx.core.content.res.ColorStateListInflaterCompat.createFromXmlInner(ColorStateListInflaterCompat.java:124)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at androidx.core.content.res.ColorStateListInflaterCompat.createFromXml(ColorStateListInflaterCompat.java:103)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at androidx.core.content.res.ResourcesCompat.inflateColorStateList(ResourcesCompat.java:262)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at androidx.core.content.res.ResourcesCompat.getColorStateList(ResourcesCompat.java:236)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at androidx.core.content.ContextCompat.getColorStateList(ContextCompat.java:557)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at androidx.appcompat.content.res.AppCompatResources.getColorStateList(AppCompatResources.java:48)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at com.google.android.material.resources.MaterialResources.getColorStateList(MaterialResources.java:65)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at com.google.android.material.card.MaterialCardViewHelper.loadFromAttributes(MaterialCardViewHelper.java:187)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at com.google.android.material.card.MaterialCardView.<init>(MaterialCardView.java:183)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at com.google.android.material.card.MaterialCardView.<init>(MaterialCardView.java:160)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at java.lang.reflect.Constructor.newInstance0(Native Method)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at java.lang.reflect.Constructor.newInstance(Constructor.java:343)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.createView(LayoutInflater.java:866)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:1018)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:973)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.inflate(LayoutInflater.java:667)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at android.view.LayoutInflater.inflate(LayoutInflater.java:538)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at com.google.android.settings.dashboard.suggestions.ContextualSuggestionFragment.onCreateView(ContextualSuggestionFragment.java:75)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at androidx.fragment.app.Fragment.performCreateView(Fragment.java:3104)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at androidx.fragment.app.FragmentStateManager.createView(FragmentStateManager.java:557)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at androidx.fragment.app.FragmentStateManager.moveToExpectedState(FragmentStateManager.java:272)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at androidx.fragment.app.FragmentManager.executeOpsTogether(FragmentManager.java:1938)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at androidx.fragment.app.FragmentManager.removeRedundantOperationsAndExecute(FragmentManager.java:1835)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at androidx.fragment.app.FragmentManager.execPendingActions(FragmentManager.java:1778)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at androidx.fragment.app.FragmentManager.dispatchStateChange(FragmentManager.java:3037)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at androidx.fragment.app.FragmentManager.dispatchActivityCreated(FragmentManager.java:2947)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at androidx.fragment.app.FragmentController.dispatchActivityCreated(FragmentController.java:263)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at androidx.fragment.app.FragmentActivity.onStart(FragmentActivity.java:350)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at com.android.settings.homepage.SettingsHomepageActivity.onStart(SettingsHomepageActivity.java:261)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at android.app.Instrumentation.callActivityOnStart(Instrumentation.java:1582)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at android.app.Activity.performStart(Activity.java:8628)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at android.app.ActivityThread.handleStartActivity(ActivityThread.java:3807)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at android.app.servertransaction.TransactionExecutor.performLifecycleSequence(TransactionExecutor.java:225)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at android.app.servertransaction.TransactionExecutor.cycleToPath(TransactionExecutor.java:205)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at android.app.servertransaction.TransactionExecutor.executeLifecycleState(TransactionExecutor.java:177)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at android.app.servertransaction.TransactionExecutor.execute(TransactionExecutor.java:98)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2443)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at android.os.Handler.dispatchMessage(Handler.java:106)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at android.os.Looper.loopOnce(Looper.java:205)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at android.os.Looper.loop(Looper.java:294)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at android.app.ActivityThread.main(ActivityThread.java:8177)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at java.lang.reflect.Method.invoke(Native Method)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:552)
+10-31 21:38:09.393  6522  6522 W ResourcesCompat: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:971)
+10-31 21:38:09.399  6522  6522 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.network.TopLevelNetworkEntryPreferenceController
+10-31 21:38:09.403  6522  6522 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.communal.CommunalPreferenceController
+10-31 21:38:09.403  6522  6522 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.connecteddevice.TopLevelConnectedDevicesPreferenceController
+10-31 21:38:09.403  6522  6522 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.fuelgauge.TopLevelBatteryPreferenceController
+10-31 21:38:09.405  6522  6522 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.deviceinfo.TopLevelStoragePreferenceController
+10-31 21:38:09.405  6522  6522 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.display.TopLevelDisplayPreferenceController
+10-31 21:38:09.405  6522  6522 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.display.TopLevelWallpaperPreferenceController
+10-31 21:38:09.405  6522  6522 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.accessibility.TopLevelAccessibilityPreferenceController
+10-31 21:38:09.405  6522  6522 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.safetycenter.TopLevelSafetyCenterEntryPreferenceController
+10-31 21:38:09.405  6522  6522 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.security.TopLevelSecurityEntryPreferenceController
+10-31 21:38:09.405  6522  6522 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.privacy.TopLevelPrivacyEntryPreferenceController
+10-31 21:38:09.406  6522  6522 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.location.TopLevelLocationPreferenceController
+10-31 21:38:09.406  6522  6522 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.accounts.TopLevelAccountEntryPreferenceController
+10-31 21:38:09.406  6522  6522 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.deviceinfo.aboutphone.TopLevelAboutDevicePreferenceController
+10-31 21:38:09.406  6522  6522 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.support.SupportPreferenceController
+10-31 21:38:09.406  6522  6522 D HighlightableMenu: parsing highlightable menu from xml
+10-31 21:38:09.411   522  1926 E UserRestrictionsUtils: Unknown restriction queried by uid 1000 (android et al): null
+10-31 21:38:09.411  6522  6522 W InstrumentedPrefFrag: Screen title missing for fragment com.android.settings.homepage.TopLevelSettings
+10-31 21:38:09.413  6522  6522 D ActivityEmbeddingUtils: isEmbeddingActivityEnabled = true
+10-31 21:38:09.414  6522  6522 D ActivityEmbeddingUtils: isEmbeddingActivityEnabled = true
+10-31 21:38:09.414  6522  6522 D ActivityEmbeddingUtils: isEmbeddingActivityEnabled = true
+10-31 21:38:09.414  6522  6522 D ActivityEmbeddingUtils: isEmbeddingActivityEnabled = true
+10-31 21:38:09.414  6522  6522 D ActivityEmbeddingUtils: isEmbeddingActivityEnabled = true
+10-31 21:38:09.414  6522  6522 D ActivityEmbeddingUtils: isEmbeddingActivityEnabled = true
+10-31 21:38:09.420  6522  6522 W TileUtils: Found com.google.android.gms.auth.proximity.multidevice.SettingsMaterialNextActivity for intent Intent { act=com.android.settings.action.IA_SETTINGS } missing metadata 
+10-31 21:38:09.421   522   626 D ActivityManager: sync unfroze 5332 com.google.android.settings.intelligence for 7
+10-31 21:38:09.428  6522  6522 D HighlightableMenu: add menu key: top_level_wellbeing
+10-31 21:38:09.428  6522  6522 D HighlightableMenu: add menu key: top_level_google
+10-31 21:38:09.432  6522  6522 D ActivityEmbeddingUtils: isEmbeddingActivityEnabled = true
+10-31 21:38:09.432  6522  6522 D ActivityEmbeddingUtils: isEmbeddingActivityEnabled = true
+10-31 21:38:09.432  6522  6522 D ActivityEmbeddingUtils: isEmbeddingActivityEnabled = true
+10-31 21:38:09.433  6522  6522 D ActivityEmbeddingUtils: isEmbeddingActivityEnabled = true
+10-31 21:38:09.434  6522  6522 D ActivityEmbeddingUtils: isEmbeddingActivityEnabled = true
+10-31 21:38:09.434  6522  6522 D ActivityEmbeddingUtils: isEmbeddingActivityEnabled = true
+10-31 21:38:09.434  6522  6522 D DashboardFragment: register observer: @97a5728, uri: content://com.google.android.apps.wellbeing.api/digitalWellbeingSummary
+10-31 21:38:09.442  6522  6522 D ActivityEmbeddingUtils: isEmbeddingActivityEnabled = true
+10-31 21:38:09.442  6522  6522 D ActivityEmbeddingUtils: isEmbeddingActivityEnabled = true
+10-31 21:38:09.442  6522  6522 D ActivityEmbeddingUtils: isEmbeddingActivityEnabled = true
+10-31 21:38:09.442  6522  6522 D ActivityEmbeddingUtils: isEmbeddingActivityEnabled = true
+10-31 21:38:09.442  6522  6522 D ActivityEmbeddingUtils: isEmbeddingActivityEnabled = true
+10-31 21:38:09.443  6522  6522 D ActivityEmbeddingUtils: isEmbeddingActivityEnabled = true
+10-31 21:38:09.451  6522  6522 D TopLevelSettings: Start waiting observers
+10-31 21:38:09.451  6522  6522 D TopLevelSettings: Stop waiting observers
+10-31 21:38:09.451  6522  6522 D TopLevelSettings: All preferences added, reporting fully drawn
+10-31 21:38:09.453  6522  6522 D ActivityEmbeddingUtils: isEmbeddingActivityEnabled = true
+10-31 21:38:09.460  6522  6522 D TopLevelHighlightMixin: Menu key: top_level_apps
+10-31 21:38:09.460  6522  6522 D TopLevelHighlightMixin: onCreateAdapter, pref key: top_level_apps
+10-31 21:38:09.461  6522  6522 D HighlightableTopLevelAdapter: Request highlight position 2
+10-31 21:38:09.461  6522  6522 D HighlightableTopLevelAdapter: Is highlight needed: false
+10-31 21:38:09.463   522   626 D CompatibilityChangeReporter: Compat change id reported: 261072174; UID 1000; state: ENABLED
+10-31 21:38:09.465  6522  6522 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcast:1220 android.content.ContextWrapper.sendBroadcast:504 com.google.android.settings.search.SearchFeatureProviderGoogleImpl.sendPreIndexIntent:28 com.android.settings.homepage.TopLevelSettings.onStart:181 androidx.fragment.app.Fragment.performStart:3173 
+10-31 21:38:09.466   522  1926 D CompatibilityChangeReporter: Compat change id reported: 161145287; UID 1000; state: ENABLED
+10-31 21:38:09.467  6522  6522 D BatteryBroadcastRcvr: updateBatteryStatus: action=android.intent.action.BATTERY_CHANGED
+10-31 21:38:09.467  6522  6522 D BatteryBroadcastRcvr: Battery changed: level: 100%| status: Charged| chargingStatus: 0| health: 2
+10-31 21:38:09.467  6522  6522 D TopLvBatteryPrefControl: onBatteryChanged: type=0
+10-31 21:38:09.469  6522  6551 D BatteryInfo: time for getStats: 0ms
+10-31 21:38:09.470  6522  6551 D BatteryInfo: time for regular BatteryInfo: 1ms
+10-31 21:38:09.470  6522  6551 D BatteryInfo: time for getBatteryInfo: 0ms
+10-31 21:38:09.471  6522  6522 W ElapsedTimeUtils: getElapsedTime: sSuwFinishedTimeStamp is null
+10-31 21:38:09.474  6522  6522 W ElapsedTimeUtils: getElapsedTime: sSuwFinishedTimeStamp is null
+10-31 21:38:09.475  6522  6522 W ElapsedTimeUtils: getElapsedTime: sSuwFinishedTimeStamp is null
+10-31 21:38:09.476  6522  6522 D CompatibilityChangeReporter: Compat change id reported: 263076149; UID 1000; state: ENABLED
+10-31 21:38:09.481  6522  6522 D CategoryMixin: Skip categories update
+10-31 21:38:09.491  6522  6522 D CompatibilityChangeReporter: Compat change id reported: 237531167; UID 1000; state: DISABLED
+10-31 21:38:09.492  6522  6522 W OpenGLRenderer: Unknown dataspace 0
+10-31 21:38:09.499  6522  6522 W ElapsedTimeUtils: getElapsedTime: sSuwFinishedTimeStamp is null
+10-31 21:38:09.500  6522  6522 W ElapsedTimeUtils: getElapsedTime: sSuwFinishedTimeStamp is null
+10-31 21:38:09.500  6522  6522 W ElapsedTimeUtils: getElapsedTime: sSuwFinishedTimeStamp is null
+10-31 21:38:09.519  1074  1113 I ImeTracker: com.google.android.apps.nexuslauncher:1f715a9: onRequestHide at ORIGIN_CLIENT_HIDE_SOFT_INPUT reason HIDE_SOFT_INPUT
+10-31 21:38:09.520   522   626 I ImeTracker: com.google.android.apps.nexuslauncher:1f715a9: onCancelled at PHASE_SERVER_SHOULD_HIDE
+10-31 21:38:09.522  6522  6522 D BatteryBroadcastRcvr: updateBatteryStatus: action=android.intent.action.BATTERY_CHANGED
+10-31 21:38:09.522  6522  6522 D BatteryBroadcastRcvr: Battery changed: level: 100%| status: Charged| chargingStatus: 0| health: 2
+10-31 21:38:09.522  6522  6522 D TopLvBatteryPrefControl: getBatteryInfo: com.android.settings.fuelgauge.BatteryInfo@48abbe1
+10-31 21:38:09.522  6522  6522 D TopLvBatteryPrefControl: getDashboardLabel: null batteryStatusUpdate=true
+10-31 21:38:09.522  6522  6546 D ContextualSuggestFrag: Start loading suggestions
+10-31 21:38:09.523  6522  6549 D ContextualSuggestFrag: Start loading suggestions
+10-31 21:38:09.524  5332  6548 W MetricsFeatureProvider: Invalid suggestion ids!!! ids is null or empty. Please check. 
+10-31 21:38:09.524  5332  5357 W MetricsFeatureProvider: Invalid suggestion ids!!! ids is null or empty. Please check. 
+10-31 21:38:09.525  6522  6549 D ContextualSuggestFrag: Loaded suggests: 0
+10-31 21:38:09.525  6522  6546 D ContextualSuggestFrag: Loaded suggests: 0
+10-31 21:38:09.525  1074  2079 D OneSearchSuggestProvider: Shut down the binder channel
+10-31 21:38:09.526  1074  1091 I IPCThreadState: oneway function results for code 2 on binder at 0x76aab6bd7580 will be dropped but finished with status UNKNOWN_TRANSACTION
+10-31 21:38:09.533  6522  6522 D BatteryInfo: time for callback: 11ms
+10-31 21:38:09.538   522   626 D CoreBackPreview: Window{b90aabf u0 com.android.settings/com.android.settings.homepage.DeepLinkHomepageActivity}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@76332b7, mPriority=-1, mIsAnimationCallback=false}
+10-31 21:38:09.604  6522  6522 D ActivityEmbeddingUtils: isEmbeddingActivityEnabled = true
+10-31 21:38:09.608  6522  6522 D SettingsActivity: Starting onCreate
+10-31 21:38:09.612  6522  6522 D SettingsActivity: Starting to set activity title
+10-31 21:38:09.612  6522  6522 D SettingsActivity: Done setting title
+10-31 21:38:09.612  6522  6522 D SettingsActivity: Switching to fragment com.android.settings.applications.appinfo.AppInfoDashboardFragment
+10-31 21:38:09.618  6522  6522 D CompatibilityChangeReporter: Compat change id reported: 205919743; UID 1000; state: ENABLED
+10-31 21:38:09.620  6522  6522 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.applications.appinfo.AppSettingPreferenceController
+10-31 21:38:09.620  6522  6522 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.applications.appinfo.AppAllServicesPreferenceController
+10-31 21:38:09.621  6522  6522 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.applications.appinfo.AppNotificationPreferenceController
+10-31 21:38:09.621  6522  6522 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.applications.appinfo.AppPermissionPreferenceController
+10-31 21:38:09.621  6522  6522 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.applications.appinfo.AppStoragePreferenceController
+10-31 21:38:09.622  6522  6522 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.applications.appinfo.InstantAppDomainsPreferenceController
+10-31 21:38:09.622  6522  6522 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.applications.appinfo.AppDataUsagePreferenceController
+10-31 21:38:09.622  6522  6522 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.applications.appinfo.TimeSpentInAppPreferenceController
+10-31 21:38:09.622  6522  6522 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.applications.appinfo.AppLocalePreferenceController
+10-31 21:38:09.623  6522  6522 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.applications.appinfo.AppOpenByDefaultPreferenceController
+10-31 21:38:09.623  6522  6522 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.applications.appinfo.AppHibernationPreferenceCategoryController
+10-31 21:38:09.624  6522  6522 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.applications.appinfo.HibernationSwitchPreferenceController
+10-31 21:38:09.624  6522  6522 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.applications.appinfo.AdvancedAppInfoPreferenceCategoryController
+10-31 21:38:09.624  6522  6522 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.applications.appinfo.DrawOverlayDetailPreferenceController
+10-31 21:38:09.624  6522  6522 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.applications.appinfo.WriteSystemSettingsPreferenceController
+10-31 21:38:09.624  6522  6522 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.applications.specialaccess.pictureinpicture.PictureInPictureDetailPreferenceController
+10-31 21:38:09.624  6522  6522 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.applications.appinfo.ExternalSourceDetailPreferenceController
+10-31 21:38:09.624  6522  6522 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.applications.specialaccess.interactacrossprofiles.InteractAcrossProfilesDetailsPreferenceController
+10-31 21:38:09.624  6522  6522 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.applications.appinfo.AlarmsAndRemindersDetailPreferenceController
+10-31 21:38:09.624  6522  6522 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.applications.appinfo.LongBackgroundTasksDetailsPreferenceController
+10-31 21:38:09.624  6522  6522 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.applications.appinfo.AppInstallerPreferenceCategoryController
+10-31 21:38:09.624  6522  6522 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.applications.appinfo.AppInstallerInfoPreferenceController
+10-31 21:38:09.624  6522  6522 D PrefCtrlListHelper: Could not find Context-only controller for pref: com.android.settings.applications.appinfo.AppVersionPreferenceController
+10-31 21:38:09.626  6522  6522 E Settings: Unable to find info for package: null
+10-31 21:38:09.628  6522  6522 D SettingsActivity: MetricsCategory is 20
+10-31 21:38:09.634  6522  6522 W InstrumentedPrefFrag: Screen title missing for fragment com.android.settings.applications.appinfo.AppInfoDashboardFragment
+10-31 21:38:09.636  6522  6522 D AllServicesPrefControl: mResolveInfo is null.
+10-31 21:38:09.637  6522  6522 E ndroid.settings: Invalid resource ID 0x00000000.
+10-31 21:38:09.637  6522  6522 W LocaleConfig: The resource file pointed to by the given resource ID isn't found.
+10-31 21:38:09.638  6522  6522 I AppLocaleUtil: Can display preference - [dev.pranav.applock] : isDisallowedPackage : false / isSignedWithPlatformKey : false / hasLauncherEntry : true / canDisplay : false / 1.1
+10-31 21:38:09.638  6522  6522 E ndroid.settings: Invalid resource ID 0x00000000.
+10-31 21:38:09.638  6522  6522 W LocaleConfig: The resource file pointed to by the given resource ID isn't found.
+10-31 21:38:09.638  6522  6522 I AppLocaleUtil: Can display preference - [dev.pranav.applock] : isDisallowedPackage : false / isSignedWithPlatformKey : false / hasLauncherEntry : true / canDisplay : false / 1.1
+10-31 21:38:09.643  6522  6522 D AppInfoDashboard: NO dashboard tiles for AppInfoDashboard
+10-31 21:38:09.643  6522  6522 D AppInfoDashboard: All preferences added, reporting fully drawn
+10-31 21:38:09.644  6522  6551 D CompatibilityChangeReporter: Compat change id reported: 170233598; UID 1000; state: ENABLED
+10-31 21:38:09.644  6522  6522 D SettingsActivity: Executed frag manager pendingTransactions
+10-31 21:38:09.645  6522  6551 D DatabaseUtils: sixDayAgoTimestamp: Oct 25, 2026, 00:00:00
+10-31 21:38:09.645  6522  6551 D BatteryUsageContentProvider: getQueryTimestamp from uri: content://com.android.settings.battery.usage.provider/BatteryState?timestamp=1792886400000
+10-31 21:38:09.645  6522  6522 D SettingsActivity: MetricsCategory is 20
+10-31 21:38:09.648  6522  6551 D BatteryUsageContentProvider: query battery states in 3/ms
+10-31 21:38:09.649  6522  6551 D DatabaseUtils: getHistoryMapSinceLastFullCharge() returns empty or null
+10-31 21:38:09.649  6522  6551 D AppBatteryPreferenceController: loadBatteryDiffEntries():
+10-31 21:38:09.649  6522  6551 D AppBatteryPreferenceController: null
+10-31 21:38:09.650   522  2207 I ActivityTaskManager: START u0 {cmp=com.android.settings/.spa.SpaActivity (has extras)} with LAUNCH_MULTIPLE from uid 1000 (BAL_ALLOW_ALLOWLISTED_UID) result code=0
+10-31 21:38:09.652  6522  6522 D ContextualSuggestFrag: Remove suggestion
+10-31 21:38:09.652  6522  6522 D ContextualSuggestFrag: Total loading time: 130 ms
+10-31 21:38:09.652  6522  6522 W ElapsedTimeUtils: getElapsedTime: sSuwFinishedTimeStamp is null
+10-31 21:38:09.652  6522  6560 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcast:1220 android.content.ContextWrapper.sendBroadcast:504 com.android.settings.fuelgauge.batteryusage.BootBroadcastReceiver.invokeJobRecheck:51 com.android.settings.fuelgauge.batteryusage.BatteryUsageContentProvider.lambda$getBatteryStates$0:192 com.android.settings.fuelgauge.batteryusage.BatteryUsageContentProvider.$r8$lambda$GIZ8kfDQ4FGsQc1MEnYvlHwj8ts:0 
+10-31 21:38:09.652  6522  6522 I SettingsHomepageActivity: showHomepageWithSuggestion: false
+10-31 21:38:09.652  6522  6522 D ContextualSuggestFrag: Remove suggestion
+10-31 21:38:09.652  6522  6522 D ContextualSuggestFrag: Total loading time: 131 ms
+10-31 21:38:09.652  6522  6522 W ElapsedTimeUtils: getElapsedTime: sSuwFinishedTimeStamp is null
+10-31 21:38:09.653   522  1926 E ActivityManager: Sending non-protected broadcast com.android.settings.battery.action.PERIODIC_JOB_RECHECK from system 6522:com.android.settings/1000 pkg com.android.settings
+10-31 21:38:09.653   522  1926 E ActivityManager: java.lang.Throwable
+10-31 21:38:09.653   522  1926 E ActivityManager: 	at com.android.server.am.ActivityManagerService.checkBroadcastFromSystem(ActivityManagerService.java:14306)
+10-31 21:38:09.653   522  1926 E ActivityManager: 	at com.android.server.am.ActivityManagerService.broadcastIntentLockedTraced(ActivityManagerService.java:15131)
+10-31 21:38:09.653   522  1926 E ActivityManager: 	at com.android.server.am.ActivityManagerService.broadcastIntentLocked(ActivityManagerService.java:14370)
+10-31 21:38:09.653   522  1926 E ActivityManager: 	at com.android.server.am.ActivityManagerService.broadcastIntentWithFeature(ActivityManagerService.java:15336)
+10-31 21:38:09.653   522  1926 E ActivityManager: 	at android.app.IActivityManager$Stub.onTransact(IActivityManager.java:2653)
+10-31 21:38:09.653   522  1926 E ActivityManager: 	at com.android.server.am.ActivityManagerService.onTransact(ActivityManagerService.java:2720)
+10-31 21:38:09.653   522  1926 E ActivityManager: 	at android.os.Binder.execTransactInternal(Binder.java:1339)
+10-31 21:38:09.653   522  1926 E ActivityManager: 	at android.os.Binder.execTransact(Binder.java:1275)
+10-31 21:38:09.691  6522  6522 D BootBroadcastReceiver: refresh periodic job from action=com.android.settings.battery.action.PERIODIC_JOB_RECHECK
+10-31 21:38:09.691  6522  6522 D CompatibilityChangeReporter: Compat change id reported: 160794467; UID 1000; state: ENABLED
+10-31 21:38:09.691   522  1926 D CompatibilityChangeReporter: Compat change id reported: 171306433; UID 1000; state: ENABLED
+10-31 21:38:09.692   522  1926 D CompatibilityChangeReporter: Compat change id reported: 218533173; UID 1000; state: ENABLED
+10-31 21:38:09.694  6522  6522 D PeriodicJobManager: schedule next alarm job at Oct 31, 2026, 22:00:00
+10-31 21:38:09.698   822   855 V WindowManagerShell: onTransitionReady android.os.BinderProxy@c8d6f3b: {id=28 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[{WCT{android.window.IWindowContainerToken$Stub$Proxy@8b7b022} m=OPEN f=IN_TASK_WITH_EMBEDDED_ACTIVITY|FILLS_TASK|IS_BEHIND_STARTING_WINDOW leash=Surface(name=TaskFragment{ecd8ace mode=fullscreen})/@0xb59c417 sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) d=0},{null m=TO_BACK f=STARTING_WINDOW_TRANSFER|IN_TASK_WITH_EMBEDDED_ACTIVITY|FILLS_TASK|IS_BEHIND_STARTING_WINDOW leash=Surface(name=ActivityRecord{5b3bccc u0 com.android.settings/.homepage.DeepLinkHomepageActivity)/@0xfc1b004 sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) d=0 lastParent=WCT{android.window.IWindowContainerToken$Stub$Proxy@a2c8ab3}}]}
+10-31 21:38:09.698   822   855 V WindowManagerShell: Non-visible anim so abort: (#28)android.os.BinderProxy@c8d6f3b@0
+10-31 21:38:09.698   822   855 V WindowManagerShell: Transition animation finished (aborted=true), notifying core (#28)android.os.BinderProxy@c8d6f3b@0
+10-31 21:38:09.714   522   539 V WindowManager: Sent Transition #28 createdAt=10-31 21:38:09.353 via request=TransitionRequestInfo { type = OPEN, triggerTask = null, remoteTransition = null, displayChange = null }
+10-31 21:38:09.715   522   539 V WindowManager:     startWCT=WindowContainerTransaction { changes = {} hops = [] errorCallbackToken=null taskFragmentOrganizer=null }
+10-31 21:38:09.715   822   855 V WindowManagerShell: Track 0 became idle
+10-31 21:38:09.716   822   855 V WindowManagerShell: All active transition animations finished
+10-31 21:38:09.716   522   539 V WindowManager:     info={id=28 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[{WCT{RemoteToken{7f17ef3 TaskFragment{ecd8ace mode=fullscreen}}} m=OPEN f=IN_TASK_WITH_EMBEDDED_ACTIVITY|FILLS_TASK|IS_BEHIND_STARTING_WINDOW leash=Surface(name=TaskFragment{ecd8ace mode=fullscreen})/@0x94da42d sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) d=0},{null m=TO_BACK f=STARTING_WINDOW_TRANSFER|IN_TASK_WITH_EMBEDDED_ACTIVITY|FILLS_TASK|IS_BEHIND_STARTING_WINDOW leash=Surface(name=ActivityRecord{5b3bccc u0 com.android.settings/.homepage.DeepLinkHomepageActivity)/@0x66b12f6 sb=Rect(0, 0 - 1080, 2400) eb=Rect(0, 0 - 1080, 2400) d=0 lastParent=WCT{RemoteToken{6b2bd6e Task{fc23c3b #13 type=standard A=1000:com.android.settings}}}}]}
+10-31 21:38:09.716   522   539 V WindowManager: Finish Transition #28: created at 10-31 21:38:09.353 collect-started=0.024ms request-sent=3.837ms started=5.401ms ready=340.961ms sent=344.175ms finished=360.42ms
+10-31 21:38:09.716   824   846 I Role    : dev.pranav.applock not qualified for android.app.role.HOME due to missing RequiredComponent{mIntentFilterData=IntentFilterData{mAction='android.intent.action.MAIN', mCategories='[android.intent.category.HOME]', mDataScheme='null', mDataType='null'}, mMinTargetSdkVersion=1, mFlags='0', mPermission='null', mQueryFlags=0, mMetaData=[]}
+10-31 21:38:09.720   824   846 I Role    : dev.pranav.applock not qualified for android.app.role.DIALER due to missing RequiredComponent{mIntentFilterData=IntentFilterData{mAction='android.intent.action.DIAL', mCategories='[]', mDataScheme='null', mDataType='null'}, mMinTargetSdkVersion=1, mFlags='0', mPermission='null', mQueryFlags=0, mMetaData=[]}
+10-31 21:38:09.723   522  1929 D CoreBackPreview: Window{80d5629 u0 com.android.settings/com.android.settings.spa.SpaActivity}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@6af1721, mPriority=-1, mIsAnimationCallback=false}
+10-31 21:38:09.730   824   846 I Role    : dev.pranav.applock not qualified for android.app.role.SMS due to missing RequiredComponent{mIntentFilterData=IntentFilterData{mAction='android.provider.Telephony.SMS_DELIVER', mCategories='[]', mDataScheme='null', mDataType='null'}, mMinTargetSdkVersion=1, mFlags='0', mPermission='android.permission.BROADCAST_SMS', mQueryFlags=0, mMetaData=[]}
+10-31 21:38:09.787  6522  6522 D SppRepository: Initialize Completed: 16 spp
+10-31 21:38:09.800  6522  6540 W OpenGLRenderer: Failed to initialize 101010-2 format, error = EGL_SUCCESS
+--------- beginning of kernel
+10-31 21:38:10.015     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+10-31 21:38:09.827   138   138 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+10-31 21:38:09.827  6522  6540 I Gralloc4: mapper 4.x is not supported
+10-31 21:38:09.932   522   539 I ActivityTaskManager: Displayed com.android.settings/.spa.SpaActivity for user 0: +1s71ms
+10-31 21:38:09.957   522  1488 W InputManager-JNI: Input channel object 'c37beed Splash Screen com.android.settings (client)' was disposed without first being removed with the input manager!
+10-31 21:38:09.960   522   542 W ActivityTaskManager: onActivityStateChanged on non-leaf task fragment Task{fc23c3b #13 type=standard A=1000:com.android.settings}
+10-31 21:38:09.961   522   542 W ActivityTaskManager: onActivityStateChanged on non-leaf task fragment Task{fc23c3b #13 type=standard A=1000:com.android.settings}
+10-31 21:38:09.970  6522  6522 D BrowseActivity: Launching page AppInfoSettings
+10-31 21:38:09.982   522  1488 W ActivityTaskManager: onActivityStateChanged on non-leaf task fragment Task{fc23c3b #13 type=standard A=1000:com.android.settings}
+10-31 21:38:09.986  6522  6522 D DashboardFragment: unregister observer: @97a5728, uri: content://com.google.android.apps.wellbeing.api/digitalWellbeingSummary
+10-31 21:38:09.990   522  1488 D CompatibilityChangeReporter: Compat change id reported: 214016041; UID 1000; state: ENABLED
+10-31 21:38:09.991   522  1488 I ImeTracker: com.android.settings:93b7c9fe: onRequestHide at ORIGIN_SERVER_HIDE_INPUT reason HIDE_UNSPECIFIED_WINDOW
+10-31 21:38:09.991   522  1488 I ImeTracker: com.android.settings:93b7c9fe: onCancelled at PHASE_SERVER_SHOULD_HIDE
+10-31 21:38:09.998  1526  1526 I GoogleInputMethodService: GoogleInputMethodService.onFinishInput():3227 
+10-31 21:38:09.999  1526  1526 I GoogleInputMethodService: GoogleInputMethodService.updateDeviceLockedStatus():2087 repeatCheckTimes = 0, unlocked = true
+10-31 21:38:10.000  1526  1526 I GoogleInputMethodService: GoogleInputMethodService.onStartInput():1877 onStartInput(EditorInfo{inputType=0x0(NULL) imeOptions=0x0 privateImeOptions=null actionName=UNSPECIFIED actionLabel=null actionId=0 initialSelStart=-1 initialSelEnd=-1 initialCapsMode=0x0 hintText=null label=null packageName=com.android.settings fieldId=0 fieldName=null extras=null}, false)
+10-31 21:38:10.000  1526  1526 I GoogleInputMethodService: GoogleInputMethodService.shouldHideHeaderOnInitialState():4008 ShouldHideHeaderOnInitialState = false
+10-31 21:38:10.000  1526  1526 I GoogleInputMethodService: GoogleInputMethodService.updateDeviceLockedStatus():2087 repeatCheckTimes = 2, unlocked = true
+10-31 21:38:10.062  1526  1537 I putmethod.latin: JIT allocated 106KB for compiled code of boolean drz.a(ikb, java.lang.Object[])
+10-31 21:38:10.063  1526  1537 I putmethod.latin: Compiler allocated 5216KB to compile boolean drz.a(ikb, java.lang.Object[])
+10-31 21:38:10.197  6522  6570 D DatabaseUtils: sixDayAgoTimestamp: Oct 25, 2026, 00:00:00
+10-31 21:38:10.199  6522  6570 D BatteryUsageContentProvider: getQueryTimestamp from uri: content://com.android.settings.battery.usage.provider/BatteryState?timestamp=1792886400000
+10-31 21:38:10.203  6522  6566 E ndroid.settings: Invalid resource ID 0x00000000.
+10-31 21:38:10.203  6522  6566 W LocaleConfig: The resource file pointed to by the given resource ID isn't found.
+10-31 21:38:10.203  6522  6566 I AppLocaleUtil: Can display preference - [dev.pranav.applock] : isDisallowedPackage : false / isSignedWithPlatformKey : false / hasLauncherEntry : true / canDisplay : false / 1.1
+10-31 21:38:10.207  6522  6570 D BatteryUsageContentProvider: query battery states in 5/ms
+10-31 21:38:10.208  6522  6560 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcast:1220 android.content.ContextWrapper.sendBroadcast:504 com.android.settings.fuelgauge.batteryusage.BootBroadcastReceiver.invokeJobRecheck:51 com.android.settings.fuelgauge.batteryusage.BatteryUsageContentProvider.lambda$getBatteryStates$0:192 com.android.settings.fuelgauge.batteryusage.BatteryUsageContentProvider.$r8$lambda$GIZ8kfDQ4FGsQc1MEnYvlHwj8ts:0 
+10-31 21:38:10.209   522  1488 E ActivityManager: Sending non-protected broadcast com.android.settings.battery.action.PERIODIC_JOB_RECHECK from system 6522:com.android.settings/1000 pkg com.android.settings
+10-31 21:38:10.209   522  1488 E ActivityManager: java.lang.Throwable
+10-31 21:38:10.209   522  1488 E ActivityManager: 	at com.android.server.am.ActivityManagerService.checkBroadcastFromSystem(ActivityManagerService.java:14306)
+10-31 21:38:10.209   522  1488 E ActivityManager: 	at com.android.server.am.ActivityManagerService.broadcastIntentLockedTraced(ActivityManagerService.java:15131)
+10-31 21:38:10.209   522  1488 E ActivityManager: 	at com.android.server.am.ActivityManagerService.broadcastIntentLocked(ActivityManagerService.java:14370)
+10-31 21:38:10.209   522  1488 E ActivityManager: 	at com.android.server.am.ActivityManagerService.broadcastIntentWithFeature(ActivityManagerService.java:15336)
+10-31 21:38:10.209   522  1488 E ActivityManager: 	at android.app.IActivityManager$Stub.onTransact(IActivityManager.java:2653)
+10-31 21:38:10.209   522  1488 E ActivityManager: 	at com.android.server.am.ActivityManagerService.onTransact(ActivityManagerService.java:2720)
+10-31 21:38:10.209   522  1488 E ActivityManager: 	at android.os.Binder.execTransactInternal(Binder.java:1339)
+10-31 21:38:10.209   522  1488 E ActivityManager: 	at android.os.Binder.execTransact(Binder.java:1275)
+10-31 21:38:10.210  6522  6570 D DatabaseUtils: getHistoryMapSinceLastFullCharge() returns empty or null
+10-31 21:38:10.210  6522  6570 D AppBatteryPresenter: loadBatteryDiffEntries():
+10-31 21:38:10.210  6522  6570 D AppBatteryPresenter: null
+10-31 21:38:10.447   824   880 I ServiceLiveData: Not exempting com.google.android.gms - not an active NotificationListenerService for u0
+10-31 21:38:10.449  6522  6522 D BootBroadcastReceiver: refresh periodic job from action=com.android.settings.battery.action.PERIODIC_JOB_RECHECK
+10-31 21:38:10.449   824   877 I ServiceLiveData: Detected InputMethods: [com.google.android.inputmethod.latin, com.google.android.tts]
+10-31 21:38:10.449   824   878 I ServiceLiveData: Detected WallpaperServices: []
+10-31 21:38:10.449   824   862 I ServiceLiveData: Not exempting com.android.systemui.accessibility.accessibilitymenu - not an active AccessibilityService for u0
+10-31 21:38:10.449  6522  6522 D PeriodicJobManager: schedule next alarm job at Oct 31, 2026, 22:00:00
+10-31 21:38:10.449   824   876 I ServiceLiveData: Detected PrintServices: [com.android.bips]
+10-31 21:38:10.450   824   881 I ServiceLiveData: Not exempting com.android.dreams.basic - not an active DreamService for u0
+10-31 21:38:10.451   824   881 I ServiceLiveData: Not exempting com.google.android.apps.photos - not an active DreamService for u0
+10-31 21:38:10.451   824   881 I ServiceLiveData: Not exempting com.google.android.deskclock - not an active DreamService for u0
+10-31 21:38:10.452   824   881 I ServiceLiveData: Detected DreamServices: []
+10-31 21:38:10.452   824   876 I ServiceLiveData: Not exempting com.google.android.gms - not an active DEVICE_ADMIN_SERVICE for u0
+10-31 21:38:10.452   824   876 I ServiceLiveData: Detected DEVICE_ADMIN_SERVICEs: []
+10-31 21:38:10.452   824   880 I ServiceLiveData: Not exempting com.google.android.projection.gearhead - not an active NotificationListenerService for u0
+10-31 21:38:10.452   824   880 I ServiceLiveData: Detected NotificationListenerServices: [com.google.android.apps.nexuslauncher, com.google.android.as]
+10-31 21:38:10.452   824   878 I BroadcastReceiverLiveData: Not exempting com.google.android.gms - not an active DEVICE_ADMIN_ENABLED for u0
+10-31 21:38:10.453   824   878 I BroadcastReceiverLiveData: Detected DEVICE_ADMIN_ENABLEDs: [dev.pranav.applock]
+10-31 21:38:10.453   824   850 I Role    : dev.pranav.applock not qualified for android.app.role.HOME due to missing RequiredComponent{mIntentFilterData=IntentFilterData{mAction='android.intent.action.MAIN', mCategories='[android.intent.category.HOME]', mDataScheme='null', mDataType='null'}, mMinTargetSdkVersion=1, mFlags='0', mPermission='null', mQueryFlags=0, mMetaData=[]}
+10-31 21:38:10.453   824   877 I ServiceLiveData: Detected AutofillServices: [com.google.android.gms]
+10-31 21:38:10.453   824   862 I ServiceLiveData: Not exempting com.google.android.marvin.talkback - not an active AccessibilityService for u0
+10-31 21:38:10.453   824   862 I ServiceLiveData: Not exempting com.google.android.marvin.talkback - not an active AccessibilityService for u0
+10-31 21:38:10.453   824   862 I ServiceLiveData: Detected AccessibilityServices: [dev.pranav.applock]
+10-31 21:38:10.453   824   879 I ServiceLiveData: Detected VoiceInteractionServices: [com.google.android.googlequicksearchbox]
+10-31 21:38:10.454   824   850 I Role    : dev.pranav.applock not qualified for android.app.role.DIALER due to missing RequiredComponent{mIntentFilterData=IntentFilterData{mAction='android.intent.action.DIAL', mCategories='[]', mDataScheme='null', mDataType='null'}, mMinTargetSdkVersion=1, mFlags='0', mPermission='null', mQueryFlags=0, mMetaData=[]}
+10-31 21:38:10.454   824   850 I Role    : dev.pranav.applock not qualified for android.app.role.SMS due to missing RequiredComponent{mIntentFilterData=IntentFilterData{mAction='android.provider.Telephony.SMS_DELIVER', mCategories='[]', mDataScheme='null', mDataType='null'}, mMinTargetSdkVersion=1, mFlags='0', mPermission='android.permission.BROADCAST_SMS', mQueryFlags=0, mMetaData=[]}
+10-31 21:38:10.456   824   862 I ServiceLiveData: Detected WallpaperServices: []
+10-31 21:38:10.457   824   862 I ServiceLiveData: Not exempting com.google.android.gms - not an active NotificationListenerService for u0
+10-31 21:38:10.457   824   862 I ServiceLiveData: Not exempting com.google.android.projection.gearhead - not an active NotificationListenerService for u0
+10-31 21:38:10.457   824   862 I ServiceLiveData: Detected NotificationListenerServices: [com.google.android.apps.nexuslauncher, com.google.android.as]
+10-31 21:38:10.457   824   875 I ServiceLiveData: Detected PrintServices: [com.android.bips]
+10-31 21:38:10.457   824   862 I ServiceLiveData: Detected InputMethods: [com.google.android.inputmethod.latin, com.google.android.tts]
+10-31 21:38:10.458   824   875 I ServiceLiveData: Not exempting com.android.dreams.basic - not an active DreamService for u0
+10-31 21:38:10.459   824   875 I ServiceLiveData: Not exempting com.google.android.apps.photos - not an active DreamService for u0
+10-31 21:38:10.460   824   875 I ServiceLiveData: Not exempting com.google.android.deskclock - not an active DreamService for u0
+10-31 21:38:10.461   824   875 I ServiceLiveData: Detected DreamServices: []
+10-31 21:38:10.461   824   862 I ServiceLiveData: Detected AutofillServices: [com.google.android.gms]
+10-31 21:38:10.461   824   878 I ServiceLiveData: Not exempting com.android.systemui.accessibility.accessibilitymenu - not an active AccessibilityService for u0
+10-31 21:38:10.475   824   878 I ServiceLiveData: Not exempting com.google.android.marvin.talkback - not an active AccessibilityService for u0
+10-31 21:38:10.475   824   878 I ServiceLiveData: Not exempting com.google.android.marvin.talkback - not an active AccessibilityService for u0
+10-31 21:38:10.475   824   878 I ServiceLiveData: Not exempting dev.pranav.applock - not an active AccessibilityService for u0
+10-31 21:38:10.475   824   878 I ServiceLiveData: Detected AccessibilityServices: []
+10-31 21:38:10.477   824   881 I BroadcastReceiverLiveData: Not exempting com.google.android.gms - not an active DEVICE_ADMIN_ENABLED for u0
+10-31 21:38:10.477   824   881 I BroadcastReceiverLiveData: Detected DEVICE_ADMIN_ENABLEDs: [dev.pranav.applock]
+10-31 21:38:10.481   824   877 I ServiceLiveData: Not exempting com.google.android.gms - not an active DEVICE_ADMIN_SERVICE for u0
+10-31 21:38:10.484   824   877 I ServiceLiveData: Detected DEVICE_ADMIN_SERVICEs: []
+10-31 21:38:10.520   824   879 I ServiceLiveData: Detected VoiceInteractionServices: [com.google.android.googlequicksearchbox]
+10-31 21:38:10.527   339   374 I netd    : tetherGetStats() -> {[]} <0.42ms>
+10-31 21:38:10.555   339   374 I netd    : tetherGetStats() -> {[]} <0.33ms>
+10-31 21:38:10.571   339   374 I netd    : tetherGetStats() -> {[]} <0.30ms>
+10-31 21:38:10.642   824   846 I Role    : dev.pranav.applock not qualified for android.app.role.HOME due to missing RequiredComponent{mIntentFilterData=IntentFilterData{mAction='android.intent.action.MAIN', mCategories='[android.intent.category.HOME]', mDataScheme='null', mDataType='null'}, mMinTargetSdkVersion=1, mFlags='0', mPermission='null', mQueryFlags=0, mMetaData=[]}
+10-31 21:38:10.644   824   846 I Role    : dev.pranav.applock not qualified for android.app.role.DIALER due to missing RequiredComponent{mIntentFilterData=IntentFilterData{mAction='android.intent.action.DIAL', mCategories='[]', mDataScheme='null', mDataType='null'}, mMinTargetSdkVersion=1, mFlags='0', mPermission='null', mQueryFlags=0, mMetaData=[]}
+10-31 21:38:10.645   824   846 I Role    : dev.pranav.applock not qualified for android.app.role.SMS due to missing RequiredComponent{mIntentFilterData=IntentFilterData{mAction='android.provider.Telephony.SMS_DELIVER', mCategories='[]', mDataScheme='null', mDataType='null'}, mMinTargetSdkVersion=1, mFlags='0', mPermission='android.permission.BROADCAST_SMS', mQueryFlags=0, mMetaData=[]}
+10-31 21:38:11.059   822   822 D StatusBarIconController: ignoring old pipeline callback because the new wifi icon is enabled
+10-31 21:38:11.270   522   605 D ActivityManager: freezing 3031 com.google.android.gms.unstable
+10-31 21:38:11.572  1628  4024 I IPCThreadState: oneway function results for code 2 on binder at 0x76aab6bcd590 will be dropped but finished with status UNKNOWN_TRANSACTION
+10-31 21:38:11.574   522   598 D CompatibilityChangeReporter: Compat change id reported: 265195908; UID 10122; state: ENABLED
+10-31 21:38:11.884   522   605 D ActivityManager: freezing 3926 com.google.android.gm
+10-31 21:38:12.367   522  3060 E TaskPersister: File error accessing recents directory (directory doesn't exist?).
+10-31 21:38:12.548   522   588 D OomAdjuster: Not killing cached processes
+10-31 21:38:12.560  4464  4558 W Bugle   : TextClassifierLibManagerImpl: Reclaiming memory at level: 40
+10-31 21:38:15.045  3485  3683 W NamedFutures: Timeout future task has been cancelled: 60000 milliseconds
+10-31 21:38:15.045  3485  3485 E A       : Task 255 failed or timed out. Client 15328985573807930 disconnecting from SearchService!
+10-31 21:38:15.045  3485  3485 E A       : java.util.concurrent.CancellationException: Task was cancelled.
+10-31 21:38:15.045  3485  3485 E A       : 	at com.google.common.util.concurrent.d.s(PG:3)
+10-31 21:38:15.045  3485  3485 E A       : 	at com.google.common.util.concurrent.d.get(PG:4)
+10-31 21:38:15.045  3485  3485 E A       : 	at com.google.common.util.concurrent.eb.a(PG:1)
+10-31 21:38:15.045  3485  3485 E A       : 	at com.google.common.util.concurrent.ci.r(PG:2)
+10-31 21:38:15.045  3485  3485 E A       : 	at com.google.common.util.concurrent.cb.run(PG:4)
+10-31 21:38:15.045  3485  3485 E A       : 	at com.google.android.apps.gsa.shared.util.c.a.ba.run(PG:1)
+10-31 21:38:15.045  3485  3485 E A       : 	at android.os.Handler.handleCallback(Handler.java:958)
+10-31 21:38:15.045  3485  3485 E A       : 	at android.os.Handler.dispatchMessage(Handler.java:99)
+10-31 21:38:15.045  3485  3485 E A       : 	at android.os.Looper.loopOnce(Looper.java:205)
+10-31 21:38:15.045  3485  3485 E A       : 	at android.os.Looper.loop(Looper.java:294)
+10-31 21:38:15.045  3485  3485 E A       : 	at android.app.ActivityThread.main(ActivityThread.java:8177)
+10-31 21:38:15.045  3485  3485 E A       : 	at java.lang.reflect.Method.invoke(Native Method)
+10-31 21:38:15.045  3485  3485 E A       : 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:552)
+10-31 21:38:15.045  3485  3485 E A       : 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:971)
+10-31 21:38:15.046  3485  3764 W SearchServiceCore: Abort, client detached.
+10-31 21:38:15.046  3485  3764 W SearchServiceCore: Abort, client detached.
+10-31 21:38:15.046  3485  3764 W SearchServiceCore: Abort, client detached.
+10-31 21:38:15.046  3485  3764 W SearchServiceCore: Abort, client detached.
+10-31 21:38:15.049  3485  6471 E BgTaskExecutorImpl: EXCLUSIVE background task FETCH_CONFIGS_FROM_PHENOTYPE was cancelled.
+10-31 21:38:15.049  3485  6471 E BgTaskExecutorImpl: java.util.concurrent.CancellationException: Task was cancelled.
+10-31 21:38:15.049  3485  6471 E BgTaskExecutorImpl: 	at com.google.common.util.concurrent.d.s(PG:3)
+10-31 21:38:15.049  3485  6471 E BgTaskExecutorImpl: 	at com.google.common.util.concurrent.d.get(PG:4)
+10-31 21:38:15.049  3485  6471 E BgTaskExecutorImpl: 	at com.google.common.util.concurrent.eb.a(PG:1)
+10-31 21:38:15.049  3485  6471 E BgTaskExecutorImpl: 	at com.google.common.util.concurrent.ci.r(PG:2)
+10-31 21:38:15.049  3485  6471 E BgTaskExecutorImpl: 	at com.google.common.util.concurrent.cb.run(PG:4)
+10-31 21:38:15.049  3485  6471 E BgTaskExecutorImpl: 	at com.google.android.apps.gsa.shared.util.c.a.cf.b(PG:1)
+10-31 21:38:15.049  3485  6471 E BgTaskExecutorImpl: 	at com.google.android.apps.gsa.shared.util.c.a.ci.run(PG:1)
+10-31 21:38:15.049  3485  6471 E BgTaskExecutorImpl: 	at com.google.android.libraries.i.ae.run(PG:1)
+10-31 21:38:15.049  3485  6471 E BgTaskExecutorImpl: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+10-31 21:38:15.049  3485  6471 E BgTaskExecutorImpl: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+10-31 21:38:15.049  3485  6471 E BgTaskExecutorImpl: 	at com.google.android.libraries.i.i.run(PG:2)
+10-31 21:38:15.049  3485  6471 E BgTaskExecutorImpl: 	at com.google.android.libraries.i.p.run(PG:4)
+10-31 21:38:15.049  3485  6471 E BgTaskExecutorImpl: 	at java.lang.Thread.run(Thread.java:1012)
+10-31 21:38:15.248  3485  3645 E A       : Failed to commit flags to Phenotype. null (15)
+10-31 21:38:15.249  3485  3764 W SearchServiceCore: Abort, client detached.
+10-31 21:38:15.249  3485  3764 W SearchServiceCore: Abort, client detached.
+10-31 21:38:15.249  3485  3764 W SearchServiceCore: Abort, client detached.
+10-31 21:38:15.304   822   822 D StatusBarIconController: ignoring old pipeline callbacks, because the new mobile icons are enabled
+10-31 21:38:16.073   522   548 W ProcessStats: Tracking association SourceState{f91846f com.google.android.gms.persistent/10131 BTop #11859} whose proc state 2 is better than process ProcessState{8244de0 com.google.android.gms/10131 pkg=com.google.android.gms} proc state 9 (489 skipped)
+10-31 21:38:16.269     0     0 W healthd : battery l=100 v=5000 t=25.0 h=2 st=2 c=900000 fc=3000000 cc=10 chg=a
+10-31 21:38:17.093     0     0 I logd    : logdr: UID=2000 GID=2000 PID=6591 n tail=0 logMask=99 pid=0 start=0ns deadline=0ns

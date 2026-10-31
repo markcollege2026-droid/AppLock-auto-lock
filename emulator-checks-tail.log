@@ -1,0 +1,268 @@
++ PKG=dev.pranav.applock
++ ADMIN=dev.pranav.applock/dev.pranav.applock.core.broadcast.DeviceAdmin
++ A11Y=dev.pranav.applock/dev.pranav.applock.services.AppLockAccessibilityService
++ OUT=emulator-artifacts
++ RESULTS=emulator-artifacts/checks.txt
++ mkdir -p emulator-artifacts
++ :
+++ find app/build/outputs/apk/debug -name '*.apk'
+++ head -1
++ APK=app/build/outputs/apk/debug/app-debug.apk
++ '[' -z app/build/outputs/apk/debug/app-debug.apk ']'
++ echo 'using app/build/outputs/apk/debug/app-debug.apk'
+using app/build/outputs/apk/debug/app-debug.apk
++ adb devices -l
++ adb shell getprop ro.build.version.release
++ adb shell getprop ro.build.fingerprint
++ adb shell settings put global window_animation_scale 0
++ adb shell settings put global transition_animation_scale 0
++ adb shell settings put global animator_duration_scale 0
++ adb shell input keyevent KEYCODE_WAKEUP
++ adb shell wm dismiss-keyguard
++ adb install -r -g app/build/outputs/apk/debug/app-debug.apk
+Performing Streamed Install
+Success
++ adb shell pm list packages
++ grep -q dev.pranav.applock
++ pass 'debug APK installed'
++ echo 'PASS  debug APK installed'
++ tee -a emulator-artifacts/checks.txt
+PASS  debug APK installed
++ adb shell dumpsys package dev.pranav.applock
++ adb logcat -c
++ adb shell am start -W -n dev.pranav.applock/.MainActivity
+Starting: Intent { cmp=dev.pranav.applock/.MainActivity }
+Status: ok
+LaunchState: COLD
+Activity: dev.pranav.applock/.MainActivity
+TotalTime: 3297
+WaitTime: 3311
+Complete
++ sleep 5
++ adb shell dumpsys activity activities
++ adb exec-out screencap -p
++ adb logcat -d
++ grep -q 'FATAL EXCEPTION' emulator-artifacts/logcat-launch.txt
++ grep -m1 topResumedActivity emulator-artifacts/activities-launch.txt
++ grep -q dev.pranav.applock
++ pass 'app launches and is the resumed activity'
++ echo 'PASS  app launches and is the resumed activity'
++ tee -a emulator-artifacts/checks.txt
+PASS  app launches and is the resumed activity
++ adb shell am force-stop dev.pranav.applock
++ adb shell dpm set-active-admin dev.pranav.applock/dev.pranav.applock.core.broadcast.DeviceAdmin
++ adb shell dumpsys device_policy
++ grep -qi dev.pranav.applock emulator-artifacts/device_policy-active.txt
++ pass 'device admin active'
++ tee -a emulator-artifacts/checks.txt
++ echo 'PASS  device admin active'
+PASS  device admin active
++ adb uninstall dev.pranav.applock
++ grep -q DELETE_FAILED_DEVICE_POLICY_MANAGER emulator-artifacts/uninstall-attempt.txt
++ pass 'package install refuses uninstall while the admin is active'
++ echo 'PASS  package install refuses uninstall while the admin is active'
++ tee -a emulator-artifacts/checks.txt
+PASS  package install refuses uninstall while the admin is active
++ cat
++ adb push /tmp/app_lock_settings.xml /data/local/tmp/app_lock_settings.xml
+/tmp/app_lock_settings.xml: 1 file pushed, 0 skipped. 2.5 MB/s (121 bytes in 0.000s)
++ adb shell run-as dev.pranav.applock mkdir -p shared_prefs
++ adb shell 'run-as dev.pranav.applock sh -c '\''cat /data/local/tmp/app_lock_settings.xml > shared_prefs/app_lock_settings.xml'\'''
++ adb shell 'run-as dev.pranav.applock cat shared_prefs/app_lock_settings.xml'
++ grep -q anti_uninstall emulator-artifacts/prefs-written.txt
++ pass 'anti-uninstall pref written'
++ echo 'PASS  anti-uninstall pref written'
++ tee -a emulator-artifacts/checks.txt
+PASS  anti-uninstall pref written
++ adb shell input keyevent KEYCODE_HOME
++ sleep 2
++ adb shell cmd package resolve-activity -a android.settings.APPLICATION_DETAILS_SETTINGS -c android.intent.category.DEFAULT
++ adb shell cmd package resolve-activity -a android.settings.DEVICE_ADMIN_SETTINGS -c android.intent.category.DEFAULT
++ adb shell am start -a android.settings.APPLICATION_DETAILS_SETTINGS -d package:dev.pranav.applock
++ sleep 5
++ dump_screen appinfo
++ name=appinfo
++ adb shell uiautomator dump /sdcard/ui-appinfo.xml
++ adb pull /sdcard/ui-appinfo.xml emulator-artifacts/ui-appinfo.xml
++ adb shell dumpsys window
++ adb shell dumpsys activity activities
++ adb shell dumpsys activity top
++ adb exec-out screencap -p
++ adb shell am force-stop com.android.settings
++ adb shell input keyevent KEYCODE_HOME
++ sleep 2
++ adb shell am start -a android.settings.DEVICE_ADMIN_SETTINGS
++ sleep 5
++ grep -q 'topResumedActivity.*com.android.settings'
++ adb shell dumpsys activity activities
++ adb shell am start -n 'com.android.settings/.Settings$DeviceAdminSettingsActivity'
++ sleep 5
++ dump_screen adminlist
++ name=adminlist
++ adb shell uiautomator dump /sdcard/ui-adminlist.xml
++ adb pull /sdcard/ui-adminlist.xml emulator-artifacts/ui-adminlist.xml
++ adb shell dumpsys window
++ adb shell dumpsys activity activities
++ adb shell dumpsys activity top
++ adb exec-out screencap -p
++ adb shell am force-stop com.android.settings
++ adb shell input keyevent KEYCODE_HOME
++ sleep 2
++ adb shell appops set dev.pranav.applock ACCESS_RESTRICTED_SETTINGS allow
++ adb shell settings put secure enabled_accessibility_services dev.pranav.applock/dev.pranav.applock.services.AppLockAccessibilityService
++ adb shell settings put secure accessibility_enabled 1
+++ seq 1 15
++ for _ in $(seq 1 15)
++ adb shell dumpsys accessibility
++ grep -qi applock
++ break
++ adb shell dumpsys accessibility
++ grep -qi applock emulator-artifacts/accessibility.txt
++ pass 'accessibility service connected'
++ echo 'PASS  accessibility service connected'
++ tee -a emulator-artifacts/checks.txt
+PASS  accessibility service connected
++ adb logcat -c
++ adb shell am start -a android.settings.APPLICATION_DETAILS_SETTINGS -d package:dev.pranav.applock
+Starting: Intent { act=android.settings.APPLICATION_DETAILS_SETTINGS dat=package: }
++ sleep 5
++ adb shell dumpsys activity activities
++ adb exec-out screencap -p
++ adb logcat -d
++ grep -m1 topResumedActivity emulator-artifacts/activities-appinfo.txt
++ tee emulator-artifacts/appinfo-top-activity.txt
+      topResumedActivity=ActivityRecord{fc0bfa5 u0 com.google.android.apps.nexuslauncher/.NexusLauncherActivity t7}
++ grep -m1 -i 'appinfo\|InstalledAppDetails' emulator-artifacts/activities-appinfo.txt
++ true
++ grep -q 'Closed the app-info screen while anti-uninstall' emulator-artifacts/logcat-appinfo.txt
++ pass 'app-info screen closed by the accessibility service'
++ echo 'PASS  app-info screen closed by the accessibility service'
++ tee -a emulator-artifacts/checks.txt
+PASS  app-info screen closed by the accessibility service
++ adb shell uiautomator dump /sdcard/ui-appinfo-after.xml
++ adb pull /sdcard/ui-appinfo-after.xml emulator-artifacts/ui-appinfo-after.xml
++ adb shell dumpsys window
++ grep -m1 topResumedActivity emulator-artifacts/activities-appinfo.txt
++ grep -qE 'InstalledAppDetails|SpaActivity|AppInfo'
++ pass 'app-info screen is no longer foreground'
++ echo 'PASS  app-info screen is no longer foreground'
++ tee -a emulator-artifacts/checks.txt
+PASS  app-info screen is no longer foreground
++ adb shell am force-stop com.android.settings
++ adb shell input keyevent KEYCODE_HOME
++ sleep 2
++ adb logcat -c
++ adb shell am start -a android.settings.APPLICATION_DETAILS_SETTINGS -d package:dev.pranav.applock
++ sleep 8
++ adb logcat -d
++ adb shell dumpsys activity activities
++ grep -q 'Closed the app-info screen while anti-uninstall' emulator-artifacts/logcat-appinfo2.txt
++ pass 'app-info screen closed again on a second attempt'
++ echo 'PASS  app-info screen closed again on a second attempt'
++ tee -a emulator-artifacts/checks.txt
+PASS  app-info screen closed again on a second attempt
++ adb shell am force-stop com.android.settings
++ adb shell input keyevent KEYCODE_HOME
++ sleep 2
++ adb logcat -c
++ adb shell am start -a android.settings.DEVICE_ADMIN_SETTINGS
+Starting: Intent { act=android.settings.DEVICE_ADMIN_SETTINGS }
+Error: Activity not started, unable to resolve Intent { act=android.settings.DEVICE_ADMIN_SETTINGS flg=0x10000000 }
++ sleep 5
++ adb logcat -d
++ adb shell dumpsys device_policy
++ adb exec-out screencap -p
++ adb shell uiautomator dump /sdcard/ui-adminlist-after.xml
++ adb pull /sdcard/ui-adminlist-after.xml emulator-artifacts/ui-adminlist-after.xml
++ grep -q 'Blocked device admin deactivation' emulator-artifacts/logcat-adminlist.txt
++ skip 'device-admin list block not observed (android.settings.DEVICE_ADMIN_SETTINGS may not be resolvable on this build)'
++ echo 'SKIP  device-admin list block not observed (android.settings.DEVICE_ADMIN_SETTINGS may not be resolvable on this build)'
++ tee -a emulator-artifacts/checks.txt
+SKIP  device-admin list block not observed (android.settings.DEVICE_ADMIN_SETTINGS may not be resolvable on this build)
++ grep -qi dev.pranav.applock emulator-artifacts/device_policy-after.txt
++ pass 'device admin still active after the attempts'
++ echo 'PASS  device admin still active after the attempts'
++ tee -a emulator-artifacts/checks.txt
+PASS  device admin still active after the attempts
++ adb shell dpm remove-active-admin dev.pranav.applock/dev.pranav.applock.core.broadcast.DeviceAdmin
++ adb shell dumpsys device_policy
++ grep -qi dev.pranav.applock emulator-artifacts/probe-device_policy-after-dpm.txt
++ tee -a emulator-artifacts/checks.txt
+++ tail -2 emulator-artifacts/probe-dpm-remove-admin.txt
+++ tr '\n' ' '
++ echo 'INFO  dpm remove-active-admin refused (non-test admin): 	at android.os.Binder.execTransactInternal(Binder.java:1344) 	at android.os.Binder.execTransact(Binder.java:1275) '
+INFO  dpm remove-active-admin refused (non-test admin): 	at android.os.Binder.execTransactInternal(Binder.java:1344) 	at android.os.Binder.execTransact(Binder.java:1275) 
++ adb shell am force-stop dev.pranav.applock
++ adb shell am force-stop com.android.settings
++ sleep 12
++ adb shell pidof dev.pranav.applock
++ adb logcat -c
++ adb shell am start -a android.settings.APPLICATION_DETAILS_SETTINGS -d package:dev.pranav.applock
++ sleep 8
++ adb logcat -d
++ adb shell dumpsys activity activities
++ adb shell dumpsys accessibility
++ adb exec-out screencap -p
++ adb shell am force-stop com.android.settings
++ grep -q 'Closed the app-info screen' emulator-artifacts/probe-logcat-after-forcestop.txt
++ echo 'INFO  protection is INACTIVE after am force-stop until the app is opened or accessibility is re-enabled'
++ tee -a emulator-artifacts/checks.txt
+INFO  protection is INACTIVE after am force-stop until the app is opened or accessibility is re-enabled
++ adb shell settings put secure enabled_accessibility_services ''
+Bad arguments
++ adb shell settings put secure accessibility_enabled 0
++ sleep 5
++ adb shell dumpsys accessibility
++ echo 'INFO  '\''settings put secure enabled_accessibility_services ""'\'' switches the reactive layer off (adb only)'
++ tee -a emulator-artifacts/checks.txt
+INFO  'settings put secure enabled_accessibility_services ""' switches the reactive layer off (adb only)
++ adb shell appops set dev.pranav.applock ACCESS_RESTRICTED_SETTINGS allow
++ adb shell settings put secure enabled_accessibility_services dev.pranav.applock/dev.pranav.applock.services.AppLockAccessibilityService
++ adb shell settings put secure accessibility_enabled 1
++ adb shell am start -n dev.pranav.applock/.MainActivity
++ sleep 12
++ adb shell am force-stop com.android.settings
++ adb shell input keyevent KEYCODE_HOME
++ sleep 3
++ adb logcat -c
++ adb shell am start -a android.settings.APPLICATION_DETAILS_SETTINGS -d package:dev.pranav.applock
++ sleep 10
++ adb logcat -d
++ adb shell dumpsys activity activities
++ adb exec-out screencap -p
++ grep -m1 topResumedActivity emulator-artifacts/probe-activities-after-restore.txt
++ tee emulator-artifacts/probe-top-after-restore.txt
+      topResumedActivity=ActivityRecord{fc0bfa5 u0 com.google.android.apps.nexuslauncher/.NexusLauncherActivity t7}
++ adb shell am force-stop com.android.settings
++ grep -q 'Closed the app-info screen' emulator-artifacts/probe-logcat-after-restore.txt
++ pass 'protection works again once the accessibility service is enabled'
++ echo 'PASS  protection works again once the accessibility service is enabled'
++ tee -a emulator-artifacts/checks.txt
+PASS  protection works again once the accessibility service is enabled
++ adb shell input keyevent KEYCODE_WAKEUP
++ adb shell wm dismiss-keyguard
++ adb logcat -d
++ adb shell dumpsys activity activities
++ adb shell dumpsys accessibility
++ adb bugreport emulator-artifacts/bugreport.zip
+/data/user_de/0/com.android.shell/files/bugreports/bugreport-sdk_gphone64_x86_64-UE1A.230829.050-2026-10-31-21-38-48.zip: 1 file pulled, 0 skipped. 218.6 MB/s (6500937 bytes in 0.028s)
+Bug report copied to emulator-artifacts/bugreport.zip
++ echo '=== results ==='
+=== results ===
++ cat emulator-artifacts/checks.txt
+PASS  debug APK installed
+PASS  app launches and is the resumed activity
+PASS  device admin active
+PASS  package install refuses uninstall while the admin is active
+PASS  anti-uninstall pref written
+PASS  accessibility service connected
+PASS  app-info screen closed by the accessibility service
+PASS  app-info screen is no longer foreground
+PASS  app-info screen closed again on a second attempt
+SKIP  device-admin list block not observed (android.settings.DEVICE_ADMIN_SETTINGS may not be resolvable on this build)
+PASS  device admin still active after the attempts
+INFO  dpm remove-active-admin refused (non-test admin): 	at android.os.Binder.execTransactInternal(Binder.java:1344) 	at android.os.Binder.execTransact(Binder.java:1275) 
+INFO  protection is INACTIVE after am force-stop until the app is opened or accessibility is re-enabled
+INFO  'settings put secure enabled_accessibility_services ""' switches the reactive layer off (adb only)
+PASS  protection works again once the accessibility service is enabled
++ grep -q '^FAIL' emulator-artifacts/checks.txt

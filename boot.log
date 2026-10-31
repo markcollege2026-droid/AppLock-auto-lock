@@ -1,0 +1,126 @@
++ AVD_NAME=ci34
++ EMULATOR=/usr/local/lib/android/sdk/emulator/emulator
++ LOG=/tmp/emulator.log
++ export ANDROID_USER_HOME=/home/runner/.android
++ ANDROID_USER_HOME=/home/runner/.android
++ export ANDROID_AVD_HOME=/home/runner/.android/avd
++ ANDROID_AVD_HOME=/home/runner/.android/avd
++ echo HOME=/home/runner
+HOME=/home/runner
++ env
++ grep -i '^ANDROID'
+ANDROID_NDK=/usr/local/lib/android/sdk/ndk/27.3.13750724
+ANDROID_NDK_LATEST_HOME=/usr/local/lib/android/sdk/ndk/30.0.16248370
+ANDROID_NDK_HOME=/usr/local/lib/android/sdk/ndk/27.3.13750724
+ANDROID_AVD_HOME=/home/runner/.android/avd
+ANDROID_HOME=/usr/local/lib/android/sdk
+ANDROID_SDK_ROOT=/usr/local/lib/android/sdk
+ANDROID_USER_HOME=/home/runner/.android
+ANDROID_NDK_ROOT=/usr/local/lib/android/sdk/ndk/27.3.13750724
++ ls -la /home/runner/.android/avd
+total 16
+drwxr-xr-x 3 runner runner 4096 Oct 31 21:35 .
+drwxr-xr-x 4 runner runner 4096 Oct 31 21:35 ..
+drwxr-xr-x 2 runner runner 4096 Oct 31 21:35 ci34.avd
+-rw-r--r-- 1 runner runner  103 Oct 31 21:35 ci34.ini
++ /usr/local/lib/android/sdk/emulator/emulator -list-avds
+ci34
++ find / -maxdepth 6 -name ci34.ini
++ head -5
+/home/runner/.android/avd/ci34.ini
++ true
++ EMULATOR_PID=2928
++ adb start-server
++ /usr/local/lib/android/sdk/emulator/emulator -avd ci34 -no-window -no-audio -no-boot-anim -no-snapshot -gpu swiftshader_indirect -camera-back none -camera-front none -accel on
+* daemon not running; starting now at tcp:5037
+* daemon started successfully
++ deadline=608
++ booted=0
++ '[' 8 -lt 608 ']'
++ kill -0 2928
++ adb shell getprop sys.boot_completed
++ tr -d '\r'
++ grep -q 1
++ sleep 5
++ '[' 13 -lt 608 ']'
++ kill -0 2928
++ adb shell getprop sys.boot_completed
++ tr -d '\r'
++ grep -q 1
++ sleep 5
++ '[' 18 -lt 608 ']'
++ kill -0 2928
++ adb shell getprop sys.boot_completed
++ grep -q 1
++ tr -d '\r'
++ sleep 5
++ '[' 23 -lt 608 ']'
++ kill -0 2928
++ adb shell getprop sys.boot_completed
++ grep -q 1
++ tr -d '\r'
++ sleep 5
++ '[' 28 -lt 608 ']'
++ kill -0 2928
++ adb shell getprop sys.boot_completed
++ tr -d '\r'
++ grep -q 1
++ sleep 5
++ '[' 33 -lt 608 ']'
++ kill -0 2928
++ grep -q 1
++ adb shell getprop sys.boot_completed
++ tr -d '\r'
++ sleep 5
++ '[' 38 -lt 608 ']'
++ kill -0 2928
++ adb shell getprop sys.boot_completed
++ tr -d '\r'
++ grep -q 1
++ booted=1
++ break
++ '[' 1 -ne 1 ']'
++ adb wait-for-device
+++ seq 1 20
++ for _ in $(seq 1 20)
+++ adb shell getprop dev.bootcomplete
+++ tr -d '\r'
++ '[' 1 = 1 ']'
++ break
++ adb shell input keyevent 82
++ adb shell wm dismiss-keyguard
++ adb devices -l
+List of devices attached
+emulator-5554          device product:sdk_gphone64_x86_64 model:sdk_gphone64_x86_64 device:emu64xa transport_id:1
+
++ tail -30 /tmp/emulator.log
+INFO         |   androidboot.qemu.hwcodec.avcdec=2
+INFO         |   androidboot.qemu.hwcodec.hevcdec=2
+INFO         |   androidboot.qemu.hwcodec.vpxdec=2
+INFO         |   androidboot.qemu.settings.system.screen_off_timeout=2147483647
+INFO         |   androidboot.qemu.skin=1080x2400
+INFO         |   androidboot.qemu.virtiowifi=1
+INFO         |   androidboot.qemu.vsync=60
+INFO         |   androidboot.serialno=EMULATOR37X2X13X0
+INFO         |   androidboot.vbmeta.digest=451e57ed688ff746d2c636d52169ade253e2bc5bb30a5c3ff23679ca15d3bcd3
+INFO         |   androidboot.vbmeta.hash_alg=sha256
+INFO         |   androidboot.vbmeta.size=6656
+INFO         |   androidboot.veritymode=enforcing
+WARNING: cannnot unmap ptr 0x7efdf7801000 as it is in the protected range from 0x7efd57800000 to 0x7efdf7a00000
+INFO         | Monitoring duration of emulator setup.
+WARNING      | The emulator now requires a signed jwt token for gRPC access! Use the -grpc flag if you really want an open unprotected grpc port
+INFO         | Using security allow list from: /usr/local/lib/android/sdk/emulator/lib/emulator_access.json
+INFO         | The active JSON Web Key Sets can be found here: /run/user/1001/avd/running/2928/jwks/112088a8-6b94-421a-8250-1d42ae95a152/active.jwk
+INFO         | Scanning /run/user/1001/avd/running/2928/jwks/112088a8-6b94-421a-8250-1d42ae95a152 for jwk keys.
+INFO         | Started GRPC server at 127.0.0.1:8554, security: Local, auth: +token
+INFO         | Advertising in: /run/user/1001/avd/running/pid_2928.ini
+INFO         | Successfully initialized netsim WiFi
+INFO         | Activated packet streamer for bluetooth emulation
+INFO         | Setting display: 0 configuration to: 1080x2400, dpi: 420x420 
+INFO         | setDisplayActiveConfig: id:0, 1080x2400
+INFO         | emulatorSetupEnvironment: Environment scene is not required
+USER_INFO    | Emulator is performing a full startup. This may take upto two minutes, or more.
+WARNING      | Failed to process .ini file /home/runner/.android/emu-update-last-check.ini for reading.
+WARNING      | Failed to process .ini file /home/runner/.android/emu-update-last-check.ini for reading.
+INFO         | Boot completed in 28765 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.

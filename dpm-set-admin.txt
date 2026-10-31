@@ -1,0 +1,1 @@
+Success: Active admin set to component dev.pranav.applock/.core.broadcast.DeviceAdmin
