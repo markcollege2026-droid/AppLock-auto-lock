@@ -169,6 +169,8 @@ Make sure you have Shizuku installed and enabled via ADB. Tap \'Next\' to grant 
     <string name="settings_screen_auto_lock_new_apps_desc">Newly installed apps are added to protection automatically. Apps installed before you enable this are not affected, and manually removed protection is kept.</string>
     <string name="settings_screen_anti_uninstall_title">Anti-Uninstall Protection</string>
     <string name="settings_screen_anti_uninstall_desc">Prevent unauthorized uninstallation of App Lock</string>
+    <!-- DeviceAdmin.kt: extra confirmation shown by the system before the admin is removed -->
+    <string name="anti_uninstall_deactivate_warning">Anti-Uninstall Protection is enabled.\n\nApp Lock cannot be uninstalled while its device administrator is active. Please turn off Anti-Uninstall Protection in App Lock settings first.</string>
     <string name="settings_screen_haptic_feedback_title">Haptic Feedback</string>
     <string name="settings_screen_haptic_feedback_desc">Disable haptic feedback on key presses</string>
     <string name="settings_screen_backend_implementation_title">Backend Implementation</string>

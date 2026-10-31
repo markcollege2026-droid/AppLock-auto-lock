@@ -31,6 +31,10 @@ import rikka.shizuku.Shizuku
 @SuppressLint("AccessibilityPolicy")
 class AppLockAccessibilityService : AccessibilityService() {
     private val appLockRepository: AppLockRepository by lazy { applicationContext.appLockRepository() }
+    private val ourAppLabel: String by lazy {
+        runCatching { packageManager.getApplicationLabel(applicationInfo).toString() }
+            .getOrDefault("App Lock")
+    }
     private val keyboardPackages: List<String> by lazy { getKeyboardPackageNames() }
 
     private var lastForegroundPackage = ""
@@ -47,6 +51,13 @@ class AppLockAccessibilityService : AccessibilityService() {
         private const val TAG = "AppLockAccessibility"
         private const val DEVICE_ADMIN_SETTINGS_PACKAGE = "com.android.settings"
         private const val APP_PACKAGE_PREFIX = "dev.pranav.applock"
+
+        /** Activity class names of Settings' app-info screen across AOSP releases. */
+        private val APP_INFO_CLASS_MARKERS = listOf(
+            "InstalledAppDetails",
+            "AppInfoDashboard",
+            "ApplicationDetails",
+        )
 
         @Volatile
         var isServiceRunning = false
@@ -380,6 +391,15 @@ class AppLockAccessibilityService : AccessibilityService() {
     private fun checkForDeviceAdminDeactivation(event: AccessibilityEvent) {
         Log.d(TAG, "Checking for device admin deactivation for event: $event")
 
+        // The Uninstall button lives on the app-info screen, and from there Android opens the
+        // device-admin removal screen (DeviceAdminAdd). That screen reacts to the "Deactivate"
+        // button immediately, so a fast tap can land before this service gets an event.
+        // Closing the app-info screen never lets the removal screen appear in the first place.
+        if (isOurAppInfoPage(event)) {
+            blockAppInfoPage()
+            return
+        }
+
         // Check if user is trying to deactivate the accessibility service
         if (isDeactivationAttempt(event)) {
             Log.d(TAG, "Blocking accessibility service deactivation")
@@ -425,14 +445,53 @@ class AppLockAccessibilityService : AccessibilityService() {
     }
 
     private fun isDeviceAdminPage(event: AccessibilityEvent): Boolean {
+        val className = event.className?.toString().orEmpty()
+
         val hasDeviceAdminDescription = event.contentDescription?.toString()?.lowercase()
-            ?.contains("Device admin app") == true &&
-                event.className == "android.widget.FrameLayout"
+            ?.contains("device admin app") == true &&
+                className == "android.widget.FrameLayout"
 
         val isAdminConfigClass =
-            event.className!!.contains("DeviceAdminAdd") || event.className!!.contains("DeviceAdminSettings")
+            className.contains("DeviceAdminAdd") || className.contains("DeviceAdminSettings")
 
         return hasDeviceAdminDescription || isAdminConfigClass
+    }
+
+    /**
+     * True when Settings shows the app-info screen of App Lock, i.e. the screen that hosts the
+     * "Uninstall" button. Only that screen is closed: app-info screens of other apps are ignored.
+     */
+    private fun isOurAppInfoPage(event: AccessibilityEvent): Boolean {
+        val className = event.className?.toString() ?: return false
+        val isAppInfoScreen = APP_INFO_CLASS_MARKERS.any { className.contains(it) }
+        if (!isAppInfoScreen) {
+            return false
+        }
+
+        if (event.text.any { it?.contains(ourAppLabel, ignoreCase = true) == true } ||
+            event.text.any { it?.contains(packageName) == true }
+        ) {
+            return true
+        }
+
+        val root = rootInActiveWindow ?: return false
+        return findNodeWithTextContaining(root, ourAppLabel) != null ||
+                findNodeWithTextContaining(root, packageName) != null
+    }
+
+    @SuppressLint("InlinedApi")
+    private fun blockAppInfoPage() {
+        try {
+            performGlobalAction(GLOBAL_ACTION_BACK)
+            Toast.makeText(
+                this,
+                "Disable anti-uninstall in AppLock settings to uninstall AppLock.",
+                Toast.LENGTH_SHORT
+            ).show()
+            Log.w(TAG, "Closed the app-info screen while anti-uninstall protection is enabled")
+        } catch (e: Exception) {
+            logError("Error closing the app-info screen", e)
+        }
     }
 
     @SuppressLint("InlinedApi")
@@ -445,7 +504,6 @@ class AppLockAccessibilityService : AccessibilityService() {
                 performGlobalAction(GLOBAL_ACTION_BACK)
                 performGlobalAction(GLOBAL_ACTION_BACK)
                 performGlobalAction(GLOBAL_ACTION_HOME)
-                Thread.sleep(100)
                 performGlobalAction(GLOBAL_ACTION_LOCK_SCREEN)
                 Toast.makeText(
                     this,
@@ -464,7 +522,9 @@ class AppLockAccessibilityService : AccessibilityService() {
         text: String
     ): AccessibilityNodeInfo? {
         return try {
-            if (node.text?.toString()?.contains(text, ignoreCase = true) == true) {
+            if (node.text?.toString()?.contains(text, ignoreCase = true) == true ||
+                node.contentDescription?.toString()?.contains(text, ignoreCase = true) == true
+            ) {
                 return node
             }
 

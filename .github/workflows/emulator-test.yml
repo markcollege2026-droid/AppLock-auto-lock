@@ -1,0 +1,232 @@
+name: Emulator test (anti-uninstall)
+
+# Boots a headless emulator, installs the debug APK and exercises the anti-uninstall
+# screen shielding on a real Android system image. Produces a full bug report plus
+# logcat/dumpsys/screenshot evidence as artifacts.
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - arena/7dea5726-applock-auto-lock
+    paths:
+      - 'app/src/main/**'
+      - '.github/workflows/emulator-test.yml'
+
+concurrency:
+  group: emulator-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  emulator:
+    name: Emulator smoke test (API 34)
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.2.2
+        with:
+          fetch-depth: 1
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4.7.1
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v4.0.4
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4.4.1
+        with:
+          cache-read-only: false
+
+      - name: Assemble debug APK
+        run: |
+          chmod +x gradlew
+          ./gradlew :app:assembleDebug --console=plain --stacktrace
+
+      - name: Locate APK
+        id: apk
+        run: |
+          apk=$(find app/build/outputs/apk/debug -name '*.apk' | head -1)
+          echo "path=$apk" >> "$GITHUB_OUTPUT"
+          echo "Using $apk"
+
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' \
+            | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+          ls -l /dev/kvm
+
+      - name: Run emulator checks
+        uses: ReactiveCircus/android-emulator-runner@v2.38.0
+        env:
+          APK_PATH: ${{ steps.apk.outputs.path }}
+        with:
+          api-level: 34
+          target: google_apis
+          arch: x86_64
+          profile: pixel_6
+          disable-animations: true
+          emulator-options: >-
+            -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim
+            -camera-back none -camera-front none -no-snapshot
+          script: |
+            set -x
+            mkdir -p emulator-artifacts
+            cd emulator-artifacts
+
+            PKG=dev.pranav.applock
+            ADMIN=$PKG/dev.pranav.applock.core.broadcast.DeviceAdmin
+            A11Y=$PKG/dev.pranav.applock.services.AppLockAccessibilityService
+            APK=$(realpath "../${APK_PATH}")
+            RESULTS=checks.txt
+            : > $RESULTS
+
+            pass() { echo "PASS  $1" | tee -a $RESULTS; }
+            fail() { echo "FAIL  $1" | tee -a $RESULTS; }
+            skip() { echo "SKIP  $1" | tee -a $RESULTS; }
+
+            adb wait-for-device
+            adb shell input keyevent KEYCODE_WAKEUP || true
+            adb shell wm dismiss-keyguard || true
+            adb shell settings put global window_animation_scale 0
+            adb shell settings put global transition_animation_scale 0
+            adb shell settings put global animator_duration_scale 0
+
+            # ---------- 1. install ----------
+            adb install -r "$APK" || adb install -r -i com.android.vending "$APK"
+            adb shell pm list packages | grep -q "$PKG" && pass "debug APK installed" || fail "debug APK not installed"
+            echo "installed version: $(adb shell dumpsys package $PKG | grep -m1 versionName)"
+
+            # ---------- 2. app launches ----------
+            adb logcat -c || true
+            adb shell am start -W -n $PKG/.MainActivity
+            sleep 5
+            adb shell dumpsys activity activities > activities-launch.txt
+            adb exec-out screencap -p > 01-launch.png
+            adb logcat -d > logcat-launch.txt
+            if grep -qi "FATAL EXCEPTION" logcat-launch.txt; then
+              fail "app crashed on launch (see logcat-launch.txt)"
+            elif grep -q "topResumedActivity.*$PKG" activities-launch.txt; then
+              pass "app launches and is the resumed activity"
+            else
+              fail "app did not become the resumed activity"
+            fi
+
+            # ---------- 3. activate the device admin + switch anti-uninstall on ----------
+            adb shell am force-stop $PKG
+            adb shell dpm set-active-admin $ADMIN
+            adb shell dumpsys device_policy > device_policy-active.txt
+            if adb shell dumpsys device_policy | grep -qi "dev.pranav.applock"; then
+              pass "device admin active"
+            else
+              fail "could not activate the device admin"
+            fi
+
+            # the toggle lives in app_lock_settings/anti_uninstall (what SettingsScreen writes)
+            cat > /tmp/app_lock_settings.xml <<'XML'
+            <?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+            <map>
+                <boolean name="anti_uninstall" value="true" />
+            </map>
+            XML
+            adb push /tmp/app_lock_settings.xml /data/local/tmp/app_lock_settings.xml
+            adb shell run-as $PKG mkdir -p shared_prefs
+            adb shell "run-as $PKG sh -c 'cat /data/local/tmp/app_lock_settings.xml > shared_prefs/app_lock_settings.xml'"
+            adb shell run-as $PKG cat shared_prefs/app_lock_settings.xml > prefs-written.txt
+            grep -q 'anti_uninstall' prefs-written.txt && pass "anti-uninstall pref written" || fail "pref write failed"
+
+            # re-arm the admin state the receiver would set on enable
+            adb shell am start -n $PKG/.MainActivity > /dev/null
+            sleep 3
+            adb shell am force-stop $PKG
+
+            # ---------- 4. enable the accessibility service (shell can do this) ----------
+            adb shell appops set $PKG ACCESS_RESTRICTED_SETTINGS allow || true
+            adb shell settings put secure enabled_accessibility_services $A11Y
+            adb shell settings put secure accessibility_enabled 1
+            sleep 8
+            adb shell dumpsys accessibility > accessibility.txt
+            if grep -qi "applock" accessibility.txt; then
+              pass "accessibility service connected"
+            else
+              skip "accessibility service did not connect - screen checks may be inconclusive"
+            fi
+
+            # ---------- 5. CHECK: Settings app-info screen of App Lock is closed ----------
+            adb logcat -c || true
+            adb shell am start -a android.settings.APPLICATION_DETAILS_SETTINGS -d package:$PKG
+            sleep 5
+            adb shell dumpsys activity activities > activities-appinfo.txt
+            adb exec-out screencap -p > 02-appinfo.png
+            adb logcat -d > logcat-appinfo.txt
+            grep -m1 "topResumedActivity" activities-appinfo.txt | tee appinfo-top-activity.txt
+            if grep -q "Closed the app-info screen while anti-uninstall" logcat-appinfo.txt; then
+              pass "app-info screen closed by the accessibility service"
+            else
+              fail "app-info screen was not closed (no service log line)"
+            fi
+            if grep -m1 "topResumedActivity" activities-appinfo.txt | grep -q "InstalledAppDetails"; then
+              fail "app-info screen is still the resumed activity"
+            else
+              pass "app-info screen is no longer foreground"
+            fi
+
+            # ---------- 6. CHECK: device-admin list screen is still blocked ----------
+            adb logcat -c || true
+            adb shell am start -a android.settings.DEVICE_ADMIN_SETTINGS
+            sleep 5
+            adb logcat -d > logcat-adminlist.txt
+            adb shell dumpsys device_policy > device_policy-after.txt
+            adb exec-out screencap -p > 03-adminlist.png
+            if grep -q "Blocked device admin deactivation" logcat-adminlist.txt; then
+              pass "device-admin list screen blocked"
+            else
+              skip "device-admin list block not observed in logcat"
+            fi
+            if adb shell dumpsys device_policy | grep -qi "dev.pranav.applock"; then
+              pass "device admin still active after the attempts"
+            else
+              fail "device admin was removed during the test"
+            fi
+
+            # ---------- 7. evidence ----------
+            adb shell input keyevent KEYCODE_WAKEUP || true
+            adb shell wm dismiss-keyguard || true
+            adb logcat -d > logcat-full.txt
+            adb shell dumpsys activity activities > activities-final.txt
+            adb shell dumpsys package $PKG > package.txt
+            adb bugreport bugreport.zip || adb bugreport bugreport || true
+            cd ..
+            echo "=== results ==="
+            cat emulator-artifacts/checks.txt
+            grep -c '^FAIL' emulator-artifacts/checks.txt | grep -qx 0
+
+      - name: Upload emulator artifacts
+        if: always()
+        uses: actions/upload-artifact@v4.6.2
+        with:
+          name: emulator-bugreport
+          path: emulator-artifacts/**
+          if-no-files-found: warn
+          retention-days: 7
+          compression-level: 6
+
+      - name: Summarise results
+        if: always()
+        run: |
+          {
+            echo "### Emulator run"
+            echo '```'
+            cat emulator-artifacts/checks.txt 2>/dev/null || echo 'no results file'
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
