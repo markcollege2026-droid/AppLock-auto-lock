@@ -78,6 +78,16 @@ else
   fail "could not activate the device admin"
 fi
 
+# Platform-level protection: an active admin makes the package uninstallable=no.
+adb uninstall "$PKG" > "$OUT/uninstall-attempt.txt" 2>&1
+if grep -q "DELETE_FAILED_DEVICE_POLICY_MANAGER" "$OUT/uninstall-attempt.txt"; then
+  pass "package install refuses uninstall while the admin is active"
+elif adb shell pm list packages | grep -q "$PKG"; then
+  pass "package survived the uninstall attempt"
+else
+  fail "package was uninstalled while the admin was active"
+fi
+
 # The toggle is stored in app_lock_settings/anti_uninstall (what SettingsScreen writes).
 cat > /tmp/app_lock_settings.xml <<'XML'
 <?xml version='1.0' encoding='utf-8' standalone='yes' ?>
@@ -184,7 +194,7 @@ adb pull "/sdcard/ui-adminlist-after.xml" "$OUT/ui-adminlist-after.xml" > /dev/n
 if grep -q "Blocked device admin deactivation" "$OUT/logcat-adminlist.txt"; then
   pass "device-admin list screen blocked"
 else
-  skip "device-admin list block not observed in logcat"
+  skip "device-admin list block not observed (android.settings.DEVICE_ADMIN_SETTINGS may not be resolvable on this build)"
 fi
 if grep -qi "dev.pranav.applock" "$OUT/device_policy-after.txt"; then
   pass "device admin still active after the attempts"
