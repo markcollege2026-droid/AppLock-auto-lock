@@ -10,6 +10,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.pm.ResolveInfo
 import android.os.Handler
+import android.os.SystemClock
 import android.util.Log
 import android.view.accessibility.AccessibilityEvent
 import android.view.accessibility.AccessibilityNodeInfo
@@ -35,6 +36,17 @@ class AppLockAccessibilityService : AccessibilityService() {
         runCatching { packageManager.getApplicationLabel(applicationInfo).toString() }
             .getOrDefault("App Lock")
     }
+
+    /** "App info" / "Force stop" as Settings spells them in the current language. */
+    private val settingsAppInfoLabel: String? by lazy { resolveSettingsString("application_info_label") }
+    private val settingsForceStopLabel: String? by lazy { resolveSettingsString("force_stop") }
+
+    /**
+     * The screen that hosts the Uninstall button can take a moment to render its title, so after
+     * an app-info-like window shows up the following events are re-checked for this long.
+     */
+    @Volatile
+    private var appInfoCandidateAt = 0L
     private val keyboardPackages: List<String> by lazy { getKeyboardPackageNames() }
 
     private var lastForegroundPackage = ""
@@ -50,6 +62,10 @@ class AppLockAccessibilityService : AccessibilityService() {
     companion object {
         private const val TAG = "AppLockAccessibility"
         private const val DEVICE_ADMIN_SETTINGS_PACKAGE = "com.android.settings"
+        private const val SETTINGS_SPA_ACTIVITY = "SpaActivity"
+
+        /** How long a rendering app-info screen is re-checked after it is first noticed. */
+        private const val APP_INFO_RECHECK_MS = 5_000L
         private const val APP_PACKAGE_PREFIX = "dev.pranav.applock"
 
         /**
@@ -470,15 +486,34 @@ class AppLockAccessibilityService : AccessibilityService() {
 
     /**
      * True when Settings shows the app-info screen of App Lock, i.e. the screen that hosts the
-     * "Uninstall" button. Only that screen is closed: app-info screens of other apps are ignored.
+     * "Uninstall" button. Only that screen is closed: app-info screens of other apps are ignored,
+     * and a list that merely contains the app name is not mistaken for it.
      */
     private fun isOurAppInfoPage(event: AccessibilityEvent): Boolean {
-        val className = event.className?.toString() ?: return false
-        val isAppInfoScreen = APP_INFO_CLASS_MARKERS.any { className.contains(it) }
-        if (!isAppInfoScreen) {
+        val className = event.className?.toString().orEmpty()
+        val isAppInfoClass = APP_INFO_CLASS_MARKERS.any { className.contains(it) }
+        if (isAppInfoClass) {
+            appInfoCandidateAt = SystemClock.elapsedRealtime()
+        } else if (SystemClock.elapsedRealtime() - appInfoCandidateAt > APP_INFO_RECHECK_MS) {
             return false
         }
 
+        if (!windowShowsOurApp(event)) {
+            return false
+        }
+
+        // InstalledAppDetails and friends are used for the app-info screen only; the SPA host is
+        // shared with other screens, so it needs the content check below.
+        if (isAppInfoClass && !className.contains(SETTINGS_SPA_ACTIVITY)) {
+            return true
+        }
+
+        // Android 14+ renders app info inside a generic SPA host, so identify the screen by what
+        // it shows: the "App info" title or a "Force stop" button, in the device language.
+        return windowLooksLikeAppInfo()
+    }
+
+    private fun windowShowsOurApp(event: AccessibilityEvent): Boolean {
         if (event.text.any { it?.contains(ourAppLabel, ignoreCase = true) == true } ||
             event.text.any { it?.contains(packageName) == true }
         ) {
@@ -489,6 +524,24 @@ class AppLockAccessibilityService : AccessibilityService() {
         return findNodeWithTextContaining(root, ourAppLabel) != null ||
                 findNodeWithTextContaining(root, packageName) != null
     }
+
+    private fun windowLooksLikeAppInfo(): Boolean {
+        val title = runCatching { windows.firstOrNull { it.isActive }?.title?.toString() }.getOrNull()
+        val appInfoLabel = settingsAppInfoLabel
+        if (title != null && appInfoLabel != null && title.contains(appInfoLabel, ignoreCase = true)) {
+            return true
+        }
+
+        val forceStopLabel = settingsForceStopLabel ?: return false
+        val root = rootInActiveWindow ?: return false
+        return findNodeWithTextContaining(root, forceStopLabel) != null
+    }
+
+    private fun resolveSettingsString(name: String): String? = runCatching {
+        val res = packageManager.getResourcesForApplication(DEVICE_ADMIN_SETTINGS_PACKAGE)
+        val id = res.getIdentifier(name, "string", DEVICE_ADMIN_SETTINGS_PACKAGE)
+        if (id != 0) res.getString(id) else null
+    }.getOrNull()
 
     @SuppressLint("InlinedApi")
     private fun blockAppInfoPage() {
