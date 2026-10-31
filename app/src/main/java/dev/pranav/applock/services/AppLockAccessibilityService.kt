@@ -52,11 +52,19 @@ class AppLockAccessibilityService : AccessibilityService() {
         private const val DEVICE_ADMIN_SETTINGS_PACKAGE = "com.android.settings"
         private const val APP_PACKAGE_PREFIX = "dev.pranav.applock"
 
-        /** Activity class names of Settings' app-info screen across AOSP releases. */
+        /**
+         * Activity class names Settings uses for the app-info screen across AOSP releases:
+         *  - InstalledAppDetails / AppInfoDashboard: Android 12 and older
+         *  - ApplicationDetails: some vendor builds
+         *  - SpaActivity: Android 14+, where app info is a Compose ("SPA") screen
+         * SpaActivity hosts many Settings screens, so it only counts when the window also shows
+         * this app's name or package (see isOurAppInfoPage).
+         */
         private val APP_INFO_CLASS_MARKERS = listOf(
             "InstalledAppDetails",
             "AppInfoDashboard",
             "ApplicationDetails",
+            "SpaActivity",
         )
 
         @Volatile
@@ -136,6 +144,9 @@ class AppLockAccessibilityService : AccessibilityService() {
         if (appLockRepository.isAntiUninstallEnabled() &&
             event.packageName == DEVICE_ADMIN_SETTINGS_PACKAGE
         ) {
+            // Diagnostic line: the Settings class name differs per Android release and per OEM
+            // skin, so a bug report can tell which screen was seen.
+            Log.d(TAG, "Settings window event: ${event.className}")
             checkForDeviceAdminDeactivation(event)
         }
 

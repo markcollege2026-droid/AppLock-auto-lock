@@ -99,24 +99,35 @@ fi
 # Captured before the accessibility service is enabled so nothing can close them.
 dump_screen() {
   name=$1
-  adb shell uiautomator dump "/sdcard/ui-$name.xml" > /dev/null 2>&1
+  adb shell uiautomator dump "/sdcard/ui-$name.xml" > "$OUT/uiautomator-$name.txt" 2>&1
   adb pull "/sdcard/ui-$name.xml" "$OUT/ui-$name.xml" > /dev/null 2>&1
   adb shell dumpsys window > "$OUT/window-$name.txt" 2>&1
   adb shell dumpsys activity activities > "$OUT/activities-$name-raw.txt" 2>&1
+  adb shell dumpsys activity top > "$OUT/activity-top-$name.txt" 2>&1
   adb exec-out screencap -p > "$OUT/00-$name.png"
 }
 
 adb shell input keyevent KEYCODE_HOME || true
 sleep 2
-adb shell am start -a android.settings.APPLICATION_DETAILS_SETTINGS -d package:$PKG
+adb shell cmd package resolve-activity -a android.settings.APPLICATION_DETAILS_SETTINGS \
+  -c android.intent.category.DEFAULT > "$OUT/resolve-appinfo.txt" 2>&1
+adb shell cmd package resolve-activity -a android.settings.DEVICE_ADMIN_SETTINGS \
+  -c android.intent.category.DEFAULT > "$OUT/resolve-adminlist.txt" 2>&1
+adb shell am start -a android.settings.APPLICATION_DETAILS_SETTINGS -d package:$PKG \
+  > "$OUT/start-appinfo.txt" 2>&1
 sleep 5
 dump_screen appinfo
 adb shell am force-stop com.android.settings
 adb shell input keyevent KEYCODE_HOME || true
 sleep 2
 
-adb shell am start -a android.settings.DEVICE_ADMIN_SETTINGS
+adb shell am start -a android.settings.DEVICE_ADMIN_SETTINGS > "$OUT/start-adminlist.txt" 2>&1
 sleep 5
+if ! adb shell dumpsys activity activities | grep -q "topResumedActivity.*com.android.settings"; then
+  adb shell am start -n 'com.android.settings/.Settings$DeviceAdminSettingsActivity' \
+    >> "$OUT/start-adminlist.txt" 2>&1
+  sleep 5
+fi
 dump_screen adminlist
 adb shell am force-stop com.android.settings
 adb shell input keyevent KEYCODE_HOME || true
