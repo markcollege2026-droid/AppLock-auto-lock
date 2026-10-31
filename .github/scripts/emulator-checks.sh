@@ -242,11 +242,19 @@ echo "INFO  'settings put secure enabled_accessibility_services \"\"' switches t
 adb shell appops set "$PKG" ACCESS_RESTRICTED_SETTINGS allow || true
 adb shell settings put secure enabled_accessibility_services "$A11Y"
 adb shell settings put secure accessibility_enabled 1
+adb shell am start -n $PKG/.MainActivity > /dev/null 2>&1
 sleep 12
+adb shell am force-stop com.android.settings
+adb shell input keyevent KEYCODE_HOME || true
+sleep 3
 adb logcat -c || true
-adb shell am start -a android.settings.APPLICATION_DETAILS_SETTINGS -d package:$PKG > /dev/null 2>&1
-sleep 8
+adb shell am start -W -a android.settings.APPLICATION_DETAILS_SETTINGS -d package:$PKG \
+  > "$OUT/probe-start-restore.txt" 2>&1
+sleep 12
 adb logcat -d > "$OUT/probe-logcat-after-restore.txt" 2>&1
+adb shell dumpsys activity activities > "$OUT/probe-activities-after-restore.txt" 2>&1
+adb exec-out screencap -p > "$OUT/05-after-restore.png"
+grep -m1 "topResumedActivity" "$OUT/probe-activities-after-restore.txt" | tee "$OUT/probe-top-after-restore.txt"
 adb shell am force-stop com.android.settings
 if grep -q "Closed the app-info screen" "$OUT/probe-logcat-after-restore.txt"; then
   pass "protection works again once the accessibility service is enabled"
