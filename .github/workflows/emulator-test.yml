@@ -1,0 +1,135 @@
+name: Emulator test (anti-uninstall)
+
+# Boots a headless AVD, installs the debug APK and exercises the anti-uninstall
+# screen shielding on a real Android system image. Uploads a full bug report plus
+# logcat/dumpsys/screenshot evidence, and mirrors the short text results to the
+# ci-emulator branch so they can be read without downloading artifacts.
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - arena/7dea5726-applock-auto-lock
+    paths:
+      - 'app/src/main/**'
+      - '.github/workflows/emulator-test.yml'
+      - '.github/scripts/emulator-checks.sh'
+
+concurrency:
+  group: emulator-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  emulator:
+    name: Emulator smoke test (API 34)
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    permissions:
+      contents: write
+
+    env:
+      API_LEVEL: 34
+      SYSTEM_IMAGE: system-images;android-34;google_apis;x86_64
+      AVD_NAME: ci34
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.2.2
+        with:
+          fetch-depth: 1
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4.7.1
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v4.0.4
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4.4.1
+
+      - name: Assemble debug APK
+        run: |
+          chmod +x gradlew
+          ./gradlew :app:assembleDebug --console=plain --stacktrace
+
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' \
+            | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+          ls -l /dev/kvm
+          grep -c -E 'vmx|svm' /proc/cpuinfo || true
+
+      - name: Install emulator and system image
+        run: |
+          set -o pipefail
+          mkdir -p emulator-artifacts
+          bash .github/scripts/setup-avd.sh 2>&1 | tee emulator-artifacts/avd-setup.log
+
+      # Boot and checks must share one step: the runner tears down leftover
+      # background processes when a step finishes, which would kill the emulator.
+      - name: Boot emulator and run anti-uninstall checks
+        run: |
+          mkdir -p emulator-artifacts
+          set -euo pipefail
+          chmod +x .github/scripts/*.sh
+          bash .github/scripts/boot-avd.sh 2>&1 | tee emulator-artifacts/boot.log
+          .github/scripts/emulator-checks.sh 2>&1 | tee emulator-artifacts/emulator-checks.log
+          adb emu kill || true
+
+      - name: Collect emulator log
+        if: always()
+        run: |
+          mkdir -p emulator-artifacts
+          cp /tmp/emulator.log emulator-artifacts/emulator.log 2>/dev/null || true
+          tail -c 200000 emulator-artifacts/emulator-checks.log > emulator-artifacts/emulator-checks-tail.log 2>/dev/null || true
+          ls -la emulator-artifacts || true
+
+      - name: Upload emulator artifacts
+        if: always()
+        uses: actions/upload-artifact@v4.6.2
+        with:
+          name: emulator-bugreport
+          path: emulator-artifacts/**
+          if-no-files-found: warn
+          retention-days: 7
+
+      - name: Publish results to the ci-emulator branch
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          rm -rf /tmp/ev && mkdir -p /tmp/ev
+          cp emulator-artifacts/*.txt /tmp/ev/ 2>/dev/null || true
+          for f in emulator-artifacts/*.log; do
+            [ -f "$f" ] && tail -c 300000 "$f" > "/tmp/ev/$(basename "$f")" || true
+          done
+          tail -200 /tmp/emulator.log > /tmp/ev/emulator-tail.log 2>/dev/null || true
+          {
+            echo "run: ${GITHUB_RUN_ID}"
+            echo "sha: ${GITHUB_SHA}"
+            echo "conclusion: ${JOB_STATUS:-unknown}"
+          } > /tmp/ev/run-info.txt
+          ls -la /tmp/ev
+          cd /tmp/ev
+          git init -q -b ci-emulator
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Emulator results from ${GITHUB_SHA} [skip ci]"
+          git push --quiet --force \
+            "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:ci-emulator
+
+      - name: Summarise results
+        if: always()
+        run: |
+          {
+            echo "### Emulator run"
+            echo '```'
+            cat emulator-artifacts/checks.txt 2>/dev/null || echo 'no results file'
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
