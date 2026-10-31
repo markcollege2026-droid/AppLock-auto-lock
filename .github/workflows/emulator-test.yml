@@ -69,21 +69,23 @@ jobs:
           mkdir -p emulator-artifacts
           bash .github/scripts/setup-avd.sh 2>&1 | tee emulator-artifacts/avd-setup.log
 
-      - name: Boot emulator
+      # Boot and checks must share one step: the runner tears down leftover
+      # background processes when a step finishes, which would kill the emulator.
+      - name: Boot emulator and run anti-uninstall checks
         run: |
+          mkdir -p emulator-artifacts
+          set -euo pipefail
+          chmod +x .github/scripts/*.sh
           bash .github/scripts/boot-avd.sh 2>&1 | tee emulator-artifacts/boot.log
-
-      - name: Run anti-uninstall checks
-        run: |
-          chmod +x .github/scripts/emulator-checks.sh
-          .github/scripts/emulator-checks.sh 2>&1 | tee emulator-checks.log
+          .github/scripts/emulator-checks.sh 2>&1 | tee emulator-artifacts/emulator-checks.log
+          adb emu kill || true
 
       - name: Collect emulator log
         if: always()
         run: |
           mkdir -p emulator-artifacts
           cp /tmp/emulator.log emulator-artifacts/emulator.log 2>/dev/null || true
-          tail -c 200000 emulator-checks.log > emulator-artifacts/emulator-checks-tail.log 2>/dev/null || true
+          tail -c 200000 emulator-artifacts/emulator-checks.log > emulator-artifacts/emulator-checks-tail.log 2>/dev/null || true
           ls -la emulator-artifacts || true
 
       - name: Upload emulator artifacts
@@ -105,7 +107,7 @@ jobs:
           for f in emulator-artifacts/logcat-*.txt; do
             [ -f "$f" ] && tail -3000 "$f" > "/tmp/ev/$(basename "$f")" || true
           done
-          tail -500 emulator-checks.log > /tmp/ev/emulator-checks.log 2>/dev/null || true
+          tail -500 emulator-artifacts/emulator-checks.log > /tmp/ev/emulator-checks.log 2>/dev/null || true
           tail -200 /tmp/emulator.log > /tmp/ev/emulator.log 2>/dev/null || true
           {
             echo "run: ${GITHUB_RUN_ID}"
