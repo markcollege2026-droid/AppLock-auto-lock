@@ -1,0 +1,141 @@
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:compileDebugAidl NO-SOURCE
+> Task :app:generateDebugResources
+> Task :app:packageDebugResources
+> Task :appintro:preBuild UP-TO-DATE
+> Task :appintro:preDebugBuild UP-TO-DATE
+> Task :appintro:processDebugNavigationResources
+> Task :patternlock:preBuild UP-TO-DATE
+> Task :patternlock:preDebugBuild UP-TO-DATE
+> Task :patternlock:processDebugNavigationResources
+> Task :app:processDebugNavigationResources
+> Task :appintro:generateDebugResources
+> Task :appintro:packageDebugResources
+> Task :hidden-api:preBuild UP-TO-DATE
+> Task :hidden-api:preDebugBuild UP-TO-DATE
+> Task :appintro:javaPreCompileDebug
+> Task :hidden-api:generateDebugResources
+> Task :hidden-api:packageDebugResources
+> Task :hidden-api:processDebugNavigationResources
+> Task :appintro:parseDebugLocalResources
+> Task :hidden-api:javaPreCompileDebug
+> Task :hidden-api:parseDebugLocalResources
+> Task :patternlock:generateDebugResources
+> Task :app:parseDebugLocalResources
+> Task :patternlock:packageDebugResources
+> Task :appintro:generateDebugRFile
+> Task :hidden-api:generateDebugRFile
+> Task :patternlock:parseDebugLocalResources
+> Task :app:generateDebugRFile
+> Task :patternlock:javaPreCompileDebug
+> Task :app:javaPreCompileDebug
+> Task :patternlock:generateDebugRFile
+> Task :appintro:writeDebugAarMetadata
+> Task :patternlock:writeDebugAarMetadata
+> Task :app:checkDebugAarMetadata
+> Task :app:mapDebugSourceSetPaths
+> Task :app:compileDebugNavigationResources
+> Task :app:mergeDebugResources
+> Task :app:createDebugCompatibleScreenManifests
+> Task :app:extractDeepLinksDebug
+> Task :appintro:extractDeepLinksDebug
+> Task :appintro:processDebugManifest
+> Task :patternlock:extractDeepLinksDebug
+> Task :patternlock:processDebugManifest
+> Task :app:processDebugMainManifest
+> Task :app:processDebugManifest
+> Task :app:processDebugManifestForPackage
+> Task :appintro:mapDebugSourceSetPaths
+> Task :appintro:compileDebugLibraryResources
+> Task :patternlock:mapDebugSourceSetPaths
+> Task :patternlock:compileDebugLibraryResources
+> Task :app:processDebugResources
+> Task :app:preDebugUnitTestBuild UP-TO-DATE
+> Task :app:javaPreCompileDebugUnitTest
+
+> Task :hidden-api:compileDebugKotlin
+w: file:///home/runner/work/AppLock-auto-lock/AppLock-auto-lock/hidden-api/src/main/java/android/app/ActivityManager.kt:957:29 The corresponding parameter in the supertype 'Any' is named 'other'. This may cause problems when calling this function with named arguments.
+w: file:///home/runner/work/AppLock-auto-lock/AppLock-auto-lock/hidden-api/src/main/java/android/app/ActivityManager.kt:987:24 'constructor(): ActivityManager.TaskDescription' is deprecated.
+
+> Task :patternlock:compileDebugKotlin
+> Task :appintro:compileDebugKotlin
+> Task :appintro:compileDebugJavaWithJavac NO-SOURCE
+> Task :patternlock:compileDebugJavaWithJavac NO-SOURCE
+> Task :appintro:bundleLibRuntimeToJarDebug
+> Task :appintro:bundleLibCompileToJarDebug
+> Task :patternlock:bundleLibCompileToJarDebug
+> Task :patternlock:bundleLibRuntimeToJarDebug
+> Task :appintro:processDebugJavaRes
+> Task :patternlock:processDebugJavaRes
+
+> Task :hidden-api:compileDebugJavaWithJavac
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/hidden-api/src/main/java/android/app/IActivityManager.java:111: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+    int startActivity(IApplicationThread caller, String callingPackage, Intent intent,
+        ^
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/hidden-api/src/main/java/android/app/IActivityManager.java:140: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+    int broadcastIntent(IApplicationThread caller, Intent intent,
+        ^
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/hidden-api/src/main/java/android/app/IActivityManager.java:248: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+    IIntentSender getIntentSender(int type, String packageName, IBinder token,
+                  ^
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/hidden-api/src/main/java/android/app/IActivityManager.java:390: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+    void removeContentProviderExternal(String name, IBinder token);
+         ^
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/hidden-api/src/main/java/android/app/IActivityManager.java:413: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+    int startActivityAsUser(IApplicationThread caller, String callingPackage,
+        ^
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/hidden-api/src/main/java/android/app/IActivityManager.java:582: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+    boolean unlockUser(int userid, byte[] token, byte[] secret,
+            ^
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/hidden-api/src/main/java/android/content/pm/IPackageManager.java:438: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+    String[] getSystemSharedLibraryNames();
+             ^
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/hidden-api/src/main/java/android/content/pm/IPackageManager.java:498: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+    void verifyIntentFilter(int id, int verificationCode, List<String> failedDomains);
+         ^
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/hidden-api/src/main/java/android/content/pm/IPackageManager.java:503: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+    int getIntentVerificationStatus(String packageName, int userId);
+        ^
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/hidden-api/src/main/java/android/content/pm/IPackageManager.java:508: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+    boolean updateIntentVerificationStatus(String packageName, int status, int userId);
+            ^
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/hidden-api/src/main/java/android/content/pm/IPackageManager.java:513: warning: [dep-ann] deprecated item is not annotated with @Deprecated
+    ParceledListSlice getIntentFilterVerifications(String packageName);
+                      ^
+11 warnings
+
+> Task :hidden-api:bundleLibCompileToJarDebug
+
+> Task :app:compileDebugKotlin
+w: file:///home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/data/autolock/AndroidPackageMetadataReader.kt:111:28 'fun get(p0: String!): Any?' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/features/applist/ui/MainScreen.kt:337:26 'fun rememberModalBottomSheetState(skipPartiallyExpanded: Boolean = ..., confirmValueChange: (SheetValue) -> Boolean = ...): SheetState' is deprecated. Use rememberBottomSheetState with Hidden initial value.
+w: file:///home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/features/applist/ui/MainScreen.kt:585:5 'fun ListItem(headlineContent: ComposableFunction0<Unit>, modifier: Modifier = ..., overlineContent: ComposableFunction0<Unit>? = ..., supportingContent: ComposableFunction0<Unit>? = ..., leadingContent: ComposableFunction0<Unit>? = ..., trailingContent: ComposableFunction0<Unit>? = ..., colors: ListItemColors = ..., tonalElevation: Dp = ..., shadowElevation: Dp = ...): Unit' is deprecated. Use the overload where `headlineContent` is now a trailing `content` lambda.
+w: file:///home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/features/applist/ui/MainScreen.kt:663:5 'fun ListItem(headlineContent: ComposableFunction0<Unit>, modifier: Modifier = ..., overlineContent: ComposableFunction0<Unit>? = ..., supportingContent: ComposableFunction0<Unit>? = ..., leadingContent: ComposableFunction0<Unit>? = ..., trailingContent: ComposableFunction0<Unit>? = ..., colors: ListItemColors = ..., tonalElevation: Dp = ..., shadowElevation: Dp = ...): Unit' is deprecated. Use the overload where `headlineContent` is now a trailing `content` lambda.
+w: file:///home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/features/lockscreen/ui/PasswordOverlayScreen.kt:124:48 'static field FLAG_TURN_SCREEN_ON: Int' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/features/settings/ui/SettingsScreen.kt:603:5 'fun ListItem(headlineContent: ComposableFunction0<Unit>, modifier: Modifier = ..., overlineContent: ComposableFunction0<Unit>? = ..., supportingContent: ComposableFunction0<Unit>? = ..., leadingContent: ComposableFunction0<Unit>? = ..., trailingContent: ComposableFunction0<Unit>? = ..., colors: ListItemColors = ..., tonalElevation: Dp = ..., shadowElevation: Dp = ...): Unit' is deprecated. Use the overload where `headlineContent` is now a trailing `content` lambda.
+w: file:///home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/features/settings/ui/SettingsScreen.kt:656:5 'fun ListItem(headlineContent: ComposableFunction0<Unit>, modifier: Modifier = ..., overlineContent: ComposableFunction0<Unit>? = ..., supportingContent: ComposableFunction0<Unit>? = ..., leadingContent: ComposableFunction0<Unit>? = ..., trailingContent: ComposableFunction0<Unit>? = ..., colors: ListItemColors = ..., tonalElevation: Dp = ..., shadowElevation: Dp = ...): Unit' is deprecated. Use the overload where `headlineContent` is now a trailing `content` lambda.
+w: file:///home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/features/settings/ui/SettingsScreen.kt:853:5 'fun ListItem(headlineContent: ComposableFunction0<Unit>, modifier: Modifier = ..., overlineContent: ComposableFunction0<Unit>? = ..., supportingContent: ComposableFunction0<Unit>? = ..., leadingContent: ComposableFunction0<Unit>? = ..., trailingContent: ComposableFunction0<Unit>? = ..., colors: ListItemColors = ..., tonalElevation: Dp = ..., shadowElevation: Dp = ...): Unit' is deprecated. Use the overload where `headlineContent` is now a trailing `content` lambda.
+w: file:///home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/features/settings/ui/SettingsScreen.kt:1084:5 'fun ListItem(headlineContent: ComposableFunction0<Unit>, modifier: Modifier = ..., overlineContent: ComposableFunction0<Unit>? = ..., supportingContent: ComposableFunction0<Unit>? = ..., leadingContent: ComposableFunction0<Unit>? = ..., trailingContent: ComposableFunction0<Unit>? = ..., colors: ListItemColors = ..., tonalElevation: Dp = ..., shadowElevation: Dp = ...): Unit' is deprecated. Use the overload where `headlineContent` is now a trailing `content` lambda.
+w: file:///home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/services/UsageLockService.kt:220:30 Unnecessary non-null assertion (!!) on a non-null receiver of type 'Pair<String, String>'.
+w: file:///home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/shizuku/ShizukuActivityManager.kt:54:24 'static field ACTION_CLOSE_SYSTEM_DIALOGS: String' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/shizuku/ShizukuActivityManager.kt:92:30 'static field ACTION_CLOSE_SYSTEM_DIALOGS: String' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/ui/components/DonateButton.kt:88:22 'fun rememberModalBottomSheetState(skipPartiallyExpanded: Boolean = ..., confirmValueChange: (SheetValue) -> Boolean = ...): SheetState' is deprecated. Use rememberBottomSheetState with Hidden initial value.
+
+> Task :app:compileDebugJavaWithJavac NO-SOURCE
+> Task :app:processDebugJavaRes
+> Task :app:bundleDebugClassesToCompileJar
+> Task :app:compileDebugUnitTestKotlin
+> Task :app:processDebugUnitTestJavaRes
+> Task :app:compileDebugUnitTestJavaWithJavac NO-SOURCE
+> Task :app:transformDebugClassesWithAsm
+> Task :app:bundleDebugClassesToRuntimeJar
+> Task :app:transformDebugUnitTestClassesWithAsm
+> Task :app:testDebugUnitTest
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/unit_tests-1793491075867.json
+
+[Incubating] Problems report is available at: file:///home/runner/work/AppLock-auto-lock/AppLock-auto-lock/build/reports/problems/problems-report.html
+
+BUILD SUCCESSFUL in 49s
+65 actionable tasks: 65 executed
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.5.1/userguide/configuration_cache_enabling.html

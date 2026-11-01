@@ -1,0 +1,232 @@
+> Task :appintro:preBuild UP-TO-DATE
+> Task :appintro:preDebugBuild UP-TO-DATE
+> Task :appintro:checkDebugAarMetadata UP-TO-DATE
+> Task :appintro:mergeDebugJniLibFolders UP-TO-DATE
+> Task :appintro:mergeDebugNativeLibs NO-SOURCE
+> Task :appintro:stripDebugDebugSymbols NO-SOURCE
+> Task :appintro:copyDebugJniLibsProjectAndLocalJars UP-TO-DATE
+> Task :appintro:generateDebugResources UP-TO-DATE
+> Task :appintro:packageDebugResources UP-TO-DATE
+> Task :appintro:processDebugNavigationResources UP-TO-DATE
+> Task :appintro:parseDebugLocalResources UP-TO-DATE
+> Task :appintro:generateDebugRFile UP-TO-DATE
+> Task :appintro:extractDebugAnnotations UP-TO-DATE
+> Task :appintro:extractDeepLinksForAarDebug UP-TO-DATE
+> Task :appintro:generateDebugAssets UP-TO-DATE
+> Task :appintro:mergeDebugAssets UP-TO-DATE
+> Task :appintro:compileDebugKotlin UP-TO-DATE
+> Task :appintro:javaPreCompileDebug UP-TO-DATE
+> Task :appintro:compileDebugJavaWithJavac NO-SOURCE
+> Task :appintro:mergeDebugGeneratedProguardFiles UP-TO-DATE
+> Task :appintro:mergeDebugConsumerProguardFiles UP-TO-DATE
+> Task :appintro:prepareDebugArtProfile UP-TO-DATE
+> Task :appintro:prepareLintJarForPublish UP-TO-DATE
+> Task :appintro:processDebugManifest UP-TO-DATE
+> Task :appintro:processDebugJavaRes UP-TO-DATE
+> Task :appintro:mergeDebugJavaResource UP-TO-DATE
+> Task :appintro:syncDebugLibJars UP-TO-DATE
+> Task :appintro:writeDebugAarMetadata UP-TO-DATE
+> Task :appintro:bundleDebugLocalLintAar
+> Task :patternlock:preBuild UP-TO-DATE
+> Task :patternlock:preDebugBuild UP-TO-DATE
+> Task :patternlock:checkDebugAarMetadata UP-TO-DATE
+> Task :patternlock:mergeDebugJniLibFolders UP-TO-DATE
+> Task :patternlock:mergeDebugNativeLibs NO-SOURCE
+> Task :patternlock:stripDebugDebugSymbols NO-SOURCE
+> Task :patternlock:copyDebugJniLibsProjectAndLocalJars UP-TO-DATE
+> Task :patternlock:generateDebugResources UP-TO-DATE
+> Task :patternlock:packageDebugResources UP-TO-DATE
+> Task :patternlock:processDebugNavigationResources UP-TO-DATE
+> Task :patternlock:parseDebugLocalResources UP-TO-DATE
+> Task :patternlock:generateDebugRFile UP-TO-DATE
+> Task :patternlock:extractDebugAnnotations UP-TO-DATE
+> Task :patternlock:extractDeepLinksForAarDebug UP-TO-DATE
+> Task :patternlock:generateDebugAssets UP-TO-DATE
+> Task :patternlock:mergeDebugAssets UP-TO-DATE
+> Task :patternlock:compileDebugKotlin UP-TO-DATE
+> Task :patternlock:javaPreCompileDebug UP-TO-DATE
+> Task :patternlock:compileDebugJavaWithJavac NO-SOURCE
+> Task :patternlock:mergeDebugGeneratedProguardFiles UP-TO-DATE
+> Task :patternlock:mergeDebugConsumerProguardFiles UP-TO-DATE
+> Task :patternlock:prepareDebugArtProfile UP-TO-DATE
+> Task :patternlock:prepareLintJarForPublish UP-TO-DATE
+> Task :patternlock:processDebugManifest UP-TO-DATE
+> Task :patternlock:processDebugJavaRes UP-TO-DATE
+> Task :patternlock:mergeDebugJavaResource UP-TO-DATE
+> Task :patternlock:syncDebugLibJars UP-TO-DATE
+> Task :patternlock:writeDebugAarMetadata UP-TO-DATE
+> Task :patternlock:bundleDebugLocalLintAar
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:compileDebugAidl NO-SOURCE
+> Task :app:generateDebugResources UP-TO-DATE
+> Task :app:packageDebugResources UP-TO-DATE
+> Task :app:processDebugNavigationResources UP-TO-DATE
+> Task :app:parseDebugLocalResources UP-TO-DATE
+> Task :app:generateDebugRFile UP-TO-DATE
+> Task :appintro:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :hidden-api:preBuild UP-TO-DATE
+> Task :hidden-api:preDebugBuild UP-TO-DATE
+> Task :hidden-api:generateDebugResources UP-TO-DATE
+> Task :hidden-api:packageDebugResources UP-TO-DATE
+> Task :hidden-api:processDebugNavigationResources UP-TO-DATE
+> Task :hidden-api:parseDebugLocalResources UP-TO-DATE
+> Task :hidden-api:generateDebugRFile UP-TO-DATE
+> Task :hidden-api:compileDebugKotlin UP-TO-DATE
+> Task :hidden-api:javaPreCompileDebug UP-TO-DATE
+> Task :hidden-api:compileDebugJavaWithJavac UP-TO-DATE
+> Task :hidden-api:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :patternlock:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :app:compileDebugKotlin UP-TO-DATE
+> Task :app:javaPreCompileDebug UP-TO-DATE
+> Task :app:compileDebugJavaWithJavac NO-SOURCE
+> Task :app:checkDebugAarMetadata UP-TO-DATE
+> Task :app:mapDebugSourceSetPaths UP-TO-DATE
+> Task :app:compileDebugNavigationResources UP-TO-DATE
+> Task :app:mergeDebugResources UP-TO-DATE
+> Task :app:createDebugCompatibleScreenManifests UP-TO-DATE
+> Task :app:extractDeepLinksDebug UP-TO-DATE
+> Task :appintro:extractDeepLinksDebug UP-TO-DATE
+> Task :patternlock:extractDeepLinksDebug UP-TO-DATE
+> Task :app:processDebugMainManifest UP-TO-DATE
+> Task :app:processDebugManifest UP-TO-DATE
+> Task :app:processDebugManifestForPackage UP-TO-DATE
+> Task :appintro:mapDebugSourceSetPaths UP-TO-DATE
+> Task :appintro:compileDebugLibraryResources UP-TO-DATE
+> Task :patternlock:mapDebugSourceSetPaths UP-TO-DATE
+> Task :patternlock:compileDebugLibraryResources UP-TO-DATE
+> Task :app:processDebugResources UP-TO-DATE
+> Task :app:bundleDebugClassesToCompileJar UP-TO-DATE
+> Task :app:preDebugAndroidTestBuild SKIPPED
+> Task :appintro:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :appintro:createFullJarDebug
+> Task :appintro:writeDebugLintModelMetadata
+> Task :patternlock:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :patternlock:createFullJarDebug
+> Task :patternlock:writeDebugLintModelMetadata
+> Task :app:generateDebugAndroidTestLintModel
+> Task :app:extractProguardFiles UP-TO-DATE
+> Task :appintro:extractProguardFiles UP-TO-DATE
+> Task :appintro:generateDebugLintModel
+> Task :hidden-api:processDebugJavaRes UP-TO-DATE
+> Task :hidden-api:extractProguardFiles UP-TO-DATE
+> Task :hidden-api:processDebugManifest UP-TO-DATE
+> Task :hidden-api:bundleLibRuntimeToJarDebug
+> Task :hidden-api:generateDebugLintModel
+> Task :hidden-api:createFullJarDebug
+> Task :hidden-api:prepareLintJarForPublish UP-TO-DATE
+> Task :patternlock:extractProguardFiles UP-TO-DATE
+> Task :patternlock:generateDebugLintModel
+> Task :app:generateDebugLintReportModel
+> Task :app:preDebugUnitTestBuild UP-TO-DATE
+> Task :app:generateDebugUnitTestLintModel
+> Task :hidden-api:checkDebugAarMetadata UP-TO-DATE
+> Task :hidden-api:mergeDebugJniLibFolders UP-TO-DATE
+> Task :hidden-api:mergeDebugNativeLibs NO-SOURCE
+> Task :hidden-api:stripDebugDebugSymbols NO-SOURCE
+> Task :hidden-api:copyDebugJniLibsProjectAndLocalJars UP-TO-DATE
+> Task :hidden-api:extractDebugAnnotations UP-TO-DATE
+> Task :hidden-api:extractDeepLinksForAarDebug UP-TO-DATE
+> Task :hidden-api:generateDebugAssets UP-TO-DATE
+> Task :hidden-api:mergeDebugAssets UP-TO-DATE
+> Task :hidden-api:mergeDebugGeneratedProguardFiles UP-TO-DATE
+> Task :hidden-api:mergeDebugConsumerProguardFiles UP-TO-DATE
+> Task :hidden-api:prepareDebugArtProfile UP-TO-DATE
+> Task :hidden-api:mergeDebugJavaResource UP-TO-DATE
+> Task :hidden-api:syncDebugLibJars UP-TO-DATE
+> Task :hidden-api:writeDebugAarMetadata UP-TO-DATE
+> Task :hidden-api:bundleDebugLocalLintAar
+> Task :hidden-api:writeDebugLintModelMetadata
+> Task :appintro:preDebugAndroidTestBuild UP-TO-DATE
+> Task :appintro:generateDebugAndroidTestLintModel
+> Task :appintro:preDebugUnitTestBuild UP-TO-DATE
+> Task :appintro:generateDebugUnitTestLintModel
+> Task :hidden-api:preDebugAndroidTestBuild UP-TO-DATE
+> Task :hidden-api:generateDebugAndroidTestLintModel
+> Task :hidden-api:preDebugUnitTestBuild UP-TO-DATE
+> Task :hidden-api:generateDebugUnitTestLintModel
+> Task :patternlock:preDebugAndroidTestBuild UP-TO-DATE
+> Task :patternlock:generateDebugAndroidTestLintModel
+> Task :patternlock:preDebugUnitTestBuild UP-TO-DATE
+> Task :patternlock:generateDebugUnitTestLintModel
+> Task :appintro:generateDebugLintReportModel
+> Task :hidden-api:generateDebugLintReportModel
+> Task :patternlock:generateDebugLintReportModel
+> Task :hidden-api:lintAnalyzeDebug
+> Task :appintro:lintAnalyzeDebug
+> Task :app:lintAnalyzeDebugAndroidTest
+> Task :patternlock:lintAnalyzeDebug
+> Task :app:lintAnalyzeDebugUnitTest
+> Task :appintro:lintAnalyzeDebugAndroidTest
+> Task :appintro:lintAnalyzeDebugUnitTest
+> Task :hidden-api:lintAnalyzeDebugAndroidTest
+> Task :hidden-api:lintAnalyzeDebugUnitTest
+> Task :patternlock:lintAnalyzeDebugAndroidTest
+> Task :patternlock:lintAnalyzeDebugUnitTest
+
+> Task :appintro:lintReportDebug
+Wrote HTML report to file:///home/runner/work/AppLock-auto-lock/AppLock-auto-lock/appintro/build/reports/lint-results-debug.html
+
+> Task :appintro:lintDebug
+
+> Task :hidden-api:lintReportDebug
+Wrote HTML report to file:///home/runner/work/AppLock-auto-lock/AppLock-auto-lock/hidden-api/build/reports/lint-results-debug.html
+
+> Task :hidden-api:lintDebug
+> Task :patternlock:lintReportDebug
+> Task :patternlock:lintDebug
+> Task :app:lintAnalyzeDebug
+
+> Task :app:lintReportDebug
+Wrote HTML report to file:///home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/build/reports/lint-results-debug.html
+Lint found 25 errors, 98 warnings and 2 hints. First failure:
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/shizuku/ShizukuActivityManager.kt:234: Error: Call requires API level 28 (current min is 26): invoke [NewApi]
+        return HiddenApiBypass.invoke(TaskInfo::class.java, this, "isFreeform") as Boolean
+                               ~~~~~~
+
+
+> Task :app:lintDebug FAILED
+Lint found 25 errors, 98 warnings, 2 hints. First failure:
+
+/home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/shizuku/ShizukuActivityManager.kt:234: Error: Call requires API level 28 (current min is 26): invoke [NewApi]
+        return HiddenApiBypass.invoke(TaskInfo::class.java, this, "isFreeform") as Boolean
+                               ~~~~~~
+
+The full lint text report is located at:
+  /home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/build/intermediates/lint_intermediate_text_report/debug/lintReportDebug/lint-results-debug.txt
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/lint-1793491319078.json
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:lintDebug' (registered by plugin 'com.android.internal.application').
+> Lint found errors in the project; aborting build.
+  
+  Fix the issues identified by lint, or create a baseline to see only new errors.
+  To create a baseline, run `gradlew updateLintBaseline` after adding the following to the module's build.gradle file:
+  ```
+  android {
+      lint {
+          baseline = file("lint-baseline.xml")
+      }
+  }
+  ```
+  For more details, see https://developer.android.com/studio/write/lint#snapshot
+  
+  Lint found 25 errors, 98 warnings, 2 hints. First failure:
+  
+  /home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/src/main/java/dev/pranav/applock/shizuku/ShizukuActivityManager.kt:234: Error: Call requires API level 28 (current min is 26): invoke [NewApi]
+          return HiddenApiBypass.invoke(TaskInfo::class.java, this, "isFreeform") as Boolean
+                                 ~~~~~~
+  
+  The full lint text report is located at:
+    /home/runner/work/AppLock-auto-lock/AppLock-auto-lock/app/build/intermediates/lint_intermediate_text_report/debug/lintReportDebug/lint-results-debug.txt
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 1m 12s
+145 actionable tasks: 45 executed, 100 up-to-date

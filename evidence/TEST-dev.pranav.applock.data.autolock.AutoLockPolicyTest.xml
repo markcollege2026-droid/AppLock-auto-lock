@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="dev.pranav.applock.data.autolock.AutoLockPolicyTest" tests="19" skipped="0" failures="0" errors="0" timestamp="2026-10-31T23:58:44.688Z" hostname="runnervm48cm3" time="0.027">
+  <properties/>
+  <testcase name="system exclusion list is respected" classname="dev.pranav.applock.data.autolock.AutoLockPolicyTest" time="0.009"/>
+  <testcase name="skip bookkeeping only remembers permanent decisions" classname="dev.pranav.applock.data.autolock.AutoLockPolicyTest" time="0.0"/>
+  <testcase name="keyboards and launchers are excluded" classname="dev.pranav.applock.data.autolock.AutoLockPolicyTest" time="0.0"/>
+  <testcase name="install identity round trips and rejects malformed values" classname="dev.pranav.applock.data.autolock.AutoLockPolicyTest" time="0.005"/>
+  <testcase name="manually unprotected installation is skipped before handled bookkeeping" classname="dev.pranav.applock.data.autolock.AutoLockPolicyTest" time="0.0"/>
+  <testcase name="exemption cache invalidates on update and reinstall" classname="dev.pranav.applock.data.autolock.AutoLockPolicyTest" time="0.008"/>
+  <testcase name="already protected apps are not enrolled again" classname="dev.pranav.applock.data.autolock.AutoLockPolicyTest" time="0.0"/>
+  <testcase name="disabled apps are excluded" classname="dev.pranav.applock.data.autolock.AutoLockPolicyTest" time="0.0"/>
+  <testcase name="applock itself is excluded" classname="dev.pranav.applock.data.autolock.AutoLockPolicyTest" time="0.0"/>
+  <testcase name="feature disabled skips enrollment" classname="dev.pranav.applock.data.autolock.AutoLockPolicyTest" time="0.0"/>
+  <testcase name="normal user app is enrolled" classname="dev.pranav.applock.data.autolock.AutoLockPolicyTest" time="0.0"/>
+  <testcase name="exempt marker skips enrollment" classname="dev.pranav.applock.data.autolock.AutoLockPolicyTest" time="0.001"/>
+  <testcase name="only a real boolean true grants the manifest exemption" classname="dev.pranav.applock.data.autolock.AutoLockPolicyTest" time="0.0"/>
+  <testcase name="manually protected and marked app is still considered protected" classname="dev.pranav.applock.data.autolock.AutoLockPolicyTest" time="0.001"/>
+  <testcase name="apps without a launcher activity are excluded" classname="dev.pranav.applock.data.autolock.AutoLockPolicyTest" time="0.0"/>
+  <testcase name="pre-existing installation is never enrolled" classname="dev.pranav.applock.data.autolock.AutoLockPolicyTest" time="0.001"/>
+  <testcase name="baseline not ready skips enrollment" classname="dev.pranav.applock.data.autolock.AutoLockPolicyTest" time="0.0"/>
+  <testcase name="marker meta data name is stable" classname="dev.pranav.applock.data.autolock.AutoLockPolicyTest" time="0.0"/>
+  <testcase name="system apps are excluded from automatic enrollment" classname="dev.pranav.applock.data.autolock.AutoLockPolicyTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

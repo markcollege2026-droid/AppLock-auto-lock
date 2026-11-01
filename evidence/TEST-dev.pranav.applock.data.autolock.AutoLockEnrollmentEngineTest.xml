@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="dev.pranav.applock.data.autolock.AutoLockEnrollmentEngineTest" tests="22" skipped="0" failures="0" errors="0" timestamp="2026-10-31T23:58:44.614Z" hostname="runnervm48cm3" time="0.067">
+  <properties/>
+  <testcase name="marker true skips reconciliation" classname="dev.pranav.applock.data.autolock.AutoLockEnrollmentEngineTest" time="0.021"/>
+  <testcase name="duplicate installation events enroll exactly once" classname="dev.pranav.applock.data.autolock.AutoLockEnrollmentEngineTest" time="0.001"/>
+  <testcase name="disabling stops enrollment but preserves existing protection" classname="dev.pranav.applock.data.autolock.AutoLockEnrollmentEngineTest" time="0.002"/>
+  <testcase name="re-enabling does not retroactively enroll apps installed while disabled" classname="dev.pranav.applock.data.autolock.AutoLockEnrollmentEngineTest" time="0.0"/>
+  <testcase name="first launch fallback enrolls before reconciliation runs" classname="dev.pranav.applock.data.autolock.AutoLockEnrollmentEngineTest" time="0.001"/>
+  <testcase name="marker true skips installation events" classname="dev.pranav.applock.data.autolock.AutoLockEnrollmentEngineTest" time="0.0"/>
+  <testcase name="fresh eligible installation is enrolled once" classname="dev.pranav.applock.data.autolock.AutoLockEnrollmentEngineTest" time="0.001"/>
+  <testcase name="missed installations are recovered without resetting the baseline" classname="dev.pranav.applock.data.autolock.AutoLockEnrollmentEngineTest" time="0.01"/>
+  <testcase name="marked app does not change protection of other apps" classname="dev.pranav.applock.data.autolock.AutoLockEnrollmentEngineTest" time="0.001"/>
+  <testcase name="genuine reinstall is evaluated as a fresh installation" classname="dev.pranav.applock.data.autolock.AutoLockEnrollmentEngineTest" time="0.0"/>
+  <testcase name="concurrent installation events do not lose state or double enroll" classname="dev.pranav.applock.data.autolock.AutoLockEnrollmentEngineTest" time="0.008"/>
+  <testcase name="reinstall with marker is skipped even after previous manual unprotection" classname="dev.pranav.applock.data.autolock.AutoLockEnrollmentEngineTest" time="0.002"/>
+  <testcase name="enabling does not protect apps that are already installed" classname="dev.pranav.applock.data.autolock.AutoLockEnrollmentEngineTest" time="0.0"/>
+  <testcase name="manual protection clears automatic enrollment opt-out" classname="dev.pranav.applock.data.autolock.AutoLockEnrollmentEngineTest" time="0.001"/>
+  <testcase name="ordinary update does not enroll a pre-existing app" classname="dev.pranav.applock.data.autolock.AutoLockEnrollmentEngineTest" time="0.001"/>
+  <testcase name="marked app manually protected is never removed or unmarked" classname="dev.pranav.applock.data.autolock.AutoLockEnrollmentEngineTest" time="0.007"/>
+  <testcase name="baseline survives engine restart" classname="dev.pranav.applock.data.autolock.AutoLockEnrollmentEngineTest" time="0.0"/>
+  <testcase name="ordinary update does not enroll a previously skipped new app" classname="dev.pranav.applock.data.autolock.AutoLockEnrollmentEngineTest" time="0.001"/>
+  <testcase name="manual unprotection survives scans updates and restart" classname="dev.pranav.applock.data.autolock.AutoLockEnrollmentEngineTest" time="0.001"/>
+  <testcase name="feature off does not protect installations" classname="dev.pranav.applock.data.autolock.AutoLockEnrollmentEngineTest" time="0.001"/>
+  <testcase name="reconciliation is a no-op until the baseline is ready" classname="dev.pranav.applock.data.autolock.AutoLockEnrollmentEngineTest" time="0.001"/>
+  <testcase name="marker absent still enrolls" classname="dev.pranav.applock.data.autolock.AutoLockEnrollmentEngineTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

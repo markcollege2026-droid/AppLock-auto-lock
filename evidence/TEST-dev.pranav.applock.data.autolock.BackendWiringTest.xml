@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="dev.pranav.applock.data.autolock.BackendWiringTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-10-31T23:58:44.718Z" hostname="runnervm48cm3" time="0.012">
+  <properties/>
+  <testcase name="no backend still decides protection with a raw getLockedApps membership check" classname="dev.pranav.applock.data.autolock.BackendWiringTest" time="0.008"/>
+  <testcase name="global protection gates remain in every backend" classname="dev.pranav.applock.data.autolock.BackendWiringTest" time="0.002"/>
+  <testcase name="all three backends use the shared automatic enrollment gate" classname="dev.pranav.applock.data.autolock.BackendWiringTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
